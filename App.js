@@ -48,7 +48,7 @@ componentDidMount(){
             { 
               this.state.person.map((person) => (
                 <ListItem key={person.login.uuid} bottomDivider>
-                <Avatar  size="large" source={person.picture.large} />
+                <Avatar  size="large" source={{uri: person.picture.large}} />
                 <ListItem.Content>
                   <ListItem.Title>Name:{person.name.first},{person.name.last}</ListItem.Title>
                   <ListItem.Subtitle>Location:{person.location.city},{person.location.state}</ListItem.Subtitle>
