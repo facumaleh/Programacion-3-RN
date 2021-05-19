@@ -1,6 +1,6 @@
 import React, {Component} from "react";
-import { View, SafeAreaView ,ScrollView,TextInput,} from 'react-native'
-import {  ListItem, Button, Icon, Avatar , SearchBar, BottomSheet,Input, Header} from 'react-native-elements'
+import { View, SafeAreaView ,ScrollView,TextInput, Image,Text,Pressable} from 'react-native'
+import {  ListItem,  Icon, Avatar , SearchBar, BottomSheet,Input, Header} from 'react-native-elements'
 
 
 
@@ -120,33 +120,41 @@ componentDidMount(){
 
         return(
           
-          <ScrollView>
-            <SafeAreaView>
-            <View>
-              <SearchBar placeholder="Type Here..." onChangeText={text => this.setState({search: text})} value={search}  onChange={(text) => this.filter(text.target.value)}/>
-              <Button  type="outline" onPress={this.az.bind(this)}  title ="A-Z"></Button>
-              <Button  type="outline" onPress={this.za.bind(this)}  title ="Z-A"></Button>
+          <ScrollView >
+            <SafeAreaView style={styles.container}>
+            <View  >
+              <TextInput  style={styles.Search} placeholder="Search" onChangeText={text => this.setState({search: text})} value={search}  onChange={(text) => this.filter(text.target.value)}/>
+              <Pressable style={styles.button}   onPress={this.az.bind(this)} >
+                <Text style={styles.textPresables} > A-Z
+                </Text>
+              </Pressable>
+              <Pressable   style={styles.button}  onPress={this.za.bind(this)} >
+              <Text style={styles.textPresables} > Z-A </Text>
+              </Pressable>
 
 
             { 
               this.state.person.map((person) => (
-                <ListItem key={person.login.uuid} bottomDivider>
-                <Avatar rounded  size="large" source={{uri: person.picture.large}} />
-                <ListItem.Content>
-                  <ListItem.Title>{person.name.first},{person.name.last}</ListItem.Title>
-                  <ListItem.Subtitle>Location:{person.location.city},{person.location.state}</ListItem.Subtitle>
-                  <ListItem.Subtitle>Birthdate:{person.dob.date.substring(0,10)} </ListItem.Subtitle>
-                  <ListItem.Subtitle>Current age: {person.dob.age}</ListItem.Subtitle>
-  
-                </ListItem.Content>
-                <Button
-              title="+ info" type="outline"/>
-              </ListItem>
+              
+              <View style={styles.card} key={person.login.uuid} bottomDivider>
+                <Image  source={{uri: person.picture.large}} style={styles.imgCard}  />
+                
+                <Text style={styles.Titulo}>{person.name.first},{person.name.last}</Text>
+                  <Text style={styles.TextoCard} >Location:{person.location.city},{person.location.state}</Text>
+                  <Text style={styles.TextoCard}>Birthdate:{person.dob.date.substring(0,10)} </Text>
+                  <Text style={styles.TextoCard}>Current age: {person.dob.age}</Text>
+                
+                <Pressable style={styles.button}>
+                  <Text style={styles.textPresables}>+ info </Text>
+                </Pressable>
+              </View>
               ))
             }
              
-             < Input  className = "mas" placeholder="cuantas tarjetas queres sumar?" onChangeText= {text => this.setState({vermas: text})}  />
-           <Button  type="outline" onPress={this.loadmore.bind(this)}  title =" Ver mas"></Button> 
+             < TextInput  style={styles.input}  className = "mas" placeholder="cuantas tarjetas queres sumar?" onChangeText= {text => this.setState({vermas: text})}  />
+           <Pressable  style={styles.button}  onPress={this.loadmore.bind(this)}  >
+            <Text style={styles.textPresables}> Ver mas</Text>
+            </Pressable> 
 
           </View>
           </SafeAreaView>
@@ -157,6 +165,94 @@ componentDidMount(){
     };
     
 }
+
+const styles = {
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    with:100
+    
+  },
+  card: {
+    borderWidth: 3,
+    borderRadius: 10,
+    borderColor: 'red',
+    width: 300,
+    height: 400,
+    padding: 20,
+    marginTop: 10,
+    marginBottom: 10,
+    backgroundColor: 'azure', 
+
+  },
+  imgCard:{
+    width: 150, 
+    height: 150, 
+    borderRadius: 10,
+   marginLeft: 50
+  },
+input:{
+  height: 40,
+  backgroundColor: 'azure', 
+  fontSize: 20,
+  borderWidth: 3,
+  borderRadius: 10,
+  borderColor: 'red',
+  marginTop: 10,
+  marginBottom: 10,
+  with :100
+
+},
+Titulo:{
+ fontSize: 25,
+ marginTop: 10,
+ marginBottom: 10,
+},
+
+TextoCard:{
+  fontSize: 15,
+  marginTop: 10,
+  marginBottom: 10,
+ 
+ 
+ },
+ Search: {
+  height: 40,
+  borderWidth: 1,
+  paddingLeft: 20,
+  margin: 5,
+  borderColor: 'red',
+  backgroundColor: '#FFFFFF',
+  marginTop: 10,
+  marginBottom: 10,
+  borderWidth: 3,
+  borderRadius: 10,
+  backgroundColor: 'azure', 
+  
+},
+button: {
+  alignItems: 'center',
+  justifyContent: 'center',
+  paddingVertical: 12,
+  paddingHorizontal: 32,
+  elevation: 3,
+  backgroundColor: 'azure', 
+  marginTop: 10,
+  borderWidth: 3,
+  borderRadius: 10,
+  borderColor: 'red',
+},
+textPresables: {
+  fontSize: 16,
+  lineHeight: 21,
+  fontWeight: 'bold',
+  letterSpacing: 0.25,
+  color: 'black',
+},
+};
+ 
+ 
 
 export default App;
 
