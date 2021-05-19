@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import { View, SafeAreaView ,ScrollView,TextInput, Image,Text,Pressable} from 'react-native'
-import {  ListItem,  Icon, Avatar , SearchBar, BottomSheet,Input, Header} from 'react-native-elements'
+import {  ListItem,  Icon, Avatar , SearchBar, BottomSheet,Input, Header,buttonAZZA} from 'react-native-elements'
 
 
 
@@ -122,15 +122,20 @@ componentDidMount(){
           
           <ScrollView >
             <SafeAreaView style={styles.container}>
-            <View  >
-              <TextInput  style={styles.Search} placeholder="Search" onChangeText={text => this.setState({search: text})} value={search}  onChange={(text) => this.filter(text.target.value)}/>
-              <Pressable style={styles.button}   onPress={this.az.bind(this)} >
+            
+              <TextInput  style={styles.SearchBar} placeholder="Search" onChangeText={text => this.setState({search: text})} value={search}  onChange={(text) => this.filter(text.target.value)}/>
+             
+            <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between' }} >
+              
+              <Pressable style={styles.buttonAZZA}   onPress={this.az.bind(this)} >
                 <Text style={styles.textPresables} > A-Z
                 </Text>
               </Pressable>
-              <Pressable   style={styles.button}  onPress={this.za.bind(this)} >
+              <Pressable   style={styles.buttonAZZA}  onPress={this.za.bind(this)} >
               <Text style={styles.textPresables} > Z-A </Text>
               </Pressable>
+
+              </View >
 
 
             { 
@@ -151,12 +156,12 @@ componentDidMount(){
               ))
             }
              
-             < TextInput  style={styles.input}  className = "mas" placeholder="cuantas tarjetas queres sumar?" onChangeText= {text => this.setState({vermas: text})}  />
+             < TextInput  style={styles.input}  className = "mas" placeholder="Ingresar numero de tarjetas" onChangeText= {text => this.setState({vermas: text})}  />
            <Pressable  style={styles.button}  onPress={this.loadmore.bind(this)}  >
             <Text style={styles.textPresables}> Ver mas</Text>
             </Pressable> 
 
-          </View>
+          
           </SafeAreaView>
           </ScrollView>
           
@@ -171,19 +176,21 @@ const styles = {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    with:100
+    with:200,
+    backgroundColor:"#ffde7d"
+    
     
   },
   card: {
     borderWidth: 3,
     borderRadius: 10,
-    borderColor: 'red',
+    borderColor: '#00b8a9',
     width: 300,
-    height: 400,
+    height: 450,
     padding: 20,
     marginTop: 10,
     marginBottom: 10,
-    backgroundColor: 'azure', 
+    backgroundColor: '#f8f3d4', 
 
   },
   imgCard:{
@@ -198,10 +205,11 @@ input:{
   fontSize: 20,
   borderWidth: 3,
   borderRadius: 10,
-  borderColor: 'red',
+  borderColor: '#00b8a9',
   marginTop: 10,
   marginBottom: 10,
-  with :100
+  width:350,
+
 
 },
 Titulo:{
@@ -217,12 +225,13 @@ TextoCard:{
  
  
  },
- Search: {
-  height: 40,
+ SearchBar: {
+  height: 50,
+  width:350,
   borderWidth: 1,
   paddingLeft: 20,
   margin: 5,
-  borderColor: 'red',
+  borderColor: '#00b8a9',
   backgroundColor: '#FFFFFF',
   marginTop: 10,
   marginBottom: 10,
@@ -241,7 +250,35 @@ button: {
   marginTop: 10,
   borderWidth: 3,
   borderRadius: 10,
-  borderColor: 'red',
+  borderColor: '#00b8a9',
+  with:400
+},
+buttonVerMas: {
+  alignItems: 'center',
+  justifyContent: 'center',
+  paddingVertical: 12,
+  paddingHorizontal: 32,
+  elevation: 3,
+  backgroundColor: 'azure', 
+  marginTop: 10,
+  borderWidth: 3,
+  borderRadius: 10,
+  borderColor: '#00b8a9',
+  with:400
+},
+buttonAZZA: {
+  flex: 1, 
+marginLeft:10,
+  alignItems: 'center',
+  justifyContent: 'center',
+  paddingVertical: 12,
+  paddingHorizontal: 32,
+  elevation: 3,
+  backgroundColor: 'azure', 
+  marginTop: 10,
+  borderWidth: 3,
+  borderRadius: 10,
+  borderColor: '#f6416c',
 },
 textPresables: {
   fontSize: 16,
@@ -256,3 +293,5 @@ textPresables: {
 
 export default App;
 
+// colores 
+// 00b8a9, f8f3d4,f6416c,ffde7d
