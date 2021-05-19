@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
   borderColor: '#00b8a9',
   marginTop: 10,
   marginBottom: 10,
-  // width:350,
+  width:400
 },
 
 Titulo:{
@@ -65,6 +65,7 @@ TextoCard:{
   borderWidth: 3,
   borderRadius: 10,
   backgroundColor: 'azure', 
+  width:400
 },
 
 button: {
@@ -78,7 +79,7 @@ button: {
   borderWidth: 3,
   borderRadius: 10,
   borderColor: '#00b8a9',
-  // width:400
+   width:250
 },
 
 buttonVerMas: {
@@ -92,7 +93,7 @@ buttonVerMas: {
   borderWidth: 3,
   borderRadius: 10,
   borderColor: '#00b8a9',
-  // width:400
+  width:400
 },
 
 buttonAZZA: {
@@ -119,3 +120,6 @@ textPresables: {
   }
 });
  export {styles}  
+
+
+ 
