@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
     borderWidth: 3,
     borderRadius: 10,
     borderColor: '#00b8a9',
-    width: 300,
+    width: 350,
     height: 500,
     padding: 20,
     marginTop: 10,
@@ -25,11 +25,11 @@ const styles = StyleSheet.create({
     width: 150, 
     height: 150, 
     borderRadius: 10,
-   marginLeft: 50
+   marginLeft: 75
   },
 
   input:{
-  height: 40,
+  height: 50,
   backgroundColor: 'azure', 
   fontSize: 20,
   borderWidth: 3,
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
   borderColor: '#00b8a9',
   marginTop: 10,
   marginBottom: 10,
-  width:300,
+  width:400,
 },
 
 Titulo:{
@@ -106,7 +106,7 @@ buttonVerMas: {
   borderWidth: 3,
   borderRadius: 10,
   borderColor: '#00b8a9',
-  // width:400
+   width:400
 },
 
 buttonAZZA: {

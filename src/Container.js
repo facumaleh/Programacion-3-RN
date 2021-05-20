@@ -143,10 +143,10 @@ componentDidMount(){
             <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between' }} >
               
               <Pressable style={styles.buttonAZZA}   onPress={this.az.bind(this)} >
-              <FontAwesome name="sort-alpha-asc" size={24} color="#f6416c" />
+              <FontAwesome name="sort-alpha-asc" size={20} color="#f6416c" />
               </Pressable>
               <Pressable   style={styles.buttonAZZA}  onPress={this.za.bind(this)} >
-              <FontAwesome name="sort-alpha-desc" size={24} color="#f6416c" />
+              <FontAwesome name="sort-alpha-desc" size={20} color="#f6416c" />
                </Pressable>
 
               </View >
