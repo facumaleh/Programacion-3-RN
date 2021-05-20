@@ -26,7 +26,7 @@ class App extends Component {
   
   
     render(){
-      const { img, firstName, lastName,Email,City,State,Street,StreetNumber,Telephone, Country, Bithday,Registered, Date,id} = this.props;
+      const { img, firstName, lastName,Email,city,State,Street,StreetNumber,Telephone, Country, Bithday,Registered, Date,id} = this.props;
 
 
         return(
@@ -34,7 +34,7 @@ class App extends Component {
                 <Image  source={{uri: img}} style={styles.imgCard}  />
                 
                  <Text style={styles.Titulo}>{firstName},{lastName}</Text>
-                   <Text style={styles.TextoCard} >Location:{City},{State}</Text>
+                   <Text style={styles.TextoCard} >Location: {city} ,{State},{Country}</Text>
                    <Text style={styles.TextoCard}>Birthdate:{Date.substring(0,10)} </Text>
                    <Text style={styles.TextoCard}>Current age: {Bithday}</Text>
                 
