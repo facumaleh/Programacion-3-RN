@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import { View, SafeAreaView ,ScrollView,TextInput, Image,Text,Pressable} from 'react-native'
 import { styles } from '../styles'
 import Card from "./Card";
+import { FontAwesome } from '@expo/vector-icons';
 
 
 
@@ -142,12 +143,11 @@ componentDidMount(){
             <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between' }} >
               
               <Pressable style={styles.buttonAZZA}   onPress={this.az.bind(this)} >
-                <Text style={styles.textPresables} > A-Z
-                </Text>
+              <FontAwesome name="sort-alpha-asc" size={24} color="#f6416c" />
               </Pressable>
               <Pressable   style={styles.buttonAZZA}  onPress={this.za.bind(this)} >
-              <Text style={styles.textPresables} > Z-A </Text>
-              </Pressable>
+              <FontAwesome name="sort-alpha-desc" size={24} color="#f6416c" />
+               </Pressable>
 
               </View >
 

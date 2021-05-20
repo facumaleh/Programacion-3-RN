@@ -1,6 +1,8 @@
 import React, {Component} from "react";
 import { View, SafeAreaView ,ScrollView,TextInput, Image,Text,Pressable} from 'react-native'
 import { styles } from '../styles'
+import { FontAwesome } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
 
 
 
@@ -39,10 +41,10 @@ class App extends Component {
                    <Text style={styles.TextoCard}>Current age: {Bithday}</Text>
                 
                  <Pressable style={styles.button}>
-                   <Text style={styles.textPresables}>+ info </Text>
+                 <AntDesign name="infocirlce" size={24} color="#00b8a9" />
                  </Pressable>
-                 <Pressable style={styles.buttonBorrar}>
-                   <Text style={styles.textPresables} onPress= {this.props.onDelete.bind(this,id)}>Borrar </Text>
+                 <Pressable style={styles.buttonBorrar} onPress= {this.props.onDelete.bind(this,id)}>
+                 <FontAwesome  name="trash" size={24} color="#f6416c" onPress= {this.props.onDelete.bind(this,id)} />
                  </Pressable>
                </View>
                
