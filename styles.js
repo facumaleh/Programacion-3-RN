@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     borderColor: '#00b8a9',
     width: 300,
-    height: 450,
+    height: 500,
     padding: 20,
     marginTop: 10,
     marginBottom: 10,
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
   borderColor: '#00b8a9',
   marginTop: 10,
   marginBottom: 10,
-  width:400
+  width:300,
 },
 
 Titulo:{
@@ -65,7 +65,6 @@ TextoCard:{
   borderWidth: 3,
   borderRadius: 10,
   backgroundColor: 'azure', 
-  width:400
 },
 
 button: {
@@ -79,8 +78,22 @@ button: {
   borderWidth: 3,
   borderRadius: 10,
   borderColor: '#00b8a9',
-   width:250
+  // width:400
 },
+buttonBorrar: {
+  alignItems: 'center',
+  justifyContent: 'center',
+  paddingVertical: 12,
+  paddingHorizontal: 32,
+  elevation: 3,
+  backgroundColor: 'azure', 
+  marginTop: 10,
+  borderWidth: 3,
+  borderRadius: 10,
+  borderColor: '#f6416c',
+  // width:400
+},
+
 
 buttonVerMas: {
   alignItems: 'center',
@@ -93,7 +106,7 @@ buttonVerMas: {
   borderWidth: 3,
   borderRadius: 10,
   borderColor: '#00b8a9',
-  width:400
+  // width:400
 },
 
 buttonAZZA: {
@@ -120,6 +133,3 @@ textPresables: {
   }
 });
  export {styles}  
-
-
- 
