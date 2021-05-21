@@ -68,10 +68,8 @@ componentDidMount(){
 
   //  buscador
    filter(text){
-     console.log(text)
     if (text.length > 0) {
       
-   console.log("hola")
 
      // var text = target.value
       const personajes = this.state.person
@@ -138,7 +136,7 @@ componentDidMount(){
           <ScrollView>
             <SafeAreaView style={styles.container}>
             
-              <TextInput style={styles.SearchBar} placeholder="Search" onChangeText={text => this.setState({search: text})} value={search}  onChange={(text) => this.filter(text.target.value)}/>
+              <TextInput style={styles.SearchBar} placeholder="Search" onChangeText={text => {this.setState({search: text}); this.filter(text) }} value={search}  />
              
             <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between' }} >
               

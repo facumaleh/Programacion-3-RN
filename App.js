@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import { View, SafeAreaView ,ScrollView,TextInput, Image,Text,Pressable} from 'react-native'
 import { styles } from './styles'
 import Container from "./src/Container";
-
+import About from "./src/About";
 
 
 class App extends Component {
@@ -11,10 +11,6 @@ class App extends Component {
     constructor(){
         super();
         this.state = {
-          
-          
-         
-
 
         }
     }
@@ -25,9 +21,9 @@ class App extends Component {
       
 
         return(
-          <Container></Container>
-          
-
+                <Container></Container>
+        //   <About></About>
+        
         )
     };
     
