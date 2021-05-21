@@ -132,4 +132,8 @@ textPresables: {
   color: 'black',
   }
 });
+
+const stylesModal = StyleSheet.create({
+  
+})
  export {styles}  

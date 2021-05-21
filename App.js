@@ -7,19 +7,14 @@ import About from "./src/About";
 
 class App extends Component {
 
-  
-    constructor(){
+ constructor(){
         super();
         this.state = {
 
         }
     }
 
-  
     render(){
-
-      
-
         return(
          <Container></Container>
         //  <About></About>
@@ -29,8 +24,6 @@ class App extends Component {
     
 }
  
- 
-
 export default App;
 
 // colores 

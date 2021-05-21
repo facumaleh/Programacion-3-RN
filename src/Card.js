@@ -12,11 +12,8 @@ class App extends Component {
     constructor(){
         super();
         this.state = {
-          
             isOpen: false,
             likes: 0,
-
-
         }
     }
 
@@ -24,9 +21,7 @@ class App extends Component {
     openModal =  ()=> this.setState({isOpen: true});
       closeModal =  ()=> this.setState({isOpen: false});
 
-
-  
-  
+      
     render(){
       const { img, firstName, lastName,Email,city,State,Street,StreetNumber,Telephone, Country, Bithday,Registered, Date,id} = this.props;
 
@@ -61,28 +56,15 @@ class App extends Component {
                   </Pressable>                
 							    </Modal>
 
-                
-                
-         
-
-
-          
-
-
 
                  <Pressable style={styles.buttonBorrar} onPress= {this.props.onDelete.bind(this,id)}>
                  <FontAwesome  name="trash" size={24} color="#f6416c" onPress= {this.props.onDelete.bind(this,id)} />
                  </Pressable>
                </View>
-               
-         
-
         )
     };
     
 }
- 
- 
 
 export default App;
 
