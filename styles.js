@@ -21,12 +21,28 @@ const styles = StyleSheet.create({
     backgroundColor: '#f8f3d4', 
   },
 
+  cardAbout: {
+    borderWidth: 3,
+    borderRadius: 10,
+    borderColor: '#00b8a9',
+    width: 350,
+    height: 400,
+    padding: 20,
+    marginTop: 10,
+    marginBottom: 10,
+    backgroundColor: '#f8f3d4', 
+  },
+
   imgCard:{
     width: 150, 
     height: 150, 
     borderRadius: 10,
-   marginLeft: 75
+   marginLeft: 75,
+   borderColor: '#00b8a9',
+   borderWidth: 3,
   },
+
+ 
 
   input:{
   height: 50,
@@ -132,12 +148,22 @@ textPresables: {
   color: 'black',
   },
 
+  imgCardModal:{
+    width: 150, 
+    height: 150, 
+    borderRadius: 10,
+   marginLeft: 55,
+   borderColor: '#00b8a9',
+   borderWidth: 3,
+
+  },
+
   modal: {
-    backgroundColor: "rgba(0,0,0,0.2)",
+    backgroundColor: "rgba(1,1,1,0.9)",
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    paddingTop: 50,
+    
    },
 
   infoModal: {
@@ -146,25 +172,29 @@ textPresables: {
   },
 
   TextoModal: {
+    margin:10,
     fontSize: 15,
-    marginTop: 10,
-    marginBottom: 10,
     color: 'white',
    },
 
    TituloModal:{
+     margin:10,
     fontSize: 25,
-    marginTop: 10,
-    marginBottom: 10,
     color: 'white',
    },
 
    goBack: {
-    backgroundColor: 'black',
-    color: 'white',
-    borderWidth: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 12,
+    paddingHorizontal: 32,
+    elevation: 3,
+    backgroundColor: 'azure', 
+    marginTop: 10,
+    borderWidth: 3,
     borderRadius: 10,
-    borderColor: '#f6416c',
+    borderColor: '#00b8a9',
+    
    }
 });
  export {styles}  

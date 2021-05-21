@@ -42,17 +42,18 @@ class App extends Component {
                  
                           
                   <Modal  animationType="slide" transparent={true} visible={this.state.isOpen} >
-                  <Pressable  onPress={this.closeModal}>
-                    <AntDesign name="closesquare" size={35} color="red" />
-                    </Pressable>
+               
 
                   <View style={styles.modal}>
                     <View style={styles.infoModal}>
-                    <Image  source={{uri: img}} style={styles.imgCard}  />
+                    <Image  source={{uri: img}} style={styles.imgCardModal}  />
                     <Text style={styles.TituloModal}>{firstName}, {lastName}</Text>
                     <Text style={styles.TextoModal} >Location: {city}, {State}, {Country}</Text>
                     <Text style={styles.TextoModal}>Birthdate:{Date.substring(0,10)} </Text>
                     <Text style={styles.TextoModal}>Current age: {Bithday}</Text>
+                    <Text style={styles.TextoModal}>Telephone: {Telephone}</Text>
+                    <Text style={styles.TextoModal}>Registered: {Registered.substring(0,10)}</Text>
+
                     </View>
                     <Pressable style={styles.infoModal} onPress= {this.closeModal} > 
                     <Text style={styles.goBack}>Go Back</Text>

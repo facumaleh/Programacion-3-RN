@@ -41,8 +41,8 @@ class About extends Component {
             <SafeAreaView style={styles.container}>
             
         
-            <View style={styles.card} >
-                <Image  source={{uri: "https://as.com/futbol/imagenes/2021/05/20/primera/1621501526_610460_1621501727_noticia_normal_recorte1.jpg"}} style={styles.imgCard}  />
+            <View style={styles.cardAbout} >
+                <Image  source={{uri: "https://image.flaticon.com/icons/png/512/921/921071.png"}} style={styles.imgCard}  />
                 
                  <Text style={styles.Titulo}>Facundo Maleh</Text>
                    <Text style={styles.TextoCard} >Location: Buenos Aires, Argentina</Text>
@@ -51,8 +51,8 @@ class About extends Component {
             
                </View>
 
-            <View style={styles.card} >
-                <Image  source={{uri: "https://as.com/futbol/imagenes/2021/05/20/primera/1621501526_610460_1621501727_noticia_normal_recorte1.jpg"}} style={styles.imgCard}  />
+            <View style={styles.cardAbout} >
+                <Image  source={{uri: "https://img-premium.flaticon.com/png/512/3048/3048122.png?token=exp=1621636898~hmac=d995979e19a3e92ccc52cd14795758ae"}} style={styles.imgCard}  />
                 
                  <Text style={styles.Titulo}>Tomas Caimmi</Text>
                    <Text style={styles.TextoCard} >Location: Buenos Aires, Argentina</Text>
@@ -62,8 +62,8 @@ class About extends Component {
                </View>
        
 
-               <View style={styles.card} >
-                <Image  source={{uri: "https://as.com/futbol/imagenes/2021/05/20/primera/1621501526_610460_1621501727_noticia_normal_recorte1.jpg"}} style={styles.imgCard}  />
+               <View style={styles.cardAbout} >
+                <Image  source={{uri: "https://image.flaticon.com/icons/png/512/3048/3048189.png"}} style={styles.imgCard}  />
                 
                  <Text style={styles.Titulo}>Agustin ihidoype</Text>
                    <Text style={styles.TextoCard} >Location: Buenos Aires, Argentina</Text>

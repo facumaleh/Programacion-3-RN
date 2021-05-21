@@ -16,8 +16,8 @@ class App extends Component {
 
     render(){
         return(
-         <Container></Container>
-        //  <About></About>
+        //  <Container></Container>
+          <About></About>
         
         )
     };
