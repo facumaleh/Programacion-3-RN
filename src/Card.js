@@ -41,8 +41,8 @@ class App extends Component {
                     
                  
                           
-                  <Modal  animationType="slide" style={{backgroundColor: 'black'}} visible={this.state.isOpen} >
-                  <Pressable style={{backgroundColor: 'black'}} onPress={this.closeModal}>
+                  <Modal  animationType="slide" transparent={true} visible={this.state.isOpen} >
+                  <Pressable  onPress={this.closeModal}>
                     <AntDesign name="closesquare" size={35} color="red" />
                     </Pressable>
 
