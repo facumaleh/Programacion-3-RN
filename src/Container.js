@@ -135,10 +135,10 @@ componentDidMount(){
 
         return(
           
-          <ScrollView >
+          <ScrollView>
             <SafeAreaView style={styles.container}>
             
-              <TextInput  style={styles.SearchBar} placeholder="Search" onChangeText={text => this.setState({search: text})} value={search}  onChange={(text) => this.filter(text.target.value)}/>
+              <TextInput style={styles.SearchBar} placeholder="Search" onChangeText={text => this.setState({search: text})} value={search}  onChange={(text) => this.filter(text.target.value)}/>
              
             <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between' }} >
               
@@ -155,6 +155,7 @@ componentDidMount(){
             { 
               this.state.person.map((person) => (
               <Card
+              key={person.login.uuid}
               onDelete= {this.borrarItem.bind(this)}
                 id= {person.login.uuid}
                 firstName={person.name.first}
