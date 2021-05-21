@@ -42,21 +42,22 @@ class App extends Component {
                  
                           
                   <Modal  animationType="slide" style={{backgroundColor: 'black'}} visible={this.state.isOpen} >
-                  <View style={styles.modal}>
-                    <Pressable onPress={this.closeModal}>
-                    <AntDesign name="closesquare" size={24} color="#00b8a9" />
+                  <Pressable style={{backgroundColor: 'black'}} onPress={this.closeModal}>
+                    <AntDesign name="closesquare" size={35} color="red" />
                     </Pressable>
+
+                  <View style={styles.modal}>
                     <View style={styles.infoModal}>
                     <Image  source={{uri: img}} style={styles.imgCard}  />
-                    <Text style={styles.Titulo}>{firstName}, {lastName}</Text>
-                    <Text style={styles.TextoCard} >Location: {city}, {State}, {Country}</Text>
-                    <Text style={styles.TextoCard}>Birthdate:{Date.substring(0,10)} </Text>
-                    <Text style={styles.TextoCard}>Current age: {Bithday}</Text>
+                    <Text style={styles.TituloModal}>{firstName}, {lastName}</Text>
+                    <Text style={styles.TextoModal} >Location: {city}, {State}, {Country}</Text>
+                    <Text style={styles.TextoModal}>Birthdate:{Date.substring(0,10)} </Text>
+                    <Text style={styles.TextoModal}>Current age: {Bithday}</Text>
                     </View>
-                    <Pressable  onPress= {this.closeModal} > 
-                    <AntDesign name="stepbackward" size={24} color="#00b8a9" />
+                    <Pressable style={styles.infoModal} onPress= {this.closeModal} > 
+                    <Text style={styles.goBack}>Go Back</Text>
                     </Pressable>      
-                  </View>          
+                  </View>       
 							    </Modal>
 
 

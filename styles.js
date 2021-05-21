@@ -133,32 +133,38 @@ textPresables: {
   },
 
   modal: {
+    backgroundColor: 'black',
+    flex: 1,
     justifyContent: 'center',
-    borderRadius: 10,
+    alignItems: 'center',
+    paddingTop: 50,
    },
 
   infoModal: {
-    justifyContent: 'center',
-    paddingVertical: 30,
-    flex: 1,
-    paddingHorizontal: 30,
-    width: 150, 
-    height: 150, 
-    borderRadius: 10,
-   marginLeft: 75
+    justifyContent: 'center', 
+    alignItems: 'center'
   },
 
-  textoModal: {
-  fontSize: 20,
-  marginTop: 10,
-  marginBottom: 10,
-  color: 'white',
-  },
-
-  tituloModal: {
-    fontSize: 30,
+  TextoModal: {
+    fontSize: 15,
     marginTop: 10,
-    marginBottom: 10, 
-  }
+    marginBottom: 10,
+    color: 'white',
+   },
+
+   TituloModal:{
+    fontSize: 25,
+    marginTop: 10,
+    marginBottom: 10,
+    color: 'white',
+   },
+
+   goBack: {
+    backgroundColor: 'black',
+    color: 'white',
+    borderWidth: 1,
+    borderRadius: 10,
+    borderColor: '#f6416c',
+   }
 });
  export {styles}  
