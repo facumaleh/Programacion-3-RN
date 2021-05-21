@@ -130,6 +130,35 @@ textPresables: {
   fontWeight: 'bold',
   letterSpacing: 0.25,
   color: 'black',
+  },
+
+  modal: {
+    justifyContent: 'center',
+    borderRadius: 10,
+   },
+
+  infoModal: {
+    justifyContent: 'center',
+    paddingVertical: 30,
+    flex: 1,
+    paddingHorizontal: 30,
+    width: 150, 
+    height: 150, 
+    borderRadius: 10,
+   marginLeft: 75
+  },
+
+  textoModal: {
+  fontSize: 20,
+  marginTop: 10,
+  marginBottom: 10,
+  color: 'white',
+  },
+
+  tituloModal: {
+    fontSize: 30,
+    marginTop: 10,
+    marginBottom: 10, 
   }
 });
  export {styles}  

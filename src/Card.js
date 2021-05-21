@@ -31,7 +31,7 @@ class App extends Component {
                 <Image  source={{uri: img}} style={styles.imgCard}  />
                 
                  <Text style={styles.Titulo}>{firstName},{lastName}</Text>
-                   <Text style={styles.TextoCard} >Location: {city} ,{State},{Country}</Text>
+                   <Text style={styles.TextoCard} >Location: {city}, {State}, {Country}</Text>
                    <Text style={styles.TextoCard}>Birthdate:{Date.substring(0,10)} </Text>
                    <Text style={styles.TextoCard}>Current age: {Bithday}</Text>
                 
@@ -41,19 +41,22 @@ class App extends Component {
                     
                  
                           
-                  <Modal  animationType="slide"  style={{backgroundColor:"white"}} visible={this.state.isOpen} >
-        				  <Pressable   onPress={this.closeModal}>
-                  <Text> x</Text>
-                  </Pressable>
-                  
-                  <Image  source={{uri: img}} style={styles.imgCard}  />
-									<Text style={styles.Titulo}>{firstName},{lastName}</Text>
-                  <Text style={styles.TextoCard} >Location: {city} ,{State},{Country}</Text>
-                  <Text style={styles.TextoCard}>Birthdate:{Date.substring(0,10)} </Text>
-                  <Text style={styles.TextoCard}>Current age: {Bithday}</Text>
-                  <Pressable  onPress= {this.closeModal} > 
-                  <Text>Back</Text>
-                  </Pressable>                
+                  <Modal  animationType="slide" style={{backgroundColor: 'black'}} visible={this.state.isOpen} >
+                  <View style={styles.modal}>
+                    <Pressable onPress={this.closeModal}>
+                    <AntDesign name="closesquare" size={24} color="#00b8a9" />
+                    </Pressable>
+                    <View style={styles.infoModal}>
+                    <Image  source={{uri: img}} style={styles.imgCard}  />
+                    <Text style={styles.Titulo}>{firstName}, {lastName}</Text>
+                    <Text style={styles.TextoCard} >Location: {city}, {State}, {Country}</Text>
+                    <Text style={styles.TextoCard}>Birthdate:{Date.substring(0,10)} </Text>
+                    <Text style={styles.TextoCard}>Current age: {Bithday}</Text>
+                    </View>
+                    <Pressable  onPress= {this.closeModal} > 
+                    <AntDesign name="stepbackward" size={24} color="#00b8a9" />
+                    </Pressable>      
+                  </View>          
 							    </Modal>
 
 

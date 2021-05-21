@@ -67,8 +67,8 @@ class About extends Component {
                 
                  <Text style={styles.Titulo}>Agustin ihidoype</Text>
                    <Text style={styles.TextoCard} >Location: Buenos Aires, Argentina</Text>
-                   <Text style={styles.TextoCard}>Birthdate: 24 de junio de 1987 </Text>
-                   <Text style={styles.TextoCard}>Current age: 33</Text>
+                   <Text style={styles.TextoCard}>Birthdate: 5 de junio de 2001  </Text>
+                   <Text style={styles.TextoCard}>Current age: 19</Text>
             
                </View>
        
