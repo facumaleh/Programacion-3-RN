@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import { View, SafeAreaView ,ScrollView,TextInput, Image,Text,Pressable} from 'react-native'
+import { View, SafeAreaView ,ScrollView,TextInput, Image,Text,Pressable, Modal, Button} from 'react-native'
 import { styles } from '../styles'
 import { FontAwesome } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
@@ -40,9 +40,36 @@ class App extends Component {
                    <Text style={styles.TextoCard}>Birthdate:{Date.substring(0,10)} </Text>
                    <Text style={styles.TextoCard}>Current age: {Bithday}</Text>
                 
-                 <Pressable style={styles.button}>
+                 <Pressable style={styles.button}  onPress= {this.openModal}>
                  <AntDesign name="infocirlce" size={24} color="#00b8a9" />
                  </Pressable>
+                    
+                 
+                          
+                  <Modal  animationType="slide"  style={{backgroundColor:"white"}} visible={this.state.isOpen} >
+        				  <Pressable   onPress={this.closeModal}>
+                  <Text> x</Text>
+                  </Pressable>
+                  
+                  <Image  source={{uri: img}} style={styles.imgCard}  />
+									<Text style={styles.Titulo}>{firstName},{lastName}</Text>
+                  <Text style={styles.TextoCard} >Location: {city} ,{State},{Country}</Text>
+                  <Text style={styles.TextoCard}>Birthdate:{Date.substring(0,10)} </Text>
+                  <Text style={styles.TextoCard}>Current age: {Bithday}</Text>
+                  <Pressable  onPress= {this.closeModal} > 
+                  <Text>Back</Text>
+                  </Pressable>                
+							    </Modal>
+
+                
+                
+         
+
+
+          
+
+
+
                  <Pressable style={styles.buttonBorrar} onPress= {this.props.onDelete.bind(this,id)}>
                  <FontAwesome  name="trash" size={24} color="#f6416c" onPress= {this.props.onDelete.bind(this,id)} />
                  </Pressable>
