@@ -7,6 +7,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import AppNavigator from './routes/homeStack'
 
+const Stack = createStackNavigator();
 
 
 class App extends Component {

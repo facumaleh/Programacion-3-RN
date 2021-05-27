@@ -1,8 +1,10 @@
 import React, {Component} from "react";
-import { View, SafeAreaView ,ScrollView,TextInput, Image,Text,Pressable} from 'react-native'
+import { View, SafeAreaView ,ScrollView,TextInput, Image,Text,Pressable, Button} from 'react-native'
 import { styles } from '../styles'
 import Card from "./Card";
 import { FontAwesome } from '@expo/vector-icons';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
 
 
@@ -126,15 +128,19 @@ componentDidMount(){
     
   }
 
+
   
     render(){
       const { search } = this.state;
-
+      const { navigation } = this.props;
 
         return(
           
           <ScrollView>
             <SafeAreaView style={styles.container}>
+
+            <Button title="About" onPress={() => navigation.navigate('About')} />
+
             
               <TextInput style={styles.SearchBar} placeholder="Search" onChangeText={text => {this.setState({search: text}); this.filter(text) }} value={search}  />
              
@@ -190,11 +196,12 @@ componentDidMount(){
         )
     };
     
-}
+};
  
  
 
-export default Container;
+export default Container
+
 
 // colores 
 // 00b8a9, f8f3d4,f6416c,ffde7d
