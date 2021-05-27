@@ -3,6 +3,8 @@ import { View, SafeAreaView ,ScrollView,TextInput, Image,Text,Pressable} from 'r
 import { styles } from '../styles'
 import Card from "./Card";
 import { FontAwesome } from '@expo/vector-icons';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
 
 
@@ -26,6 +28,9 @@ class About extends Component {
 
 
         }
+
+
+
     }
 
     
@@ -33,10 +38,13 @@ class About extends Component {
   
     render(){
       const { search } = this.state;
+      const Stack = createStackNavigator();
 
 
         return(
-          
+          //<NavigationContainer>
+          //<Stack.Navigator>
+
           <ScrollView>
             <SafeAreaView style={styles.container}>
             
@@ -82,7 +90,9 @@ class About extends Component {
           
           </SafeAreaView>
           </ScrollView>
-          
+          //</Stack.Navigator>
+          //</NavigationContainer>
+
 
         )
     };
