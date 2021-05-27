@@ -3,6 +3,9 @@ import { View, SafeAreaView ,ScrollView,TextInput, Image,Text,Pressable} from 'r
 import { styles } from './styles'
 import Container from "./src/Container";
 import About from "./src/About";
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+
 
 
 class App extends Component {
@@ -14,6 +17,8 @@ class App extends Component {
         }
     }
 
+
+    
     render(){
         return(
         //  <Container></Container>

@@ -65,7 +65,7 @@ class About extends Component {
                <View style={styles.cardAbout} >
                 <Image  source={{uri: "https://image.flaticon.com/icons/png/512/3048/3048189.png"}} style={styles.imgCard}  />
                 
-                 <Text style={styles.Titulo}>Agustin ihidoype</Text>
+                 <Text style={styles.Titulo}>Agustin Ihidoype</Text>
                    <Text style={styles.TextoCard} >Location: Buenos Aires, Argentina</Text>
                    <Text style={styles.TextoCard}>Birthdate: 5 de junio de 2001  </Text>
                    <Text style={styles.TextoCard}>Current age: 19</Text>
