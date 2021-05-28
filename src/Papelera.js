@@ -51,9 +51,6 @@ class Papelera extends Component {
           
           <ScrollView>
             <SafeAreaView style={styles.container}>
-
-            <Button title="About" onPress={() => navigation.navigate('About')} />
-
                    
             <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between' }} >
               
