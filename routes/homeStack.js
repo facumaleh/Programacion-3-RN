@@ -4,6 +4,8 @@ import { createStackNavigator } from "@react-navigation/stack";
 import About from "../src/About";
 import Container from "../src/Container"
 import Papelera from "../src/Papelera"
+import Favoritos from "../src/Favoritos"
+
 
 
 const { Navigator, Screen } = createStackNavigator();
@@ -17,6 +19,7 @@ function MyTabs() {
       <Tab.Screen name="Home" component={Container} />
       <Tab.Screen name="Settings" component={About} />
       <Tab.Screen name="Papelera" component={Papelera} />
+      <Tab.Screen name="Favoritos" component={Favoritos} />
 
     </Tab.Navigator>
   );
@@ -28,6 +31,7 @@ const HomeNavigator = () => (
     <Screen name="Home" component={Container} />
     <Screen name="About" component={About} />
     <Screen name="Papelera" component={Papelera} />
+    <Screen name="Favoritos" component={Favoritos} />
 
   </Tab.Navigator>
 );
