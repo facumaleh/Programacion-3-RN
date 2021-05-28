@@ -27,6 +27,7 @@ class Container extends Component {
             textoBuscar: " ",
             vermas: 0,
             personBorrada:[],
+            personFAV:[],
 
          
 
@@ -46,18 +47,31 @@ class Container extends Component {
         resultadopedido = await response.json();
         this.setState({ person: resultadopedido.results, personOriginal:resultadopedido.results})
       
-        // await this.storeData(resultadopedido.results, '@contacto') 
-        // console.log( await this.getData('@contacto'))
+         await this.storeData(resultadopedido.results, '@contacto') 
+        console.log( await this.getData('@contacto'))
 
       } catch (error) {
-        console.log("string");
+        console.log(e);
         this.setState({ person: [], personOriginal:[]})
       }
      
     }
 
-   
+    async getData (key){
+      try {
+        const jsonValue = await AsyncStorage.getItem(key)
+        return jsonValue != null ? JSON.parse(jsonValue) : null;
+      } catch(e) {
+      }
+    }
   
+    async storeData (value,key)  {
+      try {
+        const jsonValue = JSON.stringify(value)
+        await AsyncStorage.setItem(key, jsonValue)
+      } catch (e) {
+      }
+    }
 
 
 
@@ -136,51 +150,64 @@ class Container extends Component {
     )
 
   })};
-  async borrarItem(characteridx){
+
+  borrarItem(characteridx){
     console.log( characteridx);
     let resultados =this.state.person.filter((person)=> {
       //  guardo en var resultados el filtro de person
       return( characteridx!== person.login.uuid )
       //comparo idx con el uuid
     })
-    let Borrado =this.state.person.filter((person)=> {
-      //  guardo en var resultados el filtro de person
-      return( characteridx== person.login.uuid )
-      //comparo idx con el uuid
-    })
+    // seteo el estado 
+    this.setState({person: resultados})
+    
+  }
+  // borrarItem(characteridx){
+  //   console.log( characteridx);
+  //   let resultados =this.state.person.filter((person)=> {
+  //     //  guardo en var resultados el filtro de person
+  //     return( characteridx!== person.login.uuid )
+  //     this.setState({person: resultados })
+  //     //comparo idx con el uuid
+  //   })
+    // let Borrado =this.state.person.filter((person)=> {
+    //   //  guardo en var resultados el filtro de person
+    //   return( characteridx== person.login.uuid )
+    //   //comparo idx con el uuid
+    // })
     
     // seteo el estado 
     // let borradosGet= await this.getData('@Borrado')
     //if ternario
-    let borradosGet= await Promise.resolve(
-      this.getData('@Borrado')
-    )
+    // let borradosGet= await Promise.resolve(
+    //   this.getData('@Borrado')
+    // )
 
-    (borradosGet!== null)?borradosGet.push(Borrado):borradosGet=Borrado
-    this.setState({person: resultados ,personBorrada : borradosGet})
-    console.log(borradosGet)
+    // (borradosGet!== null)?borradosGet.push(Borrado):borradosGet=Borrado
+    // this.setState({person: resultados ,personBorrada : borradosGet})
+    // console.log(borradosGet)
 
     // await this.storeData(resultados, '@contacto') 
-    await this.setData(borradosGet, '@Borrado') 
+    
+    
+  
+
+
+
+
+   //borrar item
+   FAV(characteridx){
+    // console.log( characteridx);
+    let resultados =this.state.person.filter((person)=> {
+      //  guardo en var resultados el filtro de person
+      return( characteridx== person.login.uuid )
+      //comparo idx con el uuid
+    })
+    // seteo el estado 
+    this.setState({personFAV: resultados})
+    console.log("este es tu fav: " + characteridx )
     
   }
-
-  async getData (key){
-    try {
-      const jsonValue = await AsyncStorage.getItem(key)
-      return jsonValue != null ? JSON.parse(jsonValue) : null;
-    } catch(e) {
-    }
-  }
-
-  async setData (value,key)  {
-    try {
-      const jsonValue = JSON.stringify(value)
-      await AsyncStorage.setItem(key, jsonValue)
-    } catch (e) {
-    }
-  }
-
   
     render(){
       const { search } = this.state;
@@ -210,6 +237,8 @@ class Container extends Component {
               <Card
               key={person.login.uuid}
               onDelete= {this.borrarItem.bind(this)}
+              onFav= {this.FAV.bind(this)}
+
                 id= {person.login.uuid}
                 firstName={person.name.first}
                 img={person.picture.large}

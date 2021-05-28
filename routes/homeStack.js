@@ -13,17 +13,6 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 
 const Tab = createMaterialTopTabNavigator();
 
-function MyTabs() {
-  return (
-    <Tab.Navigator>
-      <Tab.Screen name="Home" component={Container} />
-      <Tab.Screen name="Settings" component={About} />
-      <Tab.Screen name="Papelera" component={Papelera} />
-      <Tab.Screen name="Favoritos" component={Favoritos} />
-
-    </Tab.Navigator>
-  );
-}
 
 //en el header se puede poner: "float", "screen"
 const HomeNavigator = () => (

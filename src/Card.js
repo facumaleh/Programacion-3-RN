@@ -65,8 +65,8 @@ class App extends Component {
                  <Pressable style={styles.buttonBorrar} onPress= {this.props.onDelete.bind(this,id)}>
                  <FontAwesome  name="trash" size={24} color="#f6416c"  />
                  </Pressable>
-                 <Pressable style={styles.buttonBorrar} onPress= {this.props.onDelete.bind(this,id)}>
-                 <FontAwesome  name="far fa-heart" size={24} color="#f6416c"  />
+                 <Pressable style={styles.buttonBorrar} onPress= {this.props.onFav.bind(this,id)}>
+                   <Text>Like</Text>
                  </Pressable>
                </View>
                
