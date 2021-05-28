@@ -5,6 +5,7 @@ import Card from "./Card";
 import { FontAwesome } from '@expo/vector-icons';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 
 
@@ -24,6 +25,8 @@ class Container extends Component {
             personOriginal:[],
             textoBuscar: " ",
             vermas: 0,
+            personBorrada:[],
+
          
 
 
@@ -31,16 +34,51 @@ class Container extends Component {
     }
 
     //solicitud api
-componentDidMount(){
-  fetch('https://randomuser.me/api/?results=10')
-  .then(response => response.json())
-  .then ((data)=>{
-    this.setState({ person: data.results, personOriginal:data.results});
-    console.log(this.state.person)
+ componentDidMount(){
+  this.pedido()
+   }
 
-  })
-  .catch((e)=>console.log(e));
+
+
+
+  async pedido() {
+      let resultadopedido;
+      try {
+        const response = await fetch("https://randomuser.me/api/?results=20");
+        resultadopedido = await response.json();
+        this.setState({ person: resultadopedido.results, personOriginal:resultadopedido.results})
+      
+        //await this.storeData(resultadopedido.results, '@contacto') guarda todos los contactos en el storeData
+        //console.log( await this.getData('@contacto'))
+
+      } catch (error) {
+        console.log(error);
+        this.setState({ person: [], personOriginal:[]})
+      }
+     
+    }
+
+    async storeData(value,key)  {
+    try {
+      const jsonValue = JSON.stringify(value)
+      await AsyncStorage.setItem(key, jsonValue)
+    } catch (e) {
+    }
   }
+  
+  
+  async getData(key){
+  try {
+    const jsonValue = await AsyncStorage.getItem(key)
+    return jsonValue != null ? JSON.parse(jsonValue) : null;
+  } catch(e) {
+  }
+  }
+
+  
+
+
+
   loadmore(){
     if (!this.state.vermas) {
         return alert ("Ingrese un numero valido")
