@@ -4,6 +4,7 @@ import About from "./src/About";
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import AppNavigator from './routes/homeStack'
+import { SafeAreaView } from "react-native";
 
 
 const Stack = createStackNavigator();
@@ -24,7 +25,9 @@ class App extends Component {
         return(
         //  <Container></Container>
          // <About></About>
+         <SafeAreaView style={{flex:1}}>
         <AppNavigator />
+        </SafeAreaView>
         )
     };
     

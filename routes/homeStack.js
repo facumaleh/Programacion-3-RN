@@ -3,6 +3,8 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import About from "../src/About";
 import Container from "../src/Container"
+import Papelera from "../src/Papelera"
+
 
 const { Navigator, Screen } = createStackNavigator();
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
@@ -14,6 +16,8 @@ function MyTabs() {
     <Tab.Navigator>
       <Tab.Screen name="Home" component={Container} />
       <Tab.Screen name="Settings" component={About} />
+      <Tab.Screen name="Papelera" component={Papelera} />
+
     </Tab.Navigator>
   );
 }
@@ -23,6 +27,8 @@ const HomeNavigator = () => (
   <Tab.Navigator headerMode="screen"> 
     <Screen name="Home" component={Container} />
     <Screen name="About" component={About} />
+    <Screen name="Papelera" component={Papelera} />
+
   </Tab.Navigator>
 );
 

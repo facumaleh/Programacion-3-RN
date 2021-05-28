@@ -6,6 +6,7 @@ import { FontAwesome } from '@expo/vector-icons';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import {getDataIndex, setDataIndex} from "./asyncStorageFunctions"
 
 
 
@@ -38,43 +39,24 @@ class Container extends Component {
   this.pedido()
    }
 
-
-
-
   async pedido() {
       let resultadopedido;
       try {
-        const response = await fetch("https://randomuser.me/api/?results=20");
+        const response = await fetch("https://randomuser.me/api/?results=10");
         resultadopedido = await response.json();
         this.setState({ person: resultadopedido.results, personOriginal:resultadopedido.results})
       
-        //await this.storeData(resultadopedido.results, '@contacto') guarda todos los contactos en el storeData
-        //console.log( await this.getData('@contacto'))
+        // await this.storeData(resultadopedido.results, '@contacto') 
+        // console.log( await this.getData('@contacto'))
 
       } catch (error) {
-        console.log(error);
+        console.log("string");
         this.setState({ person: [], personOriginal:[]})
       }
      
     }
 
-    async storeData(value,key)  {
-    try {
-      const jsonValue = JSON.stringify(value)
-      await AsyncStorage.setItem(key, jsonValue)
-    } catch (e) {
-    }
-  }
-  
-  
-  async getData(key){
-  try {
-    const jsonValue = await AsyncStorage.getItem(key)
-    return jsonValue != null ? JSON.parse(jsonValue) : null;
-  } catch(e) {
-  }
-  }
-
+   
   
 
 
@@ -154,18 +136,50 @@ class Container extends Component {
     )
 
   })};
-  borrarItem(characteridx){
+  async borrarItem(characteridx){
     console.log( characteridx);
     let resultados =this.state.person.filter((person)=> {
       //  guardo en var resultados el filtro de person
       return( characteridx!== person.login.uuid )
       //comparo idx con el uuid
     })
+    let Borrado =this.state.person.filter((person)=> {
+      //  guardo en var resultados el filtro de person
+      return( characteridx== person.login.uuid )
+      //comparo idx con el uuid
+    })
+    
     // seteo el estado 
-    this.setState({person: resultados})
+    // let borradosGet= await this.getData('@Borrado')
+    //if ternario
+    let borradosGet= await Promise.resolve(
+      this.getData('@Borrado')
+    )
+
+    (borradosGet!== null)?borradosGet.push(Borrado):borradosGet=Borrado
+    this.setState({person: resultados ,personBorrada : borradosGet})
+    console.log(borradosGet)
+
+    // await this.storeData(resultados, '@contacto') 
+    await this.setData(borradosGet, '@Borrado') 
     
   }
 
+  async getData (key){
+    try {
+      const jsonValue = await AsyncStorage.getItem(key)
+      return jsonValue != null ? JSON.parse(jsonValue) : null;
+    } catch(e) {
+    }
+  }
+
+  async setData (value,key)  {
+    try {
+      const jsonValue = JSON.stringify(value)
+      await AsyncStorage.setItem(key, jsonValue)
+    } catch (e) {
+    }
+  }
 
   
     render(){
@@ -216,7 +230,6 @@ class Container extends Component {
                 Date= {person.dob.date}
                 Registered = {person.registered.date}>
 
-                
                 </Card>
               ))
             }

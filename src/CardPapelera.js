@@ -6,7 +6,7 @@ import { AntDesign } from '@expo/vector-icons';
 
 
 
-class App extends Component {
+class CardPapelera extends Component {
 
   
     constructor(){
@@ -60,18 +60,13 @@ class App extends Component {
                     </Pressable>      
                   </View>       
 							    </Modal>
-
-
-                 <Pressable style={styles.buttonBorrar} onPress= {this.props.onDelete.bind(this,id)}>
-                 <FontAwesome  name="trash" size={24} color="#f6416c"  />
-                 </Pressable>
                </View>
         )
     };
     
 }
 
-export default App;
+export default CardPapelera;
 
 // colores 
 // 00b8a9, f8f3d4,f6416c,ffde7d
