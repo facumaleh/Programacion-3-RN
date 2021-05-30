@@ -37,7 +37,8 @@ class Container extends Component {
 
     //solicitud api
  componentDidMount(){
-  this.pedido()
+  this.pedido();
+  // this.getDataBorrado(); ALTERNATIVA 2
    }
 
   async pedido() {
@@ -172,6 +173,11 @@ class Container extends Component {
 
         await this.storeDataBorrado(resultados.results, '@Borrados') 
         console.log( await this.getDataBorrado('@Borrados'))
+
+        // ALTERNATIVA 2
+        // await this.storeDataBorrado(resultados.results);
+        // console.log(this.state.ahoraSi);
+
   
     } catch (error) {
       console.log(e);
@@ -189,6 +195,21 @@ class Container extends Component {
     }
   }
 
+
+  // ALTERNATIVA 2
+  // async getDataBorrado (){
+  //   try {
+  //     const jsonValue = await AsyncStorage.getItem('@Borrados')
+  //     if (jsonValue !== null){
+  //       const jsonParsed = JSON.parse(jsonValue)
+  //       this.setState({ahoraSi: jsonParsed})
+  //       console.log(this.state.ahoraSi);
+  //     }
+  //   } catch(e) {
+  //   }
+  // }
+
+
   async storeDataBorrado (value,key)  {
     try {
       const jsonValue = JSON.stringify(value)
@@ -196,6 +217,15 @@ class Container extends Component {
     } catch (e) {
     }
   }
+
+// ALTERNATIVA 2
+  // async storeDataBorrado (value)  {
+  //   try {
+  //     const jsonValue = JSON.stringify(value)
+  //     await AsyncStorage.setItem('@Borrados', jsonValue)
+  //   } catch (e) {
+  //   }
+  // }
 
 
 
