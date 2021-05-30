@@ -48,7 +48,7 @@ class Container extends Component {
         this.setState({ person: resultadopedido.results, personOriginal:resultadopedido.results})
       
          await this.storeData(resultadopedido.results, '@contacto') 
-        console.log( await this.getData('@contacto'))
+        // console.log( await this.getData('@contacto'))
 
       } catch (error) {
         console.log(e);
@@ -151,17 +151,56 @@ class Container extends Component {
 
   })};
 
-  borrarItem(characteridx){
-    console.log( characteridx);
-    let resultados =this.state.person.filter((person)=> {
-      //  guardo en var resultados el filtro de person
-      return( characteridx!== person.login.uuid )
-      //comparo idx con el uuid
-    })
-    // seteo el estado 
-    this.setState({person: resultados})
-    
+  async borrarItem(characteridx) {
+ 
+    try {
+      let resultados =this.state.person.filter((person)=> {
+        //  guardo en var resultados el filtro de person
+        return( characteridx!== person.login.uuid )
+        //comparo idx con el uuid
+      })
+      // seteo el estado 
+      this.setState({person: resultados})
+      
+      let Borrado =this.state.person.filter((person)=> {
+        //   //  guardo en var resultados el filtro de person  
+         return( characteridx== person.login.uuid )
+                 })
+        this.setState({personBorrada:Borrado})
+        console.log(this.state.personBorrada)
+        // setea bien el estado
+
+        await this.storeDataBorrado(resultados.results, '@Borrados') 
+        console.log( await this.getDataBorrado('@Borrados'))
+  
+    } catch (error) {
+      console.log(e);
+      this.setState({ personBorrada:[]})
+    }
+   
+   
   }
+
+  async getDataBorrado (key){
+    try {
+      const jsonValue = await AsyncStorage.getItem(key)
+      return jsonValue != null ? JSON.parse(jsonValue) : null;
+    } catch(e) {
+    }
+  }
+
+  async storeDataBorrado (value,key)  {
+    try {
+      const jsonValue = JSON.stringify(value)
+      await AsyncStorage.setItem(key, jsonValue)
+    } catch (e) {
+    }
+  }
+
+
+
+
+  
   // borrarItem(characteridx){
   //   console.log( characteridx);
   //   let resultados =this.state.person.filter((person)=> {
@@ -190,24 +229,50 @@ class Container extends Component {
     // await this.storeData(resultados, '@contacto') 
     
     
+
+    async FAV(characteridx) {
+ 
+      try {
+        
+        
+        let Favoritos =this.state.person.filter((person)=> {
+          //   //  guardo en var resultados el filtro de person  
+           return( characteridx== person.login.uuid )
+                   })
+          this.setState({personBorrada:Favoritos})
+
+          console.log(this.state.personFAV)
+          // setea bien el estado
+  
+          await this.storeDataFav(resultados.results, '@Favoritos') 
+          console.log( await this.getDataFav('@Favoritos'))
+    
+      } catch (error) {
+        console.log(error);
+        this.setState({ personBorrada:[]})
+      }
+     
+     
+    }
+  
+    async getDataFav (key){
+      try {
+        const jsonValue = await AsyncStorage.getItem(key)
+        return jsonValue != null ? JSON.parse(jsonValue) : null;
+      } catch(e) {
+      }
+    }
+  
+    async storeDataFav (value,key)  {
+      try {
+        const jsonValue = JSON.stringify(value)
+        await AsyncStorage.setItem(key, jsonValue)
+      } catch (e) {
+      }
+    }
   
 
 
-
-
-   //borrar item
-   FAV(characteridx){
-    // console.log( characteridx);
-    let resultados =this.state.person.filter((person)=> {
-      //  guardo en var resultados el filtro de person
-      return( characteridx== person.login.uuid )
-      //comparo idx con el uuid
-    })
-    // seteo el estado 
-    this.setState({personFAV: resultados})
-    console.log("este es tu fav: " + characteridx )
-    
-  }
   
     render(){
       const { search } = this.state;
