@@ -7,6 +7,9 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
+import {getDataBorrado} from "./asyncStorageFunctions"
+
+
 
 
 class Papelera extends Component {
@@ -25,8 +28,14 @@ class Papelera extends Component {
 
         }
     }
+    
+componentDidMount(){
+  console.log( this.state.personBorrada)
+  this.setState({personBorrada : getDataBorrado('@Borrados')})
 
+}
 
+   
 
     az = () => {
       this.state.person.sort((a, b) => a.name.first.localeCompare(b.name.first))

@@ -6,7 +6,7 @@ import { FontAwesome } from '@expo/vector-icons';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import {getDataIndex, setDataIndex} from "./asyncStorageFunctions"
+import {getDataIndex, setDataIndex,storeDataBorrado,getDataBorrado,getDataFav,storeDataFav} from "./asyncStorageFunctions"
 
 
 
@@ -28,9 +28,6 @@ class Container extends Component {
             vermas: 0,
             personBorrada:[],
             personFAV:[],
-
-         
-
 
         }
     }
@@ -161,8 +158,8 @@ class Container extends Component {
       // console.log(this.state.personBorrada)
         // setea bien el estado
 
-      await this.storeDataBorrado(Borrado, '@Borrados') 
-      console.log( await this.getDataBorrado('@Borrados'))
+      await storeDataBorrado(Borrado, '@Borrados') 
+      console.log( await getDataBorrado('@Borrados'))
   
       } catch (error) {
       console.log(e);
@@ -172,51 +169,8 @@ class Container extends Component {
    
       }
 
-      async getDataBorrado (key){
-      try {
-      const jsonValue = await AsyncStorage.getItem(key)
-      return jsonValue != null ? JSON.parse(jsonValue) : null;
-      } catch(e) {
-      }}
+      
 
-      async storeDataBorrado (value,key)  {
-      try {
-      const jsonValue = JSON.stringify(value)
-      await AsyncStorage.setItem(key, jsonValue)
-      } catch (e) {
-      }}
-
-
-
-
-  
-  // borrarItem(characteridx){
-  //   console.log( characteridx);
-  //   let resultados =this.state.person.filter((person)=> {
-  //     //  guardo en var resultados el filtro de person
-  //     return( characteridx!== person.login.uuid )
-  //     this.setState({person: resultados })
-  //     //comparo idx con el uuid
-  //   })
-    // let Borrado =this.state.person.filter((person)=> {
-    //   //  guardo en var resultados el filtro de person
-    //   return( characteridx== person.login.uuid )
-    //   //comparo idx con el uuid
-    // })
-    
-    // seteo el estado 
-    // let borradosGet= await this.getData('@Borrado')
-    //if ternario
-    // let borradosGet= await Promise.resolve(
-    //   this.getData('@Borrado')
-    // )
-
-    // (borradosGet!== null)?borradosGet.push(Borrado):borradosGet=Borrado
-    // this.setState({person: resultados ,personBorrada : borradosGet})
-    // console.log(borradosGet)
-
-    // await this.storeData(resultados, '@contacto') 
-    
     
 
       async FAV(characteridx) {
@@ -230,26 +184,14 @@ class Container extends Component {
       console.log(this.state.personFAV)
           // setea bien el estado
   
-      await this.storeDataFav(Favoritos, '@Favoritos') 
-      console.log( await this.getDataFav('@Favoritos')) }
+      await storeDataFav(Favoritos, '@Favoritos') 
+      console.log( await getDataFav('@Favoritos')) }
       catch (error) {
       console.log(error);
       this.setState({ personBorrada:[]})
       }}
   
-      async getDataFav (key){
-      try {
-      const jsonValue = await AsyncStorage.getItem(key)
-      return jsonValue != null ? JSON.parse(jsonValue) : null;
-      } catch(e) {
-      }}
-  
-      async storeDataFav (value,key)  {
-      try {
-      const jsonValue = JSON.stringify(value)
-      await AsyncStorage.setItem(key, jsonValue)
-      } catch (e) {
-      }}
+      
   
 
 

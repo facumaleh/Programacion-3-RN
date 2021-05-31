@@ -67,6 +67,9 @@ class App extends Component {
                  </Pressable>
                  <Pressable style={styles.buttonBorrar} onPress= {this.props.onFav.bind(this,id)}>
                    <Text>Like</Text>
+                   {/* <FontAwesome  name="fa-solid fa-heart" size={24} color="#f6416c"  /> */}
+
+                 
                  </Pressable>
                </View>
                
