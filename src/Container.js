@@ -44,8 +44,8 @@ class Container extends Component {
         resultadopedido = await response.json();
         this.setState({ person: resultadopedido.results, personOriginal:resultadopedido.results})
       
-         await this.storeData(resultadopedido.results, '@contacto') 
-        // console.log( await this.getData('@contacto'))
+         await setDataIndex(resultadopedido.results, '@contacto') 
+        // console.log( await getDataIndex('@contacto'))
 
       } catch (error) {
         console.log(e);
@@ -53,23 +53,6 @@ class Container extends Component {
       }
      
     }
-
-    async getDataIndex (key){
-      try {
-        const jsonValue = await AsyncStorage.getItem(key)
-        return jsonValue != null ? JSON.parse(jsonValue) : null;
-      } catch(e) {
-      }
-    }
-  
-    async storeDataIndex (value,key)  {
-      try {
-        const jsonValue = JSON.stringify(value)
-        await AsyncStorage.setItem(key, jsonValue)
-      } catch (e) {
-      }
-    }
-
 
 
     loadmore(){
