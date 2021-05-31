@@ -6,7 +6,6 @@ import { FontAwesome } from '@expo/vector-icons';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import AsyncStorage from '@react-native-async-storage/async-storage'
-
 import {getDataBorrado} from "./asyncStorageFunctions"
 
 
@@ -30,8 +29,11 @@ class Papelera extends Component {
     }
     
 componentDidMount(){
-  console.log( this.state.personBorrada)
-  this.setState({personBorrada : getDataBorrado('@Borrados')})
+   getDataBorrado('@Borrados')
+   .then(resultado=> {
+    this.setState({personBorrada : resultado })
+   })
+   
 
 }
 
@@ -85,7 +87,7 @@ componentDidMount(){
 
 
             { 
-              this.state.person.map((person) => (
+              this.state.personBorrada.map((person) => (
               <CardPapelera
               key={person.login.uuid}
               onDeletePapelera= {this.borrarItem.bind(this)}
@@ -109,7 +111,7 @@ componentDidMount(){
                 
                 </CardPapelera>
               ))
-            }
+            } 
           </SafeAreaView>
           </ScrollView>
           

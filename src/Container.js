@@ -54,7 +54,7 @@ class Container extends Component {
      
     }
 
-    async getData (key){
+    async getDataIndex (key){
       try {
         const jsonValue = await AsyncStorage.getItem(key)
         return jsonValue != null ? JSON.parse(jsonValue) : null;
@@ -62,7 +62,7 @@ class Container extends Component {
       }
     }
   
-    async storeData (value,key)  {
+    async storeDataIndex (value,key)  {
       try {
         const jsonValue = JSON.stringify(value)
         await AsyncStorage.setItem(key, jsonValue)
