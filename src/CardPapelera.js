@@ -38,6 +38,9 @@ class CardPapelera extends Component {
                  <Pressable style={styles.button}  onPress= {this.openModal}>
                  <AntDesign name="infocirlce" size={24} color="#00b8a9" />
                  </Pressable>
+                 <Pressable style={styles.buttonBorrar} onPress= {this.props.onDeletePapelera.bind(this,id)}>
+                 <Text>Borrar definitivamente</Text> 
+                 </Pressable>
                     
                  
                           

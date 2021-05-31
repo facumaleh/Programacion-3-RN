@@ -41,11 +41,22 @@ class Papelera extends Component {
     })
   }
 
+  borrarItem(characteridx){
+    console.log( characteridx);
+    let resultados =this.state.person.filter((person)=> {
+      //  guardo en var resultados el filtro de person
+      return( characteridx!== person.login.uuid )
+      //comparo idx con el uuid
+    })
+    // seteo el estado 
+    this.setState({person: resultados})
+    
+  }
 
 
   
+  
     render(){
-      
 
         return(
           
@@ -68,7 +79,7 @@ class Papelera extends Component {
               this.state.person.map((person) => (
               <CardPapelera
               key={person.login.uuid}
-              onDelete= {this.borrarItem.bind(this)}
+              onDeletePapelera= {this.borrarItem.bind(this)}
                 id= {person.login.uuid}
                 firstName={person.name.first}
                 img={person.picture.large}

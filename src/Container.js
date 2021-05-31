@@ -230,7 +230,7 @@ class Container extends Component {
       console.log(this.state.personFAV)
           // setea bien el estado
   
-      await this.storeDataFav(resultados.results, '@Favoritos') 
+      await this.storeDataFav(Favoritos, '@Favoritos') 
       console.log( await this.getDataFav('@Favoritos')) }
       catch (error) {
       console.log(error);
@@ -304,9 +304,9 @@ class Container extends Component {
               ))
             }
              
-          < TextInput  style={styles.input}  className = "mas" placeholder="Ingresar numero de tarjetas" onChangeText= {text => this.setState({vermas: text})}  />
+          < TextInput  style={styles.input}   keyboardType="numeric" className = "mas" placeholder="Ingresar numero de tarjetas" onChangeText= {text => this.setState({vermas: text})}  />
           <Pressable  style={styles.buttonVerMas}  onPress={this.loadmore.bind(this)}  >
-          <Text style={styles.textPresables}> Ver mas</Text>
+          <Text style={styles.textPresables}   > Ver mas</Text>
           </Pressable> 
 
           
