@@ -7,8 +7,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import {getDataIndex, setDataIndex,storeDataBorrado,getDataBorrado,getDataFav,storeDataFav} from "../asyncStorageFunctions/index"
-
-
+import {getDataPerson} from '../api/api'
 
 
 class Container extends Component {
@@ -31,8 +30,6 @@ class Container extends Component {
 
         }
     }
-
-    //solicitud api
 
    componentDidMount(){
     getDataIndex('@contacto')
