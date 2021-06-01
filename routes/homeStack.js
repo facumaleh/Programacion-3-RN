@@ -18,9 +18,10 @@ const Tab = createMaterialTopTabNavigator();
 const HomeNavigator = () => (
   <Tab.Navigator headerMode="screen"> 
     <Screen name="Home" component={Container} />
-    <Screen name="About" component={About} />
     <Screen name="Papelera" component={Papelera} />
     <Screen name="Favoritos" component={Favoritos} />
+    <Screen name="About" component={About} />
+
 
   </Tab.Navigator>
 );
