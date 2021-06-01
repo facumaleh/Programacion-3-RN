@@ -8,6 +8,8 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@fortawesome/free-brands-svg-icons": "^5.15.3",
+    "@fortawesome/free-regular-svg-icons": "^5.15.3",
     "@react-native-async-storage/async-storage": "^1.15.4",
     "@react-native-community/masked-view": "0.1.10",
     "@react-navigation/material-top-tabs": "^5.3.15",

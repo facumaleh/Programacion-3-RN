@@ -2,7 +2,6 @@ import React, {Component} from "react";
 import { View, SafeAreaView ,ScrollView,TextInput, Image,Text,Pressable, Modal, Button} from 'react-native'
 import { styles } from '../styles'
 import { FontAwesome } from '@expo/vector-icons';
-import { AntDesign } from '@expo/vector-icons';
 
 
 
@@ -35,11 +34,8 @@ class CardPapelera extends Component {
                    <Text style={styles.TextoCard}>Birthdate:{Date.substring(0,10)} </Text>
                    <Text style={styles.TextoCard}>Current age: {Bithday}</Text>
                 
-                 <Pressable style={styles.button}  onPress= {this.openModal}>
-                 <AntDesign name="infocirlce" size={24} color="#00b8a9" />
-                 </Pressable>
-                 <Pressable style={styles.buttonBorrar} onPress= {this.props.onDeletePapelera.bind(this,id)}>
-                 <Text>Borrar definitivamente</Text> 
+                   <Pressable style={styles.button}  onPress= {this.openModal}>
+                 <FontAwesome name="info-circle" size={24} color="#00b8a9" />
                  </Pressable>
                     
                  

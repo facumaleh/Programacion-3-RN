@@ -2,7 +2,6 @@ import React, {Component} from "react";
 import { View, SafeAreaView ,ScrollView,TextInput, Image,Text,Pressable, Modal, Button} from 'react-native'
 import { styles } from '../styles'
 import { FontAwesome } from '@expo/vector-icons';
-import { AntDesign } from '@expo/vector-icons';
 
 
 
@@ -13,7 +12,7 @@ class App extends Component {
         super();
         this.state = {
             isOpen: false,
-            likes: 0,
+            
         }
     }
 
@@ -36,7 +35,7 @@ class App extends Component {
                    <Text style={styles.TextoCard}>Current age: {Bithday}</Text>
                 
                  <Pressable style={styles.button}  onPress= {this.openModal}>
-                 <AntDesign name="infocirlce" size={24} color="#00b8a9" />
+                 <FontAwesome name="info-circle" size={24} color="#00b8a9" />
                  </Pressable>
                     
                  
@@ -66,10 +65,7 @@ class App extends Component {
                  <FontAwesome  name="trash" size={24} color="#f6416c"  />
                  </Pressable>
                  <Pressable style={styles.buttonBorrar} onPress= {this.props.onFav.bind(this,id)}>
-                   <Text>Like</Text>
-                   {/* <FontAwesome  name="fa-solid fa-heart" size={24} color="#f6416c"  /> */}
-
-                 
+                 <FontAwesome name="heart" size={24} color="#f6416c" />
                  </Pressable>
                </View>
                

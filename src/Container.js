@@ -136,15 +136,16 @@ class Container extends Component {
         //   guardo en var borraos el filtro de person  
       return( characteridx== person.login.uuid )
                  })
-      this.setState({personBorrada:Borrado})
-      // console.log(Borrado)
-      // console.log(this.state.personBorrada)
+      // this.setState({personBorrada:Borrado})
+
+      this.state.personBorrada= [...this.state.personBorrada, ...Borrado]
+      this.setState({personBorrada: this.state.personBorrada})
         // setea bien el estado
 
       await storeDataBorrado(Borrado, '@Borrados') 
-      console.log( await getDataBorrado('@Borrados'))
+      // console.log( await getDataBorrado('@Borrados'))
   
-      } catch (error) {
+      } catch (e) {
       console.log(e);
       this.setState({ personBorrada:[]})
        }

@@ -32,6 +32,7 @@ componentDidMount(){
    getDataBorrado('@Borrados')
    .then(resultado=> {
     this.setState({personBorrada : resultado })
+    // console.log(resultado)
    })
    
 
@@ -52,17 +53,6 @@ componentDidMount(){
     })
   }
 
-  borrarItem(characteridx){
-    console.log( characteridx);
-    let resultados =this.state.person.filter((person)=> {
-      //  guardo en var resultados el filtro de person
-      return( characteridx!== person.login.uuid )
-      //comparo idx con el uuid
-    })
-    // seteo el estado 
-    this.setState({person: resultados})
-    
-  }
 
 
   
@@ -89,8 +79,7 @@ componentDidMount(){
             { 
               this.state.personBorrada.map((person) => (
               <CardPapelera
-              key={person.login.uuid}
-              onDeletePapelera= {this.borrarItem.bind(this)}
+                key={person.login.uuid}
                 id= {person.login.uuid}
                 firstName={person.name.first}
                 img={person.picture.large}
