@@ -3,6 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import AppNavigator from './routes/homeStack'
 import { SafeAreaView } from "react-native";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 const Stack = createStackNavigator();
@@ -17,6 +18,12 @@ class App extends Component {
         }
     }
 
+    // componentDidMount(){
+    //     const asyncFun = async () => {
+    //         await AsyncStorage.removeItem('@Borrados');
+    //     }
+    //     asyncFun();
+    // }
 
 
     render(){

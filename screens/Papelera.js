@@ -32,7 +32,7 @@ componentDidMount(){
    getDataBorrado('@Borrados')
    .then(resultado=> {
     this.setState({personBorrada : resultado })
-    // console.log(resultado)
+    console.log(resultado)
    })
    
 

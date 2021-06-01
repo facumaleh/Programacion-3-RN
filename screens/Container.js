@@ -32,7 +32,7 @@ class Container extends Component {
     }
 
    componentDidMount(){
-    getDataIndex('@contacto')
+    getDataPerson()
     .then(resultado=> {
      this.setState({person : resultado })
     })
@@ -114,8 +114,7 @@ class Container extends Component {
       return( characteridx!== person.login.uuid )
         //comparo idx con el uuid
       })
-      // seteo el estado 
-      this.setState({person: resultados})
+      
       
       let Borrado =this.state.person.filter((person)=> {
         //   guardo en var borraos el filtro de person  
@@ -123,11 +122,29 @@ class Container extends Component {
                  })
       // this.setState({personBorrada:Borrado})
 
-      this.state.personBorrada= [...this.state.personBorrada, ...Borrado]
-      this.setState({personBorrada: this.state.personBorrada})
+      // seteo el estado 
+      this.setState({person: resultados})
+
+      let arrayNuevo = await getDataBorrado("@Borrados")
+
+      let canDelete = true;
+
+      for (let i = 0; i < arrayNuevo.length; i++) {
+        
+        if(arrayNuevo[i] == Borrado[0]){
+          canDelete = false;
+        }
+      }
+
+      if (canDelete){
+        arrayNuevo.push(Borrado[0])
+      }
+      
+
+      this.setState({personBorrada: arrayNuevo})
         // setea bien el estado
 
-      await storeDataBorrado(Borrado, '@Borrados') 
+      await storeDataBorrado(arrayNuevo, '@Borrados') 
       // console.log( await getDataBorrado('@Borrados'))
   
       } catch (e) {
