@@ -1,12 +1,12 @@
 import React, {Component} from "react";
 import { View, SafeAreaView ,ScrollView,TextInput, Image,Text,Pressable, Button} from 'react-native'
-import { styles } from '../styles'
-import CardPapelera from "./CardPapelera";
+import { styles } from '../styles/styles'
+import CardPapelera from "../componentes/CardPapelera";
 import { FontAwesome } from '@expo/vector-icons';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import {getDataBorrado} from "./asyncStorageFunctions"
+import {getDataBorrado} from "../asyncStorageFunctions/index"
 
 
 

@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import { View, SafeAreaView ,ScrollView,TextInput, Image,Text,Pressable, Modal, Button} from 'react-native'
-import { styles } from '../styles'
+import { styles } from '../styles/styles'
 import { FontAwesome } from '@expo/vector-icons';
 
 

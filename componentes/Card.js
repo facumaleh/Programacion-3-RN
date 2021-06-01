@@ -1,18 +1,18 @@
 import React, {Component} from "react";
 import { View, SafeAreaView ,ScrollView,TextInput, Image,Text,Pressable, Modal, Button} from 'react-native'
-import { styles } from '../styles'
+import { styles } from '../styles/styles'
 import { FontAwesome } from '@expo/vector-icons';
 
 
 
-class CardPapelera extends Component {
+class App extends Component {
 
   
     constructor(){
         super();
         this.state = {
             isOpen: false,
-            likes: 0,
+            
         }
     }
 
@@ -34,7 +34,7 @@ class CardPapelera extends Component {
                    <Text style={styles.TextoCard}>Birthdate:{Date.substring(0,10)} </Text>
                    <Text style={styles.TextoCard}>Current age: {Bithday}</Text>
                 
-                   <Pressable style={styles.button}  onPress= {this.openModal}>
+                 <Pressable style={styles.button}  onPress= {this.openModal}>
                  <FontAwesome name="info-circle" size={24} color="#00b8a9" />
                  </Pressable>
                     
@@ -59,13 +59,22 @@ class CardPapelera extends Component {
                     </Pressable>      
                   </View>       
 							    </Modal>
+
+
+                 <Pressable style={styles.buttonBorrar} onPress= {this.props.onDelete.bind(this,id)}>
+                 <FontAwesome  name="trash" size={24} color="#f6416c"  />
+                 </Pressable>
+                 <Pressable style={styles.buttonBorrar} onPress= {this.props.onFav.bind(this,id)}>
+                 <FontAwesome name="heart" size={24} color="#f6416c" />
+                 </Pressable>
                </View>
+               
         )
     };
     
 }
 
-export default CardPapelera;
+export default App;
 
 // colores 
 // 00b8a9, f8f3d4,f6416c,ffde7d

@@ -1,10 +1,10 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import About from "../src/About";
-import Container from "../src/Container"
-import Papelera from "../src/Papelera"
-import Favoritos from "../src/Favoritos"
+import About from "../screens/About";
+import Container from "../screens/Container"
+import Papelera from "../screens/Papelera"
+import Favoritos from "../screens/Favoritos"
 
 
 

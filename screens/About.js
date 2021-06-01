@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 import { View, SafeAreaView ,ScrollView,TextInput, Image,Text,Pressable} from 'react-native'
-import { styles } from '../styles'
-import Card from "./Card";
+import { styles } from '../styles/styles'
 import { FontAwesome } from '@expo/vector-icons';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';

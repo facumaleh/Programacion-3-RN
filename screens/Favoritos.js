@@ -1,11 +1,13 @@
 import React, {Component} from "react";
 import { View, SafeAreaView ,ScrollView,TextInput, Image,Text,Pressable, Button} from 'react-native'
-import { styles } from '../styles'
-import CardFavoritos from "./CardFavoritos";
+import { styles } from '../styles/styles'
+import CardFavoritos from "../componentes/CardFavoritos";
 import { FontAwesome } from '@expo/vector-icons';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import {getDataFav} from "../asyncStorageFunctions/index"
+
 
 
 

@@ -1,6 +1,4 @@
 import React, {Component} from "react";
-import Container from "./src/Container";
-import About from "./src/About";
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import AppNavigator from './routes/homeStack'

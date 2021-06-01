@@ -1,12 +1,12 @@
 import React, {Component} from "react";
 import { View, SafeAreaView ,ScrollView,TextInput, Image,Text,Pressable, Button} from 'react-native'
-import { styles } from '../styles'
-import Card from "./Card";
+import { styles } from '../styles/styles'
+import Card from "../componentes/Card";
 import { FontAwesome } from '@expo/vector-icons';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import {getDataIndex, setDataIndex,storeDataBorrado,getDataBorrado,getDataFav,storeDataFav} from "./asyncStorageFunctions"
+import {getDataIndex, setDataIndex,storeDataBorrado,getDataBorrado,getDataFav,storeDataFav} from "../asyncStorageFunctions/index"
 
 
 
@@ -33,27 +33,15 @@ class Container extends Component {
     }
 
     //solicitud api
- componentDidMount(){
-  this.pedido()
-   }
 
-    async pedido() {
-      let resultadopedido;
-      try {
-        const response = await fetch("https://randomuser.me/api/?results=10");
-        resultadopedido = await response.json();
-        this.setState({ person: resultadopedido.results, personOriginal:resultadopedido.results})
-      
-         await setDataIndex(resultadopedido.results, '@contacto') 
-        // console.log( await getDataIndex('@contacto'))
-
-      } catch (error) {
-        console.log(e);
-        this.setState({ person: [], personOriginal:[]})
-      }
-     
-    }
-
+   componentDidMount(){
+    getDataIndex('@contacto')
+    .then(resultado=> {
+     this.setState({person : resultado })
+    })
+    
+ 
+ }
 
     loadmore(){
       if (!this.state.vermas) {
