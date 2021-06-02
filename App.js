@@ -13,9 +13,7 @@ class App extends Component {
 
  constructor(){
         super();
-        this.state = {
-
-        }
+        this.state = {}
     }
 
     // componentDidMount(){
@@ -28,10 +26,8 @@ class App extends Component {
 
     render(){
         return(
-        //  <Container></Container>
-         // <About></About>
-         <SafeAreaView style={{flex:1}}>
-        <AppNavigator />
+        <SafeAreaView style={{flex:1}}>
+         <AppNavigator />
         </SafeAreaView>
         )
     };

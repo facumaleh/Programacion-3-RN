@@ -50,42 +50,32 @@ class About extends Component {
         
             <View style={styles.cardAbout} >
                 <Image  source={{uri: "https://image.flaticon.com/icons/png/512/921/921071.png"}} style={styles.imgCard}  />
-                
-                 <Text style={styles.Titulo}>Facundo Maleh</Text>
-                   <Text style={styles.TextoCard} >Location: Buenos Aires, Argentina</Text>
-                   <Text style={styles.TextoCard}>Birthdate: 21 de febrero del 2001 </Text>
-                   <Text style={styles.TextoCard}>Current age: 20</Text>
+                <Text style={styles.Titulo}>Facundo Maleh</Text>
+                <Text style={styles.TextoCard} >Location: Buenos Aires, Argentina</Text>
+                <Text style={styles.TextoCard}>Birthdate: 21 de febrero del 2001 </Text>
+                <Text style={styles.TextoCard}>Current age: 20</Text>
             
-               </View>
+            </View>
 
             <View style={styles.cardAbout} >
                 <Image  source={{uri: "https://img-premium.flaticon.com/png/512/3048/3048122.png?token=exp=1621636898~hmac=d995979e19a3e92ccc52cd14795758ae"}} style={styles.imgCard}  />
-                
-                 <Text style={styles.Titulo}>Tomas Caimmi</Text>
-                   <Text style={styles.TextoCard} >Location: Buenos Aires, Argentina</Text>
-                   <Text style={styles.TextoCard}>Birthdate: 22 de enero del 2001 </Text>
-                   <Text style={styles.TextoCard}>Current age: 20</Text>
+                <Text style={styles.Titulo}>Tomás Caimmi</Text>
+                <Text style={styles.TextoCard} >Location: Buenos Aires, Argentina</Text>
+                <Text style={styles.TextoCard}>Birthdate: 22 de enero del 2001 </Text>
+                <Text style={styles.TextoCard}>Current age: 20</Text>
             
-               </View>
+            </View>
        
 
-               <View style={styles.cardAbout} >
+            <View style={styles.cardAbout} >
                 <Image  source={{uri: "https://image.flaticon.com/icons/png/512/3048/3048189.png"}} style={styles.imgCard}  />
-                
-                 <Text style={styles.Titulo}>Agustin Ihidoype</Text>
-                   <Text style={styles.TextoCard} >Location: Buenos Aires, Argentina</Text>
-                   <Text style={styles.TextoCard}>Birthdate: 5 de junio de 2001  </Text>
-                   <Text style={styles.TextoCard}>Current age: 19</Text>
+                <Text style={styles.Titulo}>Agustin Ihidoype</Text>
+                <Text style={styles.TextoCard} >Location: Buenos Aires, Argentina</Text>
+                <Text style={styles.TextoCard}>Birthdate: 5 de junio de 2001  </Text>
+                <Text style={styles.TextoCard}>Current age: 19</Text>
             
-               </View>
+            </View>
        
-       
-
-
-            
-             
-        
-
           
           </SafeAreaView>
           </ScrollView>

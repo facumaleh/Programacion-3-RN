@@ -42,7 +42,7 @@ class Container extends Component {
 
     loadmore(){
       if (!this.state.vermas) {
-      return alert ("Ingrese un numero valido")
+        return alert ("Ingrese un numero valido")
       }
       fetch('https://randomuser.me/api/?results='+ this.state.vermas)
       .then(response => response.json())
@@ -59,8 +59,8 @@ class Container extends Component {
       this.setState({person: this.state.person.sort(function(a, b) { return a.name.first > b.name.first})})
     } 
     za = () => {
-    this.state.person.sort((a, b) => b.name.first.localeCompare(a.name.first))
-    this.setState({person: this.state.person.sort(function(a, b) { return a.name.first < b.name.first})})
+      this.state.person.sort((a, b) => b.name.first.localeCompare(a.name.first))
+      this.setState({person: this.state.person.sort(function(a, b) { return a.name.first < b.name.first})})
     }
 
     //  buscador
@@ -189,7 +189,7 @@ class Container extends Component {
           
           <ScrollView>
           <SafeAreaView style={styles.container}>
-            
+     
           <TextInput style={styles.SearchBar} placeholder="Search" onChangeText={text => {this.setState({search: text}); this.filter(text) }} value={search}  />
              
           <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between' }} >
