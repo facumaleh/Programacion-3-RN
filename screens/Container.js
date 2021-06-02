@@ -189,7 +189,17 @@ class Container extends Component {
           
           <ScrollView>
           <SafeAreaView style={styles.container}>
-     
+
+          {/* <FlatList
+            data={DATA}
+            renderItem={renderItem}
+            keyExtractor={item => item.id}
+
+          /> */}
+ 
+
+
+            
           <TextInput style={styles.SearchBar} placeholder="Search" onChangeText={text => {this.setState({search: text}); this.filter(text) }} value={search}  />
              
           <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between' }} >
