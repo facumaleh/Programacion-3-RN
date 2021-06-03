@@ -203,7 +203,7 @@ class Container extends Component {
           </Pressable>
 
            </View >
-           <FlatList
+           <FlatList style={{ flex: 1}}
             data={this.state.person}
             keyExtractor={ (item, idx) => idx.toString()}
             renderItem={ ({item}) =>

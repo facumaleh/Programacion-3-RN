@@ -138,6 +138,7 @@ buttonAZZA: {
   borderWidth: 3,
   borderRadius: 10,
   borderColor: '#f6416c',
+  
 },
 
 textPresables: {
