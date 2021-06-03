@@ -27,6 +27,7 @@ class Container extends Component {
             vermas: 0,
             personBorrada:[],
             personFAV:[],
+            resultado:[],
 
         }
     }
@@ -187,17 +188,7 @@ class Container extends Component {
       const { navigation } = this.props;
       return(
           
-          <ScrollView>
           <SafeAreaView style={styles.container}>
-
-          {/* <FlatList
-            data={DATA}
-            renderItem={renderItem}
-            keyExtractor={item => item.id}
-
-          /> */}
- 
-
 
             
           <TextInput style={styles.SearchBar} placeholder="Search" onChangeText={text => {this.setState({search: text}); this.filter(text) }} value={search}  />
@@ -212,44 +203,54 @@ class Container extends Component {
           </Pressable>
 
            </View >
+           <FlatList
+            data={this.state.person}
+            keyExtractor={ (item, idx) => idx.toString()}
+            renderItem={ ({item}) =>
+              (
+
+                <Card
+                  key={item.login.uuid}
+                  onDelete= {this.borrarItem.bind(this)}
+                  onFav= {this.FAV.bind(this)}
+  
+
+                  id= {item.login.uuid}
+                  firstName={item.name.first}
+                  img={item.picture.large}
+                  lastName={item.name.last}
+                  Email={item.email}
+                  city={item.location.city}
+                  State={item.location.state}
+                  Street={item.location.street.name}
+                  StreetNumber={item.location.street.number}
+                  Telephone= {item.phone}
+                  imgMed={item.picture.medium}
+                  Country={item.location.country}
+                  Postcode={ item.location.postcode}
+                  Bithday= {item.dob.age}
+                  Date= {item.dob.date}
+                  Registered = {item.registered.date}
+                  >
+  
+                  </Card>
+                )
 
 
-            { 
-              this.state.person.map((person) => (
-              <Card
-              key={person.login.uuid}
-              onDelete= {this.borrarItem.bind(this)}
-              onFav= {this.FAV.bind(this)}
-
-                id= {person.login.uuid}
-                firstName={person.name.first}
-                img={person.picture.large}
-                lastName={person.name.last}
-                Email={person.email}
-                city={person.location.city}
-                State={person.location.state}
-                Street={person.location.street.name}
-                StreetNumber={person.location.street.number}
-                Telephone= {person.phone}
-                imgMed={person.picture.medium}
-                Country={person.location.country}
-                Postcode={ person.location.postcode}
-                Bithday= {person.dob.age}
-                Date= {person.dob.date}
-                Registered = {person.registered.date}>
-
-                </Card>
-              ))
             }
+
+
+          />
+
+
              
           < TextInput  style={styles.input}   keyboardType="numeric" className = "mas" placeholder="Ingresar numero de tarjetas" onChangeText= {text => this.setState({vermas: text})}  />
           <Pressable  style={styles.buttonVerMas}  onPress={this.loadmore.bind(this)}  >
-          <Text style={styles.textPresables}   > Ver mas</Text>
+          <Text style={styles.textPresables}   > Ver más</Text>
           </Pressable> 
 
           
           </SafeAreaView>
-          </ScrollView>
            )
            };
            };
