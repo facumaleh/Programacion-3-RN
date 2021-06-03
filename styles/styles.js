@@ -5,8 +5,9 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    // width:200,
-    backgroundColor:"#ffde7d"
+    height:"100%",
+    backgroundColor:"#ffde7d",
+    
   },
 
   card: {
@@ -138,7 +139,9 @@ buttonAZZA: {
   borderWidth: 3,
   borderRadius: 10,
   borderColor: '#f6416c',
-  
+  width:30,
+  height:60,
+
 },
 
 textPresables: {
@@ -196,6 +199,10 @@ textPresables: {
     borderRadius: 10,
     borderColor: '#00b8a9',
     
+   },
+   flat: {
+     marginTop:100
+   
    }
 });
  export {styles}  

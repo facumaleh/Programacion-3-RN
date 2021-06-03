@@ -189,26 +189,24 @@ class Container extends Component {
       return(
           
           <SafeAreaView style={styles.container}>
-
-            
           <TextInput style={styles.SearchBar} placeholder="Search" onChangeText={text => {this.setState({search: text}); this.filter(text) }} value={search}  />
-             
+      
+
           <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between' }} >
-              
           <Pressable style={styles.buttonAZZA}   onPress={this.az.bind(this)} >
           <FontAwesome name="sort-alpha-asc" size={20} color="#f6416c" />
           </Pressable>
           <Pressable   style={styles.buttonAZZA}  onPress={this.za.bind(this)} >
           <FontAwesome name="sort-alpha-desc" size={20} color="#f6416c" />
           </Pressable>
-
            </View >
-           <FlatList style={{ flex: 1}}
+           <FlatList style={styles.flat}
             data={this.state.person}
             keyExtractor={ (item, idx) => idx.toString()}
             renderItem={ ({item}) =>
               (
 
+          
                 <Card
                   key={item.login.uuid}
                   onDelete= {this.borrarItem.bind(this)}
@@ -234,13 +232,16 @@ class Container extends Component {
                   >
   
                   </Card>
+                  
                 )
+                
 
 
             }
 
 
           />
+          
 
 
              

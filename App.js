@@ -26,7 +26,7 @@ class App extends Component {
 
     render(){
         return(
-        <SafeAreaView style={{flex:1}}>
+        <SafeAreaView style={{flex:1, backgroundColor:"#ffde7d"}}>
          <AppNavigator />
         </SafeAreaView>
         )
