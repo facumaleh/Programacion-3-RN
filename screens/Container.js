@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import { View, SafeAreaView ,ScrollView,TextInput, Image,Text,Pressable, Button,FlatList} from 'react-native'
+import { View, SafeAreaView ,ScrollView,TextInput, Image,Text,Pressable, Button,FlatList,ActivityIndicator} from 'react-native'
 import { styles } from '../styles/styles'
 import Card from "../componentes/Card";
 import { FontAwesome } from '@expo/vector-icons';
@@ -28,6 +28,7 @@ class Container extends Component {
             personBorrada:[],
             personFAV:[],
             resultado:[],
+            activity:false,
 
         }
     }
@@ -189,9 +190,9 @@ class Container extends Component {
       return(
           
           <SafeAreaView style={styles.container}>
+            
+          
           <TextInput style={styles.SearchBar} placeholder="Search" onChangeText={text => {this.setState({search: text}); this.filter(text) }} value={search}  />
-      
-
           <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between' }} >
           <Pressable style={styles.buttonAZZA}   onPress={this.az.bind(this)} >
           <FontAwesome name="sort-alpha-asc" size={20} color="#f6416c" />
@@ -200,6 +201,11 @@ class Container extends Component {
           <FontAwesome name="sort-alpha-desc" size={20} color="#f6416c" />
           </Pressable>
            </View >
+          {this.state.activity
+          ?<ActivityIndicator
+          color= "blue"
+           size={60} />
+          :
            <FlatList style={styles.flat}
             data={this.state.person}
             keyExtractor={ (item, idx) => idx.toString()}
@@ -241,7 +247,7 @@ class Container extends Component {
 
 
           />
-          
+        }
 
 
              
