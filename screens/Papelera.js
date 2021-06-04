@@ -9,8 +9,6 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import {getDataBorrado} from "../asyncStorageFunctions/index"
 
 
-
-
 class Papelera extends Component {
 
   
@@ -32,7 +30,6 @@ componentDidMount(){
    getDataBorrado('@Borrados')
    .then(resultado=> {
     this.setState({personBorrada : resultado })
-    console.log(resultado)
    })
    
 
@@ -41,7 +38,6 @@ componentDidUpdate(){
   getDataBorrado('@Borrados')
   .then(resultado=> {
    this.setState({personBorrada : resultado })
-   console.log(resultado)
   })
   
 
@@ -49,21 +45,44 @@ componentDidUpdate(){
    
 
     az = () => {
-      this.state.person.sort((a, b) => a.name.first.localeCompare(b.name.first))
+      this.state.personBorrada.sort((a, b) => a.name.first.localeCompare(b.name.first))
       this.setState({
-          person: this.state.person.sort(function(a, b) { return a.name.first > b.name.first})
+          personBorrada: this.state.personBorrada.sort(function(a, b) { return a.name.first > b.name.first})
       })
   }
   za = () => {
-    this.state.person.sort((a, b) => b.name.first.localeCompare(a.name.first))
+    this.state.personBorrada.sort((a, b) => b.name.first.localeCompare(a.name.first))
     this.setState({
-        person: this.state.person.sort(function(a, b) { return a.name.first < b.name.first})
+        personBorrada: this.state.personBorrada.sort(function(a, b) { return a.name.first < b.name.first})
     })
   }
 
-
-
   
+        
+
+
+    // const asyncFun = async () => {
+    //   await AsyncStorage.removeItem('@Borrados');
+    //     }
+    //       asyncFun();
+    //       return this.setState({
+    //         personBorrada: []
+    //     })
+       
+  
+
+
+
+  Reset=()=>{
+    const asyncFun = async () => {
+         await AsyncStorage.removeItem('@Borrados');
+          }
+            asyncFun();
+            return this.setState({
+             personBorrada: []
+          })
+
+  }
   
     render(){
 
@@ -71,7 +90,6 @@ componentDidUpdate(){
           
           <ScrollView>
             <SafeAreaView style={styles.container}>
-                   
             <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between' }} >
               
               <Pressable style={styles.buttonAZZA}   onPress={this.az.bind(this)} >
@@ -81,9 +99,12 @@ componentDidUpdate(){
               <Pressable   style={styles.buttonAZZA}  onPress={this.za.bind(this)} >
                 <FontAwesome name="sort-alpha-desc" size={20} color="#f6416c" />
               </Pressable>
+              <Pressable   style={styles.buttonAZZA}  onPress={this.Reset.bind(this)} >
+                <Text> Reset</Text>
+              </Pressable>
 
             </View >
-
+            <View style={styles.container}></View>
 
             { 
               this.state.personBorrada.map((person) => (
@@ -110,6 +131,7 @@ componentDidUpdate(){
                 </CardPapelera>
               ))
             } 
+            
           </SafeAreaView>
           </ScrollView>
           

@@ -156,7 +156,7 @@ textPresables: {
     width: 150, 
     height: 150, 
     borderRadius: 10,
-   marginLeft: 55,
+   alignItems:"center",
    borderColor: '#00b8a9',
    borderWidth: 3,
 
@@ -179,6 +179,8 @@ textPresables: {
     margin:10,
     fontSize: 15,
     color: 'white',
+    alignItems:"center",
+
    },
 
    TituloModal:{
@@ -203,6 +205,16 @@ textPresables: {
    flat: {
      marginTop:100
    
-   }
+   },
+   containerPapelera: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    height:"100%",
+    backgroundColor:"#ffde7d",
+    
+    
+  },
+
 });
  export {styles}  

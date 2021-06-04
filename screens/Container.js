@@ -38,6 +38,10 @@ class Container extends Component {
     .then(resultado=> {
      this.setState({person : resultado, activity:false })
     })
+    getDataBorrado()
+    .then(resultadoBorrado=> {
+     this.setState({personBorrada : resultadoBorrado })
+    })
     
     // al poner activity:false, cambia la actividad del ActivityIndicator a false, y lo corta una vez que se reciben resultados
  
@@ -121,7 +125,7 @@ class Container extends Component {
           return( characteridx== person.login.uuid )
                      })
         // seteo el estado 
-
+        
         let arrayBorrados = [...this.state.personBorrada, ...Borrado]
         this.setState({person: resultados, personBorrada: arrayBorrados})
         
@@ -182,23 +186,20 @@ class Container extends Component {
 
     
 
-      async FAV(characteridx) {
-      try {
-      let Favoritos =this.state.person.filter((person)=> {
-          //   //  guardo en var resultados el filtro de person  
-      return( characteridx== person.login.uuid )
-                   })
-      this.setState({personBorrada:Favoritos})
-
-      console.log(this.state.personFAV)
-          // setea bien el estado
-  
-      await storeDataFav(Favoritos, '@Favoritos') 
-      console.log( await getDataFav('@Favoritos')) }
-      catch (error) {
-      console.log(error);
-      this.setState({ personBorrada:[]})
-      }}
+     FAV(characteridx) {
+   
+        let Favoritos = this.state.person.filter((person)=> {
+            //   guardo en var borraos el filtro de person  
+          return( characteridx== person.login.uuid )
+                     })
+        // seteo el estado 
+        
+        let arrayFavoritos = [...this.state.personFAV, ...Favoritos]
+        this.setState({ personFAV: arrayFavoritos})
+        
+        storeDataFav(arrayFavoritos, '@Favoritos') 
+        
+      }
   
 
   
@@ -226,8 +227,9 @@ class Container extends Component {
           {this.state.activity
           ?<ActivityIndicator
           color= "blue"
-           size={60} />
-           
+          size= "large"
+           />
+          
           :
           
            <FlatList style={styles.flat}
@@ -243,7 +245,6 @@ class Container extends Component {
                   key={item.login.uuid}
                   onDelete= {this.borrarItem.bind(this)}
                   onFav= {this.FAV.bind(this)}
-  
 
                   id= {item.login.uuid}
                   firstName={item.name.first}

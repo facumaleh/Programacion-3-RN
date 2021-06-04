@@ -19,7 +19,7 @@ class Favoritos extends Component {
         this.state = {
           
             
-            personBorrada:[],
+          personFAV:[],
             person:[],
 
          
@@ -28,7 +28,20 @@ class Favoritos extends Component {
         }
     }
 
-
+    componentDidMount(){
+      getDataFav('@Favoritos')
+      .then(resultado=> {
+       this.setState({personFAV : resultado })
+      })
+      
+   
+   }
+   componentDidUpdate(){
+    getDataFav('@Favoritos')
+     .then(resultado=> {
+      this.setState({personFAV : resultado })
+     })
+    }
 
     az = () => {
       this.state.person.sort((a, b) => a.name.first.localeCompare(b.name.first))
@@ -67,10 +80,9 @@ class Favoritos extends Component {
 
 
             { 
-              this.state.person.map((person) => (
-              <CardPapelera
+              this.state.personFAV.map((person) => (
+              <CardFavoritos
               key={person.login.uuid}
-              onDelete= {this.borrarItem.bind(this)}
                 id= {person.login.uuid}
                 firstName={person.name.first}
                 img={person.picture.large}
@@ -89,7 +101,7 @@ class Favoritos extends Component {
                 Registered = {person.registered.date}>
 
                 
-                </CardPapelera>
+                </CardFavoritos>
               ))
             }
           </SafeAreaView>
@@ -106,5 +118,3 @@ class Favoritos extends Component {
 export default Favoritos
 
 
-// colores 
-// 00b8a9, f8f3d4,f6416c,ffde7d

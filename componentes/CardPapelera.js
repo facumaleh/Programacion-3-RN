@@ -34,6 +34,8 @@ class CardPapelera extends Component {
                    <Text style={styles.TextoCard}>Birthdate:{Date.substring(0,10)} </Text>
                    <Text style={styles.TextoCard}>Current age: {Bithday}</Text>
                 
+     
+                 
                    <Pressable style={styles.button}  onPress= {this.openModal}>
                  <FontAwesome name="info-circle" size={24} color="#00b8a9" />
                  </Pressable>
