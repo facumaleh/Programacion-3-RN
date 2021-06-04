@@ -37,7 +37,15 @@ componentDidMount(){
    
 
 }
+componentDidUpdate(){
+  getDataBorrado('@Borrados')
+  .then(resultado=> {
+   this.setState({personBorrada : resultado })
+   console.log(resultado)
+  })
+  
 
+}
    
 
     az = () => {
