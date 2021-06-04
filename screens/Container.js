@@ -36,9 +36,10 @@ class Container extends Component {
    componentDidMount(){
     getDataPerson()
     .then(resultado=> {
-     this.setState({person : resultado })
+     this.setState({person : resultado, activity:false })
     })
     
+    // al poner activity:false, cambia la actividad del ActivityIndicator a false, y lo corta una vez que se reciben resultados
  
  }
 
@@ -179,10 +180,7 @@ class Container extends Component {
       this.setState({ personBorrada:[]})
       }}
   
-      
-    
-        // let json = await response.json();
-        // this.setState({personas:json.results,activity:false})
+
   
       
   
@@ -190,9 +188,6 @@ class Container extends Component {
       const { search } = this.state;
       const { navigation } = this.props;
 
-      //poner esto para el activity indicator
-      // let json = response.json();
-      // this.setState({personas:json.results,activity:false})
 
       return(
           
@@ -218,6 +213,8 @@ class Container extends Component {
            <FlatList style={styles.flat}
             data={this.state.person}
             keyExtractor={ (item, idx) => idx.toString()}
+
+
             renderItem={ ({item}) =>
               (
 
