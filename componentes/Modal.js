@@ -2,11 +2,10 @@ import React, {Component} from "react";
 import { View, SafeAreaView ,ScrollView,TextInput, Image,Text,Pressable, Modal, Button} from 'react-native'
 import { styles } from '../styles/styles'
 import { FontAwesome } from '@expo/vector-icons';
-// import { ModalComponente } from 'Modal.js'
 
 
 
-class App extends Component {
+class ModalComponente extends Component {
 
   
     constructor(){
@@ -27,23 +26,8 @@ class App extends Component {
 
 
         return(
-            <View style={styles.card} key={id}bottomDivider>
-                <Image  source={{uri: img}} style={styles.imgCard}  />
-                
-                 <Text style={styles.Titulo}>{firstName},{lastName}</Text>
-                   <Text style={styles.TextoCard} >Location: {city}, {State}, {Country}</Text>
-                   <Text style={styles.TextoCard}>Birthdate:{Date.substring(0,10)} </Text>
-                   <Text style={styles.TextoCard}>Current age: {Bithday}</Text>
-                
-                 <Pressable style={styles.button}  onPress= {this.openModal}>
-                 <FontAwesome name="info-circle" size={24} color="#00b8a9" />
-                 </Pressable>
-                    
-                 
-                          
                   <Modal  animationType="slide" transparent={true} visible={this.state.isOpen} >
                
-
                   <View style={styles.modal}>
                     <View style={styles.infoModal}>
                     <Image  source={{uri: img}} style={styles.imgCardModal}  />
@@ -59,23 +43,13 @@ class App extends Component {
                     <Text style={styles.goBack}>Go Back</Text>
                     </Pressable>      
                   </View>       
-							    </Modal>
-
-
-                 <Pressable style={styles.buttonBorrar} onPress= {this.props.onDelete.bind(this,id)}>
-                 <FontAwesome  name="trash" size={24} color="#f6416c"  />
-                 </Pressable>
-                 <Pressable style={styles.buttonBorrar} onPress= {this.props.onFav.bind(this,id)}>
-                 <FontAwesome name="heart" size={24} color="#f6416c" />
-                 </Pressable>
-               </View>
-               
+				</Modal>               
         )
     };
     
 }
 
-export default App;
+export default ModalComponente;
 
 // colores 
 // 00b8a9, f8f3d4,f6416c,ffde7d

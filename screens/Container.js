@@ -109,54 +109,74 @@ class Container extends Component {
 
        })};
 
-      async borrarItem(characteridx) {
- 
-      try {
-      let resultados =this.state.person.filter((person)=> {
-        //  guardo en var resultados el filtro de person
-      return( characteridx!== person.login.uuid )
-        //comparo idx con el uuid
-      })
-      
-      
-      let Borrado =this.state.person.filter((person)=> {
-        //   guardo en var borraos el filtro de person  
-      return( characteridx== person.login.uuid )
-                 })
-      // this.setState({personBorrada:Borrado})
+       borrarItem(characteridx){
+        console.log( characteridx);
+        let resultados =this.state.person.filter((person)=> {
+          //  guardo en var resultados el filtro de person
+          return( characteridx!== person.login.uuid )
+          //comparo idx con el uuid
+        })
+        let Borrado = this.state.person.filter((person)=> {
+            //   guardo en var borraos el filtro de person  
+          return( characteridx== person.login.uuid )
+                     })
+        // seteo el estado 
 
-      // seteo el estado 
-      this.setState({person: resultados})
-
-      let arrayNuevo = await getDataBorrado("@Borrados")
-
-      let canDelete = true;
-
-      for (let i = 0; i < arrayNuevo.length; i++) {
+        let arrayBorrados = [...this.state.personBorrada, ...Borrado]
+        this.setState({person: resultados, personBorrada: arrayBorrados})
         
-        if(arrayNuevo[i] == Borrado[0]){
-          canDelete = false;
-        }
+        storeDataBorrado(arrayBorrados, '@Borrados') 
+        
       }
 
-      if (canDelete){
-        arrayNuevo.push(Borrado[0])
-      }
+      // borrarItem(characteridx) {
+ 
+      
+      // let resultados =this.state.person.filter((person)=> {
+      //   //  guardo en var resultados el filtro de person
+      // return( characteridx!== person.login.uuid )
+      //   //comparo idx con el uuid
+      // }
+      
+      
+      // let Borrado =this.state.person.filter((person)=> {
+      //   //   guardo en var borraos el filtro de person  
+      // return( characteridx== person.login.uuid )
+      //            })
+      // // this.setState({personBorrada:Borrado})
+
+      // // seteo el estado 
+      // this.setState({person: resultados})
+
+      // // let arrayNuevo = await getDataBorrado("@Borrados")
+
+      // // let canDelete = true;
+
+      // // for (let i = 0; i < arrayNuevo.length; i++) {
+        
+      // //   if(arrayNuevo[i] == Borrado[0]){
+      // //     canDelete = false;
+      // //   }
+      // // }
+
+      // // if (canDelete){
+      // //   arrayNuevo.push(Borrado[0])
+      // // }
       
 
-      this.setState({personBorrada: arrayNuevo})
-        // setea bien el estado
+      // // this.setState({personBorrada: arrayNuevo})
+      // //   // setea bien el estado
 
-      await storeDataBorrado(arrayNuevo, '@Borrados') 
-      // console.log( await getDataBorrado('@Borrados'))
+      // // await storeDataBorrado(arrayNuevo, '@Borrados') 
+      // // // console.log( await getDataBorrado('@Borrados'))
   
-      } catch (e) {
-      console.log(e);
-      this.setState({ personBorrada:[]})
-       }
+      // // } catch (e) {
+      // // console.log(e);
+      // // this.setState({ personBorrada:[]})
+      // //  }
    
    
-      }
+      // }}
 
       
 
