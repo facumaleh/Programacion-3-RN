@@ -28,7 +28,7 @@ class Container extends Component {
             personBorrada:[],
             personFAV:[],
             resultado:[],
-            activity:false,
+            activity:true,
 
         }
     }
@@ -180,13 +180,20 @@ class Container extends Component {
       }}
   
       
+    
+        // let json = await response.json();
+        // this.setState({personas:json.results,activity:false})
   
-
-
+      
   
       render(){
       const { search } = this.state;
       const { navigation } = this.props;
+
+      //poner esto para el activity indicator
+      // let json = response.json();
+      // this.setState({personas:json.results,activity:false})
+
       return(
           
           <SafeAreaView style={styles.container}>
@@ -205,7 +212,9 @@ class Container extends Component {
           ?<ActivityIndicator
           color= "blue"
            size={60} />
+           
           :
+          
            <FlatList style={styles.flat}
             data={this.state.person}
             keyExtractor={ (item, idx) => idx.toString()}
