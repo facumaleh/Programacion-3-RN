@@ -197,9 +197,16 @@ class Container extends Component {
         let arrayFavoritos = [...this.state.personFAV, ...Favoritos]
         this.setState({ personFAV: arrayFavoritos})
         
-        storeDataFav(arrayFavoritos, '@Favoritos') 
-        
-      }
+      let arrayNuevo = getDataFav("@Favoritos")
+      let TomarFav = true;
+      for (let i = 0; i < arrayNuevo.length; i++) {
+        if(arrayNuevo[i] == Favoritos[0]){
+          TomarFav = false; } }
+       if (TomarFav){
+       arrayNuevo.push(Favoritos[0])}
+      this.setState({personFAV: arrayNuevo})
+      storeDataFav(arrayFavoritos, '@Favoritos') 
+         }
   
 
   

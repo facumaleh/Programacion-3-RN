@@ -80,7 +80,7 @@ class Favoritos extends Component {
 
 
             { 
-              this.state.personFAV.map((person) => (
+              this.state.person.map((person) => (
               <CardFavoritos
               key={person.login.uuid}
                 id= {person.login.uuid}

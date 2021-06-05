@@ -21,6 +21,10 @@ class App extends Component {
     //         await AsyncStorage.removeItem('@Borrados');
     //     }
     //     asyncFun();
+    //     const asyncFun2 = async () => {
+    //         await AsyncStorage.removeItem('@Favoritos');
+    //     }
+    //     asyncFun2();
     // }
 
 
