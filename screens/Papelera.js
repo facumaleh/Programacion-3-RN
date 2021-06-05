@@ -60,15 +60,6 @@ componentDidUpdate(){
   
         
 
-
-    // const asyncFun = async () => {
-    //   await AsyncStorage.removeItem('@Borrados');
-    //     }
-    //       asyncFun();
-    //       return this.setState({
-    //         personBorrada: []
-    //     })
-       
   
 
 

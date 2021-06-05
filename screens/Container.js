@@ -194,8 +194,7 @@ class Container extends Component {
                      })
         // seteo el estado 
         
-        let arrayFavoritos = [...this.state.personFAV, ...Favoritos]
-        this.setState({ personFAV: arrayFavoritos})
+  
         
       let arrayNuevo = getDataFav("@Favoritos")
       let TomarFav = true;
@@ -206,6 +205,7 @@ class Container extends Component {
        arrayNuevo.push(Favoritos[0])}
       this.setState({personFAV: arrayNuevo})
       storeDataFav(arrayFavoritos, '@Favoritos') 
+      console.log(arrayFavoritos)
          }
   
 
