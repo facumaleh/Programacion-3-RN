@@ -42,7 +42,11 @@ class Container extends Component {
     .then(resultadoBorrado=> {
      this.setState({personBorrada : resultadoBorrado })
     })
-    
+  
+    getDataFav()
+    .then(resultadoFav=> {
+     this.setState({personFAV : resultadoFav })
+    })
     // al poner activity:false, cambia la actividad del ActivityIndicator a false, y lo corta una vez que se reciben resultados
  
  }
@@ -192,21 +196,19 @@ class Container extends Component {
             //   guardo en var borraos el filtro de person  
           return( characteridx== person.login.uuid )
                      })
-        // seteo el estado 
-        
-  
-        
-      let arrayNuevo = getDataFav("@Favoritos")
+      let PersonasEnFav = [this.state.personFAV,...Favoritos]
+      console.log(PersonasEnFav)
       let TomarFav = true;
-      for (let i = 0; i < arrayNuevo.length; i++) {
-        if(arrayNuevo[i] == Favoritos[0]){
+      for (let i = 0; i < PersonasEnFav.length; i++) {
+        if(PersonasEnFav[i] == Favoritos[0]){
           TomarFav = false; } }
        if (TomarFav){
-       arrayNuevo.push(Favoritos[0])}
-      this.setState({personFAV: arrayNuevo})
-      storeDataFav(arrayFavoritos, '@Favoritos') 
-      console.log(arrayFavoritos)
-         }
+        PersonasEnFav.push(Favoritos[0])}
+      this.setState({personFAV: PersonasEnFav})
+      storeDataFav(PersonasEnFav, '@Favoritos') 
+      // console.log("este es el log")
+      // console.log(PersonasEnFav)
+      }
   
 
   

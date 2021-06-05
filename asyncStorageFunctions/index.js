@@ -49,7 +49,7 @@ export const getDataIndex=async (key)=>{
         export const getDataFav=async (key)=>{
           try {
             const jsonValue = await AsyncStorage.getItem(key)
-            return jsonValue != null ? JSON.parse(jsonValue) : null;
+            return jsonValue != null ? JSON.parse(jsonValue) : [];
           } catch(e) {
           }
           }

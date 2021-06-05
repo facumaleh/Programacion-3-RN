@@ -32,16 +32,22 @@ class Favoritos extends Component {
       getDataFav('@Favoritos')
       .then(resultado=> {
        this.setState({personFAV : resultado })
+       console.log("este es el log")
+      console.log(this.state.personFAV)
+         
+
       })
       
    
    }
-   componentDidUpdate(){
-    getDataFav('@Favoritos')
-     .then(resultado=> {
-      this.setState({personFAV : resultado })
-     })
-    }
+  //  componentDidUpdate(){
+  //   getDataFav('@Favoritos')
+  //    .then(resultado=> {
+  //     this.setState({personFAV : resultado })
+  //    })
+  //    console.log("este es el log")
+  //    console.log(this.state.personFAV)
+  //   }
 
     az = () => {
       this.state.person.sort((a, b) => a.name.first.localeCompare(b.name.first))
@@ -80,7 +86,7 @@ class Favoritos extends Component {
 
 
             { 
-              this.state.person.map((person) => (
+              this.state.personFAV.map((person) => (
               <CardFavoritos
               key={person.login.uuid}
                 id= {person.login.uuid}

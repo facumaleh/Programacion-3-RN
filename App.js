@@ -16,16 +16,18 @@ class App extends Component {
         this.state = {}
     }
 
-    // componentDidMount(){
-    //     const asyncFun = async () => {
-    //         await AsyncStorage.removeItem('@Borrados');
-    //     }
-    //     asyncFun();
-    //     const asyncFun2 = async () => {
-    //         await AsyncStorage.removeItem('@Favoritos');
-    //     }
-    //     asyncFun2();
-    // }
+    componentDidMount(){
+        const asyncFun = async () => {
+            await AsyncStorage.removeItem('@Borrados');
+        }
+        asyncFun();
+        const asyncFun2 = async () => {
+            await AsyncStorage.removeItem('@Favoritos');
+        }
+        asyncFun2();
+
+        
+    }
 
 
     render(){
