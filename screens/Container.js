@@ -6,8 +6,8 @@ import { FontAwesome } from '@expo/vector-icons';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import {getDataIndex, setDataIndex,storeDataBorrado,getDataBorrado,getDataFav,storeDataFav} from "../asyncStorageFunctions/index"
-import {getDataPerson} from '../api/api'
+import {getDataIndex, setDataIndex,storeDataBorrado,getDataBorrado,getDataFav,storeDataFav,setDataVerMas} from "../asyncStorageFunctions/index"
+import {getDataPerson,loadmore} from '../api/api'
 
 
 class Container extends Component {
@@ -52,6 +52,7 @@ class Container extends Component {
  }
 
     loadmore(){
+      // setDataVerMas(this.state.vermas, '@verMas') 
       if (!this.state.vermas) {
         return alert ("Ingrese un numero valido")
       }
@@ -238,9 +239,7 @@ class Container extends Component {
           color= "blue"
           size= "large"
            />
-          
           :
-          
            <FlatList style={styles.flat}
             data={this.state.person}
             keyExtractor={ (item, idx) => idx.toString()}
