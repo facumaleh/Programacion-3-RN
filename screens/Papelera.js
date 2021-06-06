@@ -34,34 +34,18 @@ componentDidMount(){
    
 
 }
-componentDidUpdate(){
-  getDataBorrado('@Borrados')
-  .then(resultado=> {
-   this.setState({personBorrada : resultado })
-  })
+// componentDidUpdate(){
+//   getDataBorrado('@Borrados')
+//   .then(resultado=> {
+//    this.setState({personBorrada : resultado })
+//   })
   
 
-}
+//  }
    
 
-    az = () => {
-      this.state.personBorrada.sort((a, b) => a.name.first.localeCompare(b.name.first))
-      this.setState({
-          personBorrada: this.state.personBorrada.sort(function(a, b) { return a.name.first > b.name.first})
-      })
-  }
-  za = () => {
-    this.state.personBorrada.sort((a, b) => b.name.first.localeCompare(a.name.first))
-    this.setState({
-        personBorrada: this.state.personBorrada.sort(function(a, b) { return a.name.first < b.name.first})
-    })
-  }
-
   
-        
-
-  
-
+    
 
 
   Reset=()=>{
@@ -69,12 +53,24 @@ componentDidUpdate(){
          await AsyncStorage.removeItem('@Borrados');
           }
             asyncFun();
-            return this.setState({
-             personBorrada: []
-          })
+            
+          //   return this.setState({
+          //    personBorrada: []
+          // })
 
   }
   
+  borrarItem(characteridx){
+    console.log( characteridx);
+    let resultados =this.state.personBorrada.filter((person)=> {
+      //  guardo en var resultados el filtro de person
+      return( characteridx!== person.login.uuid )
+      //comparo idx con el uuid
+    })
+    // seteo el estado 
+    this.setState({personBorrada: resultados})
+    
+  }
     render(){
 
         return(
@@ -82,14 +78,7 @@ componentDidUpdate(){
           <ScrollView>
             <SafeAreaView style={styles.container}>
             <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between' }} >
-              
-              <Pressable style={styles.buttonAZZA}   onPress={this.az.bind(this)} >
-                <FontAwesome name="sort-alpha-asc" size={20} color="#f6416c" />
-              </Pressable>
-              
-              <Pressable   style={styles.buttonAZZA}  onPress={this.za.bind(this)} >
-                <FontAwesome name="sort-alpha-desc" size={20} color="#f6416c" />
-              </Pressable>
+             
               <Pressable   style={styles.buttonAZZA}  onPress={this.Reset.bind(this)} >
                 <Text> Reset</Text>
               </Pressable>
@@ -100,6 +89,7 @@ componentDidUpdate(){
             { 
               this.state.personBorrada.map((person) => (
               <CardPapelera
+              onDelete= {this.borrarItem.bind(this)}
                 key={person.login.uuid}
                 id= {person.login.uuid}
                 firstName={person.name.first}

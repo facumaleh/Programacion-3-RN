@@ -39,6 +39,9 @@ class CardPapelera extends Component {
                    <Pressable style={styles.button}  onPress= {this.openModal}>
                  <FontAwesome name="info-circle" size={24} color="#00b8a9" />
                  </Pressable>
+                 <Pressable style={styles.buttonBorrar} onPress= {this.props.onDelete.bind(this,id)}>
+                 <FontAwesome  name="trash" size={24} color="#f6416c"  />
+                 </Pressable>
                     
                  
                           
