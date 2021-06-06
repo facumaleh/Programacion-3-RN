@@ -32,10 +32,6 @@ class Favoritos extends Component {
       getDataFav('@Favoritos')
       .then(resultado=> {
        this.setState({personFAV : resultado })
-       console.log("este es el log")
-      console.log(this.state.personFAV)
-         
-
       })
       
    
@@ -61,7 +57,16 @@ class Favoritos extends Component {
         person: this.state.person.sort(function(a, b) { return a.name.first < b.name.first})
     })
   }
-
+  borrarItem(characteridx){
+    console.log( characteridx);
+    let resultados =this.state.personFAV.filter((person)=> {
+      //  guardo en var resultados el filtro de personBorrada
+      return( characteridx!== person.login.uuid )
+      //comparo idx con el uuid
+    })
+    // seteo el estado 
+    this.setState({personFAV: resultados})
+    }
 
 
   
@@ -75,12 +80,7 @@ class Favoritos extends Component {
                    
             <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between' }} >
               
-              <Pressable style={styles.buttonAZZA}   onPress={this.az.bind(this)} >
-              <FontAwesome name="sort-alpha-asc" size={20} color="#f6416c" />
-              </Pressable>
-              <Pressable   style={styles.buttonAZZA}  onPress={this.za.bind(this)} >
-              <FontAwesome name="sort-alpha-desc" size={20} color="#f6416c" />
-               </Pressable>
+            
 
               </View >
 
@@ -88,6 +88,7 @@ class Favoritos extends Component {
             { 
               this.state.personFAV.map((person) => (
               <CardFavoritos
+              // noMasFav= {this.borrarItem.bind(this)}
               key={person.login.uuid}
                 id= {person.login.uuid}
                 firstName={person.name.first}

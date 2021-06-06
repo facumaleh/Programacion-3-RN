@@ -34,19 +34,17 @@ componentDidMount(){
    
 
 }
+
+
 // componentDidUpdate(){
 //   getDataBorrado('@Borrados')
 //   .then(resultado=> {
 //    this.setState({personBorrada : resultado })
 //   })
-  
-
 //  }
+
+
    
-
-  
-    
-
 
   Reset=()=>{
     const asyncFun = async () => {
@@ -63,14 +61,14 @@ componentDidMount(){
   borrarItem(characteridx){
     console.log( characteridx);
     let resultados =this.state.personBorrada.filter((person)=> {
-      //  guardo en var resultados el filtro de person
+      //  guardo en var resultados el filtro de personBorrada
       return( characteridx!== person.login.uuid )
       //comparo idx con el uuid
     })
     // seteo el estado 
     this.setState({personBorrada: resultados})
-    
-  }
+    }
+
     render(){
 
         return(
@@ -112,7 +110,7 @@ componentDidMount(){
                 </CardPapelera>
               ))
             } 
-            
+           
           </SafeAreaView>
           </ScrollView>
           

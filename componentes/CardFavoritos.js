@@ -37,7 +37,10 @@ class CardPapelera extends Component {
                     <Pressable style={styles.button}  onPress= {this.openModal}>
                     <FontAwesome name="info-circle" size={24} color="#00b8a9" />
                     </Pressable>
-                    
+                    {/* <Pressable style={styles.buttonBorrar} onPress= {this.props.noMasFav.bind(this,id)}>
+                <Text>No Mas Fav</Text>
+                 </Pressable>
+                     */}
                  
                           
                   <Modal  animationType="slide" transparent={true} visible={this.state.isOpen} >
