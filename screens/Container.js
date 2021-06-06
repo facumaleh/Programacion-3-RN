@@ -6,8 +6,8 @@ import { FontAwesome } from '@expo/vector-icons';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import {getDataIndex, setDataIndex,storeDataBorrado,getDataBorrado,getDataFav,storeDataFav,setDataVerMas} from "../asyncStorageFunctions/index"
-import {getDataPerson,loadmore} from '../api/api'
+import {getDataIndex, setDataIndex,storeDataBorrado,getDataBorrado,getDataFav,storeDataFav,setDataVerMas, getDataVerMas} from "../asyncStorageFunctions/index"
+import {getDataPerson,loadMore} from '../api/api'
 
 
 class Container extends Component {
@@ -49,21 +49,39 @@ class Container extends Component {
     })
     // al poner activity:false, cambia la actividad del ActivityIndicator a false, y lo corta una vez que se reciben resultados
  
+
+
  }
 
     loadmore(){
-      // setDataVerMas(this.state.vermas, '@verMas') 
-      if (!this.state.vermas) {
-        return alert ("Ingrese un numero valido")
-      }
-      fetch('https://randomuser.me/api/?results='+ this.state.vermas)
-      .then(response => response.json())
-      .then ((data)=>{
-      this.state.person= [...this.state.person, ...data.results]
-      console.log(this.state.person)
-      this.setState({person: this.state.person})
+      let numero = this.state.vermas
+      setDataVerMas(numero, '@VerMas') ;
+    
+      loadMore()
+      getDataIndex('@guardado')
+          .then(resultado => {
+            // console.log('Éstos son los resultados');
+            // console.log(resultado.length);
+            // console.log(resultado);
+            this.setState({person: [...this.state.person, ...resultado]})
+            console.log('Nuevo array');
+            console.log(this.state.person);
       })
-      .catch((e)=>console.log(e));}
+      // console.log(data);
+      // loadMore()
+      
+      // if (!this.state.vermas) {
+      //   return alert ("Ingrese un numero valido")
+      // }
+      // fetch('https://randomuser.me/api/?results='+ this.state.vermas)
+      // .then(response => response.json())
+      // .then ((data)=>{
+      // this.state.person= [...this.state.person, ...data.results]
+      // console.log(this.state.person)
+      // this.setState({person: this.state.person})
+      // })
+      // .catch((e)=>console.log(e));
+    }
 
 
     az = () => {

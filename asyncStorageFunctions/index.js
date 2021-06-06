@@ -55,3 +55,19 @@ export const getDataIndex=async (key)=>{
           }
       
       
+
+          export const getDataVerMas=async (key)=>{
+            try {
+              const jsonValue = await AsyncStorage.getItem(key)
+              return jsonValue != null ? JSON.parse(jsonValue) : [];
+            } catch(e) {
+            }
+            }
+          
+            export const setDataVerMas=async (value,key) => {
+                try {
+                  // const jsonValue = JSON.stringify(value)
+                  await AsyncStorage.setItem(key, value)
+                } catch (e) {
+                }
+              }
