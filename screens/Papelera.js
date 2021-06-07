@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import { View, SafeAreaView ,ScrollView,TextInput, Image,Text,Pressable, Button} from 'react-native'
+import { View, SafeAreaView ,ScrollView,TextInput, Image,Text,Pressable, Button, FlatList} from 'react-native'
 import { styles } from '../styles/styles'
 import CardPapelera from "../componentes/CardPapelera";
 import { FontAwesome } from '@expo/vector-icons';
@@ -19,6 +19,8 @@ class Papelera extends Component {
             
             personBorrada:[],
             person:[],
+            resultado:[],
+
 
          
 
@@ -73,7 +75,6 @@ componentDidMount(){
 
         return(
           
-          <ScrollView>
             <SafeAreaView style={styles.container}>
             <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between' }} >
              
@@ -84,35 +85,55 @@ componentDidMount(){
             </View >
             <View style={styles.container}></View>
 
-            { 
-              this.state.personBorrada.map((person) => (
-              <CardPapelera
-              onDelete= {this.borrarItem.bind(this)}
-                key={person.login.uuid}
-                id= {person.login.uuid}
-                firstName={person.name.first}
-                img={person.picture.large}
-                lastName={person.name.last}
-                Email={person.email}
-                city={person.location.city}
-                State={person.location.state}
-                Street={person.location.street.name}
-                StreetNumber={person.location.street.number}
-                Telephone= {person.phone}
-                imgMed={person.picture.medium}
-                Country={person.location.country}
-                Postcode={ person.location.postcode}
-                Bithday= {person.dob.age}
-                Date= {person.dob.date}
-                Registered = {person.registered.date}>
+             
+            
+            {
+              <FlatList
+              style={styles.flat}
+              data={this.state.person}
+              keyExtractor={ (item, idx) => idx.toString()}
+  
+  
+              renderItem={ ({item}) =>
+                (
+
+
+            <CardPapelera
+                onDelete= {this.borrarItem.bind(this)}
+                key={item.login.uuid}
+                id= {item.login.uuid}
+                firstName={item.name.first}
+                img={item.picture.large}
+                lastName={item.name.last}
+                Email={item.email}
+                city={item.location.city}
+                State={item.location.state}
+                Street={item.location.street.name}
+                StreetNumber={item.location.street.number}
+                Telephone= {item.phone}
+                imgMed={item.picture.medium}
+                Country={item.location.country}
+                Postcode={ item.location.postcode}
+                Bithday= {item.dob.age}
+                Date= {item.dob.date}
+                Registered = {item.registered.date} >
 
                 
-                </CardPapelera>
-              ))
-            } 
-           
+            </CardPapelera>
+
+                 )
+
+
+            }
+            
+            />
+          }
+
+
+
+
+
           </SafeAreaView>
-          </ScrollView>
           
 
         )

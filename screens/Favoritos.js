@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import { View, SafeAreaView ,ScrollView,TextInput, Image,Text,Pressable, Button} from 'react-native'
+import { View, SafeAreaView, FlatList ,ScrollView,TextInput, Image,Text,Pressable, Button} from 'react-native'
 import { styles } from '../styles/styles'
 import CardFavoritos from "../componentes/CardFavoritos";
 import { FontAwesome } from '@expo/vector-icons';
@@ -20,7 +20,8 @@ class Favoritos extends Component {
           
             
           personFAV:[],
-            person:[],
+          person:[],
+          resultado:[],
 
          
 
@@ -75,7 +76,6 @@ class Favoritos extends Component {
 
         return(
           
-          <ScrollView>
             <SafeAreaView style={styles.container}>
                    
             <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between' }} >
@@ -84,12 +84,53 @@ class Favoritos extends Component {
 
               </View >
 
+              {
+                <FlatList
+                style={styles.flat}
+                data={this.state.person}
+                keyExtractor={ (item, idx) => idx.toString()}
+    
+    
+                renderItem={ ({item}) =>
+                  (
+  
+  
+              <CardFavoritos
+                  //noMasFav= {this.borrarItem.bind(this)}
+                  id= {item.login.uuid}
+                  firstName={item.name.first}
+                  img={item.picture.large}
+                  lastName={item.name.last}
+                  Email={item.email}
+                  city={item.location.city}
+                  State={item.location.state}
+                  Street={item.location.street.name}
+                  StreetNumber={item.location.street.number}
+                  Telephone= {item.phone}
+                  imgMed={item.picture.medium}
+                  Country={item.location.country}
+                  Postcode={ item.location.postcode}
+                  Bithday= {item.dob.age}
+                  Date= {item.dob.date}
+                  Registered = {item.registered.date} >
+  
+                  
+              </CardFavoritos>
+  
+                   )
+  
+  
+              }
+              
+              />
+              }
 
-            { 
+
+            {/* { 
               this.state.personFAV.map((person) => (
               <CardFavoritos
-              // noMasFav= {this.borrarItem.bind(this)}
-              key={person.login.uuid}
+                //noMasFav= {this.borrarItem.bind(this)}
+                key={person.login.uuid}
                 id= {person.login.uuid}
                 firstName={person.name.first}
                 img={person.picture.large}
@@ -106,13 +147,11 @@ class Favoritos extends Component {
                 Bithday= {person.dob.age}
                 Date= {person.dob.date}
                 Registered = {person.registered.date}>
-
-                
                 </CardFavoritos>
               ))
-            }
+            } */}
+
           </SafeAreaView>
-          </ScrollView>
           
 
         )
