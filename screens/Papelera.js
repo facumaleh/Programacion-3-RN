@@ -21,21 +21,9 @@ class Papelera extends Component {
             person:[],
             resultado:[],
 
-
-         
-
-
         }
     }
     
-componentDidMount(){
-   getDataBorrado('@Borrados')
-   .then(resultado=> {
-    this.setState({personBorrada : resultado })
-   })
-   
-
-}
 componentDidMount() {
   this._unsubscribe = this.props.navigation.addListener('focus', () => {            
      getDataBorrado("@Borrados")
@@ -44,6 +32,20 @@ componentDidMount() {
      });
     });
 }
+componentWillUnmount(){
+  this._unsubscribe()
+}
+
+az = () => {
+  this.state.personBorrada.sort((a, b) => a.name.first.localeCompare(b.name.first))
+  this.setState({personBorrada: this.state.personBorrada.sort(function(a, b) { return a.name.first > b.name.first})})
+} 
+za = () => {
+  this.state.personBorrada.sort((a, b) => b.name.first.localeCompare(a.name.first))
+  this.setState({personBorrada: this.state.personBorrada.sort(function(a, b) { return a.name.first < b.name.first})})
+}
+
+
 
    
 
@@ -75,13 +77,19 @@ componentDidMount() {
         return(
           
             <SafeAreaView style={styles.container}>
+                   
             <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between' }} >
-             
+              <Pressable   style={styles.buttonAZZA}  onPress={this.az.bind(this)} >
+              <FontAwesome name="sort-alpha-asc" size={15} color="#f6416c" />
+              </Pressable>
+              <Pressable   style={styles.buttonAZZA}  onPress={this.za.bind(this)} >
+              <FontAwesome name="sort-alpha-desc" size={15} color="#f6416c" />
+              </Pressable>
               <Pressable   style={styles.buttonAZZA}  onPress={this.Reset.bind(this)} >
                 <Text> Reset</Text>
               </Pressable>
-
             </View >
+
             <View style={styles.container}></View>
 
              

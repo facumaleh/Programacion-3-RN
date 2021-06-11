@@ -30,21 +30,10 @@
             .then(response => response.json())
             .then ((data)=>{
               setDataIndex(data, '@guardado')
-              // getDataIndex('@guardado')
-              // .then(resultado => {
-              //   console.log('Éstos son los resultados');
-              //   console.log(resultado.length);
-              //   console.log(resultado);
-              // })
-            // this.state.person= [...this.state.person, ...data.results]
-            // console.log(this.state.person)
-            // this.setState({person: this.state.person})
             })
 
 
-        // const response = await fetch("https://deelay.me/250/randomuser.me/api/?results=10");
-        // resultadopedido = await response.json();
-        // return resultadopedido.results;
+
   
       } catch (error) {
         console.log(error);

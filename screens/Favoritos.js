@@ -29,14 +29,7 @@ class Favoritos extends Component {
         }
     }
 
-    componentDidMount(){
-      getDataFav('@Favoritos')
-      .then(resultado=> {
-       this.setState({personFAV : resultado })
-      })
-      
-   
-   }
+
    componentDidMount() {
     this._unsubscribe = this.props.navigation.addListener('focus', () => {            
        getDataFav("@Favoritos")
@@ -44,18 +37,22 @@ class Favoritos extends Component {
         this.setState({personFAV : resultado })
        });
       });
-  }
+    }
+    componentWillUnmount(){
+      this._unsubscribe()
+    
+    }
 
     az = () => {
-      this.state.person.sort((a, b) => a.name.first.localeCompare(b.name.first))
+      this.state.personFAV.sort((a, b) => a.name.first.localeCompare(b.name.first))
       this.setState({
-          person: this.state.person.sort(function(a, b) { return a.name.first > b.name.first})
+        personFAV: this.state.personFAV.sort(function(a, b) { return a.name.first > b.name.first})
       })
   }
   za = () => {
     this.state.person.sort((a, b) => b.name.first.localeCompare(a.name.first))
     this.setState({
-        person: this.state.person.sort(function(a, b) { return a.name.first < b.name.first})
+      personFAV: this.state.personFAV.sort(function(a, b) { return a.name.first < b.name.first})
     })
   }
   borrarItem(characteridx){
@@ -70,17 +67,30 @@ class Favoritos extends Component {
     }
 
 
-    Reset=()=>{
-      const asyncFun = async () => {
-           await AsyncStorage.removeItem('@Borrados');
-            }
-              asyncFun();
-              
-              return this.setState({
-               personBorrada: []
-            })
+
+    borrarItem(characteridx){
+      console.log( characteridx);
+      let resultados =this.state.personFAV.filter((person)=> {
+        //  guardo en var resultados el filtro de personBorrada
+        return( characteridx!== person.login.uuid )
+        //comparo idx con el uuid
+      })
+      // seteo el estado 
+      this.setState({personFAV: resultados})
+      }
+
+      Reset=()=>{
+        const asyncFunFav = async () => {
+             await AsyncStorage.removeItem('@Favoritos');
+              }
+                asyncFunFav();
+                
+                return this.setState({
+                 personBorrada: []
+              })
+    
+      }
   
-    }
   
     render(){
       
@@ -89,14 +99,17 @@ class Favoritos extends Component {
           
             <SafeAreaView style={styles.container}>
                    
-            <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between' }} >
-            
-            <Pressable   style={styles.buttonAZZA}  onPress={this.Reset.bind(this)} >
+                   <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between' }} >
+              <Pressable   style={styles.buttonAZZA}  onPress={this.az.bind(this)} >
+              <FontAwesome name="sort-alpha-asc" size={15} color="#f6416c" />
+              </Pressable>
+              <Pressable   style={styles.buttonAZZA}  onPress={this.za.bind(this)} >
+              <FontAwesome name="sort-alpha-desc" size={15} color="#f6416c" />
+              </Pressable>
+              <Pressable   style={styles.buttonAZZA}  onPress={this.Reset.bind(this)} >
                 <Text> Reset</Text>
               </Pressable>
-            
-
-              </View >
+            </View >
 
               {
                 <FlatList
@@ -110,7 +123,7 @@ class Favoritos extends Component {
   
   
               <CardFavoritos
-                  //noMasFav= {this.borrarItem.bind(this)}
+                  onDelete= {this.borrarItem.bind(this)}
                   id= {item.login.uuid}
                   firstName={item.name.first}
                   img={item.picture.large}
