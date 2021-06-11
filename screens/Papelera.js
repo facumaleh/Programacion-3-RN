@@ -36,15 +36,14 @@ componentDidMount(){
    
 
 }
-
-
-// componentDidUpdate(){
-//   getDataBorrado('@Borrados')
-//   .then(resultado=> {
-//    this.setState({personBorrada : resultado })
-//   })
-//  }
-
+componentDidMount() {
+  this._unsubscribe = this.props.navigation.addListener('focus', () => {            
+     getDataBorrado("@Borrados")
+     .then(resultado=> {
+      this.setState({personBorrada : resultado })
+     });
+    });
+}
 
    
 
@@ -54,9 +53,9 @@ componentDidMount(){
           }
             asyncFun();
             
-          //   return this.setState({
-          //    personBorrada: []
-          // })
+            return this.setState({
+             personBorrada: []
+          })
 
   }
   
@@ -90,7 +89,7 @@ componentDidMount(){
             {
               <FlatList
               style={styles.flat}
-              data={this.state.person}
+              data={this.state.personBorrada}
               keyExtractor={ (item, idx) => idx.toString()}
   
   

@@ -156,78 +156,48 @@ class Container extends Component {
         
       }
 
-      // borrarItem(characteridx) {
- 
-      
-      // let resultados =this.state.person.filter((person)=> {
-      //   //  guardo en var resultados el filtro de person
-      // return( characteridx!== person.login.uuid )
-      //   //comparo idx con el uuid
-      // }
-      
-      
-      // let Borrado =this.state.person.filter((person)=> {
-      //   //   guardo en var borraos el filtro de person  
-      // return( characteridx== person.login.uuid )
-      //            })
-      // // this.setState({personBorrada:Borrado})
-
-      // // seteo el estado 
-      // this.setState({person: resultados})
-
-      // // let arrayNuevo = await getDataBorrado("@Borrados")
-
-      // // let canDelete = true;
-
-      // // for (let i = 0; i < arrayNuevo.length; i++) {
-        
-      // //   if(arrayNuevo[i] == Borrado[0]){
-      // //     canDelete = false;
-      // //   }
-      // // }
-
-      // // if (canDelete){
-      // //   arrayNuevo.push(Borrado[0])
-      // // }
-      
-
-      // // this.setState({personBorrada: arrayNuevo})
-      // //   // setea bien el estado
-
-      // // await storeDataBorrado(arrayNuevo, '@Borrados') 
-      // // // console.log( await getDataBorrado('@Borrados'))
-  
-      // // } catch (e) {
-      // // console.log(e);
-      // // this.setState({ personBorrada:[]})
-      // //  }
-   
-   
-      // }}
-
-      
+    
 
     
 
-     FAV(characteridx) {
-   
+      FAV(characteridx){
+        console.log( characteridx);
+        let resultados =this.state.person.filter((person)=> {
+          //  guardo en var resultados el filtro de person
+          return( characteridx!== person.login.uuid )
+          //comparo idx con el uuid
+        })
         let Favoritos = this.state.person.filter((person)=> {
             //   guardo en var borraos el filtro de person  
           return( characteridx== person.login.uuid )
                      })
-      let PersonasEnFav = [this.state.personFAV,...Favoritos]
-      console.log(PersonasEnFav)
-      let TomarFav = true;
-      for (let i = 0; i < PersonasEnFav.length; i++) {
-        if(PersonasEnFav[i] == Favoritos[0]){
-          TomarFav = false; } }
-       if (TomarFav){
-        PersonasEnFav.push(Favoritos[0])}
-      this.setState({personFAV: PersonasEnFav})
-      storeDataFav(PersonasEnFav, '@Favoritos') 
-      // console.log("este es el log")
-      // console.log(PersonasEnFav)
+        // seteo el estado 
+        
+        let arrayFavs = [...this.state.personFAV, ...Favoritos]
+        this.setState({person: resultados, personFAV: arrayFavs})
+        
+        storeDataFav(arrayFavs, '@Favoritos') 
+        
       }
+    //  FAV(characteridx) {
+   
+    //     let Favoritos = this.state.person.filter((person)=> {
+    //         //   guardo en var borraos el filtro de person  
+    //       return( characteridx== person.login.uuid )
+    //                  })
+    //   let PersonasEnFav = [this.state.personFAV,...Favoritos]
+    //   console.log(PersonasEnFav)
+    //   let TomarFav = true;
+    //   for (let i = 0; i < PersonasEnFav.length; i++) {
+    //     if(PersonasEnFav[i] == Favoritos[0]){
+    //       TomarFav = false; } }
+    //    if (TomarFav){
+    //     PersonasEnFav.push(Favoritos[0])}
+    //   this.setState({personFAV: PersonasEnFav})
+    //   storeDataFav(PersonasEnFav, '@Favoritos') 
+    //   // console.log("este es el log")
+    //   // console.log(PersonasEnFav)
+    //   }
   
 
   

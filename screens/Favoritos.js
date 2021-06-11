@@ -37,14 +37,14 @@ class Favoritos extends Component {
       
    
    }
-  //  componentDidUpdate(){
-  //   getDataFav('@Favoritos')
-  //    .then(resultado=> {
-  //     this.setState({personFAV : resultado })
-  //    })
-  //    console.log("este es el log")
-  //    console.log(this.state.personFAV)
-  //   }
+   componentDidMount() {
+    this._unsubscribe = this.props.navigation.addListener('focus', () => {            
+       getDataFav("@Favoritos")
+       .then(resultado=> {
+        this.setState({personFAV : resultado })
+       });
+      });
+  }
 
     az = () => {
       this.state.person.sort((a, b) => a.name.first.localeCompare(b.name.first))
@@ -70,6 +70,17 @@ class Favoritos extends Component {
     }
 
 
+    Reset=()=>{
+      const asyncFun = async () => {
+           await AsyncStorage.removeItem('@Borrados');
+            }
+              asyncFun();
+              
+              return this.setState({
+               personBorrada: []
+            })
+  
+    }
   
     render(){
       
@@ -79,7 +90,10 @@ class Favoritos extends Component {
             <SafeAreaView style={styles.container}>
                    
             <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between' }} >
-              
+            
+            <Pressable   style={styles.buttonAZZA}  onPress={this.Reset.bind(this)} >
+                <Text> Reset</Text>
+              </Pressable>
             
 
               </View >
@@ -87,7 +101,7 @@ class Favoritos extends Component {
               {
                 <FlatList
                 style={styles.flat}
-                data={this.state.person}
+                data={this.state.personFAV}
                 keyExtractor={ (item, idx) => idx.toString()}
     
     
