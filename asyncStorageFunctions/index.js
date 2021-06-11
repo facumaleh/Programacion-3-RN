@@ -64,9 +64,4 @@ export const getDataIndex=async (key)=>{
             }
             }
           
-    export const setDataVerMas=async (value,key) => {
-                try {
-                await AsyncStorage.setItem(key, value)
-              } catch (e) {
-              }
-              }
+   

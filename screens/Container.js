@@ -7,7 +7,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import {getDataIndex, setDataIndex,storeDataBorrado,getDataBorrado,getDataFav,storeDataFav,setDataVerMas, getDataVerMas} from "../asyncStorageFunctions/index"
-import {getDataPerson,loadMore} from '../api/api'
+import {getDataPerson,verMas} from '../api/api'
 
 
 class Container extends Component {
@@ -24,7 +24,7 @@ class Container extends Component {
             visible: 6,
             personOriginal:[],
             textoBuscar: " ",
-            vermas: 0,
+            vermas: "",
             personBorrada:[],
             personFAV:[],
             resultado:[],
@@ -54,15 +54,13 @@ class Container extends Component {
  }
 
     loadmore(){
-      setDataVerMas(this.state.vermas, '@VerMas') ;
-      loadMore()
+      verMas(this.state.vermas)
       getDataIndex('@guardado')
           .then(resultado => {
             this.setState({person: [...this.state.person, ...resultado.results]})
       })
       
     }
-
 
     az = () => {
       this.state.person.sort((a, b) => a.name.first.localeCompare(b.name.first))

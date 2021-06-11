@@ -63,8 +63,7 @@ class CardPapelera extends Component {
                    Registered={Registered} 
                    Date={Date}
                    id={id}
-                 
-                 />
+                   />
                </View>
         )
     };
