@@ -27,7 +27,7 @@ export const getDataIndex=async (key)=>{
       }
 
 
-      export const getDataBorrado=async (key)=>{
+      export const getDataBorrado= async (key)=>{
         try {
           const jsonValue = await AsyncStorage.getItem(key)
           return jsonValue != null ? JSON.parse(jsonValue) : [];

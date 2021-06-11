@@ -17,18 +17,21 @@
  
 
     export const loadMore = async ()=> {
-      let nueva = '';
+      
       getDataVerMas('@VerMas')
       .then(resultado=> {
-        nueva = resultado
+        console.log("esta es la nueva")
+        this.setState({vermas : resultado})
       })
-
 
       try {
 
-            fetch('https://randomuser.me/api/?results='+ nueva)
+            fetch('https://randomuser.me/api/?results='+ resultado)
+            console.log("https://randomuser.me/api/?results="+ resultado)
+
             .then(response => response.json())
             .then ((data)=>{
+              console.log(data)
               setDataIndex(data, '@guardado')
             })
 

@@ -54,9 +54,7 @@ class Container extends Component {
  }
 
     loadmore(){
-      let numero = this.state.vermas
-      setDataVerMas(numero, '@VerMas') ;
-    
+      setDataVerMas(this.state.vermas, '@VerMas') ;
       loadMore()
       getDataIndex('@guardado')
           .then(resultado => {
