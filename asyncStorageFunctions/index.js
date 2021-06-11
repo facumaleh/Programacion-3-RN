@@ -4,13 +4,13 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const getDataIndex=async (key)=>{
     try {
-      const jsonValue = await AsyncStorage.getItem(key)
-      return jsonValue != null ? JSON.parse(jsonValue) : [];
-    } catch(e) {
-    }
-    }
+        const jsonValue = await AsyncStorage.getItem(key)
+        return jsonValue != null ? JSON.parse(jsonValue) : [];
+      } catch(e) {
+      }
+      }
   
-    export const setDataIndex=async (value,key) => {
+ export const setDataIndex=async (value,key) => {
         try {
           const jsonValue = JSON.stringify(value)
           await AsyncStorage.setItem(key, jsonValue)
@@ -18,7 +18,7 @@ export const getDataIndex=async (key)=>{
         }
       }
 
-      export const storeDataBorrado=async (value,key) => {
+  export const storeDataBorrado=async (value,key) => {
         try {
           const jsonValue = JSON.stringify(value)
           await AsyncStorage.setItem(key, jsonValue)
@@ -27,17 +27,16 @@ export const getDataIndex=async (key)=>{
       }
 
 
-      export const getDataBorrado= async (key)=>{
+  export const getDataBorrado=async (key)=>{
         try {
           const jsonValue = await AsyncStorage.getItem(key)
           return jsonValue != null ? JSON.parse(jsonValue) : [];
         } catch(e) {
         }
-        }
-      
+        }    
 
 
-        export const storeDataFav=async (value,key) => {
+  export const storeDataFav=async (value,key) => {
           try {
             const jsonValue = JSON.stringify(value)
             await AsyncStorage.setItem(key, jsonValue)
@@ -46,17 +45,18 @@ export const getDataIndex=async (key)=>{
         }
   
   
-        export const getDataFav=async (key)=>{
-          try {
-            const jsonValue = await AsyncStorage.getItem(key)
-            return jsonValue != null ? JSON.parse(jsonValue) : [];
-          } catch(e) {
-          }
-          }
+        
+   export const getDataFav=async (key)=>{
+            try {
+              const jsonValue = await AsyncStorage.getItem(key)
+              return jsonValue != null ? JSON.parse(jsonValue) : [];
+            } catch(e) {
+            }
+            }
       
       
 
-          export const getDataVerMas=async (key)=>{
+    export const getDataVerMas=async (key)=>{
             try {
               const jsonValue = await AsyncStorage.getItem(key)
               return jsonValue != null ? JSON.parse(jsonValue) : [];
@@ -64,10 +64,9 @@ export const getDataIndex=async (key)=>{
             }
             }
           
-            export const setDataVerMas=async (value,key) => {
+    export const setDataVerMas=async (value,key) => {
                 try {
-                  // const jsonValue = JSON.stringify(value)
-                  await AsyncStorage.setItem(key, value)
-                } catch (e) {
-                }
+                await AsyncStorage.setItem(key, value)
+              } catch (e) {
+              }
               }

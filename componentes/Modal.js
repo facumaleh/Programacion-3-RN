@@ -6,27 +6,20 @@ import { FontAwesome } from '@expo/vector-icons';
 
 
 class ModalComponente extends Component {
-
   
     constructor(){
         super();
         this.state = {
-            isOpen: false,
-            
+          
+          isOpen: false,
         }
     }
-
-
-    openModal =  ()=> this.setState({isOpen: true});
-      closeModal =  ()=> this.setState({isOpen: false});
-
-      
     render(){
       const { img, firstName, lastName,Email,city,State,Street,StreetNumber,Telephone, Country, Bithday,Registered, Date,id} = this.props;
 
-
         return(
-                  <Modal  animationType="slide" transparent={true} visible={this.state.isOpen} >
+        
+                  <Modal  animationType="slide" transparent={true} visible={this.props.isOpenClose} >
                
                   <View style={styles.modal}>
                     <View style={styles.infoModal}>
@@ -39,7 +32,7 @@ class ModalComponente extends Component {
                     <Text style={styles.TextoModal}>Registered: {Registered.substring(0,10)}</Text>
 
                     </View>
-                    <Pressable style={styles.infoModal} onPress= {this.closeModal} > 
+                    <Pressable style={styles.infoModal}  onPress= {this.props.close.bind(this)} > 
                     <Text style={styles.goBack}>Go Back</Text>
                     </Pressable>      
                   </View>       
@@ -51,8 +44,3 @@ class ModalComponente extends Component {
 
 export default ModalComponente;
 
-// colores 
-// 00b8a9, f8f3d4,f6416c,ffde7d
-
-
-    //     

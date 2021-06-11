@@ -79,7 +79,6 @@ class Container extends Component {
        // var text = target.value
       const personajes = this.state.person
       const filtrado = personajes.filter((item) =>{
-
       const itemData = item.name.first.toUpperCase()
       const lastName = item.name.last.toUpperCase()
       const age = item.dob.age.toString()
@@ -113,19 +112,18 @@ class Container extends Component {
       itemData.includes(textData) || lastName.includes(textData) || age.includes(textData)
      // comparo name o last name o age con el valor ingresado .
       )
-
-       })};
+      })};
 
        borrarItem(characteridx){
         console.log( characteridx);
         let resultados =this.state.person.filter((person)=> {
           //  guardo en var resultados el filtro de person
-          return( characteridx!== person.login.uuid )
+        return( characteridx!== person.login.uuid )
           //comparo idx con el uuid
         })
         let Borrado = this.state.person.filter((person)=> {
             //   guardo en var borraos el filtro de person  
-          return( characteridx== person.login.uuid )
+        return( characteridx== person.login.uuid )
                      })
         // seteo el estado 
         
@@ -144,15 +142,14 @@ class Container extends Component {
         console.log( characteridx);
         let resultados =this.state.person.filter((person)=> {
           //  guardo en var resultados el filtro de person
-          return( characteridx!== person.login.uuid )
+        return( characteridx!== person.login.uuid )
           //comparo idx con el uuid
         })
         let Favoritos = this.state.person.filter((person)=> {
             //   guardo en var borraos el filtro de person  
-          return( characteridx== person.login.uuid )
+        return( characteridx== person.login.uuid )
                      })
         // seteo el estado 
-        
         let arrayFavs = [...this.state.personFAV, ...Favoritos]
         this.setState({person: resultados, personFAV: arrayFavs})
         
@@ -190,19 +187,16 @@ class Container extends Component {
            />
           :
            <FlatList style={styles.flat}
-            data={this.state.person}
-            keyExtractor={ (item, idx) => idx.toString()}
+          data={this.state.person}
+          keyExtractor={ (item, idx) => idx.toString()}
 
 
-            renderItem={ ({item}) =>
+          renderItem={ ({item}) =>
               (
-
-          
-                <Card
+                 <Card
                   key={item.login.uuid}
                   onDelete= {this.borrarItem.bind(this)}
                   onFav= {this.FAV.bind(this)}
-
                   id= {item.login.uuid}
                   firstName={item.name.first}
                   img={item.picture.large}
@@ -220,9 +214,7 @@ class Container extends Component {
                   Date= {item.dob.date}
                   Registered = {item.registered.date}
                   >
-  
-                  </Card>
-                  
+                  </Card>   
                 )
                 
 

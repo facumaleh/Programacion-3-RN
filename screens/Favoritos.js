@@ -78,19 +78,17 @@ class Favoritos extends Component {
       // seteo el estado 
       this.setState({personFAV: resultados})
       }
-
       Reset=()=>{
-        const asyncFunFav = async () => {
+        const asyncFun = async () => {
              await AsyncStorage.removeItem('@Favoritos');
               }
-                asyncFunFav();
+                asyncFun();
                 
                 return this.setState({
-                 personBorrada: []
+                 personFAV: []
               })
     
       }
-  
   
     render(){
       
@@ -106,7 +104,7 @@ class Favoritos extends Component {
               <Pressable   style={styles.buttonAZZA}  onPress={this.za.bind(this)} >
               <FontAwesome name="sort-alpha-desc" size={15} color="#f6416c" />
               </Pressable>
-              <Pressable   style={styles.buttonAZZA}  onPress={this.Reset.bind(this)} >
+              <Pressable  style={styles.buttonAZZA}  onPress={this.Reset.bind(this)} >
                 <Text> Reset</Text>
               </Pressable>
             </View >
