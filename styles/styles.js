@@ -154,8 +154,8 @@ const styles = StyleSheet.create({
   },
 
     imgCardModal:{
-      width: 150, 
-      height: 150, 
+      width: 200, 
+      height: 200, 
       borderRadius: 10,
       alignItems:"center",
       borderColor: '#00b8a9',
@@ -178,7 +178,7 @@ const styles = StyleSheet.create({
 
     TextoModal: {
       margin:10,
-      fontSize: 15,
+      fontSize: 18,
       color: 'white',
       alignItems:"center",
 
@@ -219,7 +219,8 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     textAlign: 'center',
     color: 'black',
-    width: 150,
+    width: 200,
+    height:50,
     borderRadius: 10
   },
 
@@ -231,9 +232,9 @@ const styles = StyleSheet.create({
     marginTop: 10,
     borderWidth: 3,
     borderRadius: 10,  
-    backgroundColor: 'white',
+    backgroundColor: "white",
     color: 'black',
-    borderColor: 'black'
+    borderColor: 'red'
    },
 
 });
