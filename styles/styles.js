@@ -200,22 +200,41 @@ const styles = StyleSheet.create({
     marginTop: 10,
     borderWidth: 3,
     borderRadius: 10,
-    borderColor: '#00b8a9',
-    
+    borderColor: '#00b8a9',    
    },
+
    flat: {
      marginTop:100
-   
    },
+
    containerPapelera: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
     height:"100%",
-    backgroundColor:"#ffde7d",
-    
-    
+    backgroundColor:"#ffde7d",    
   },
+
+  textInput: {
+    backgroundColor: 'white',
+    textAlign: 'center',
+    color: 'black',
+    width: 150,
+    borderRadius: 10
+  },
+
+  mostrarTexto: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 12,
+    paddingHorizontal: 32, 
+    marginTop: 10,
+    borderWidth: 3,
+    borderRadius: 10,  
+    backgroundColor: 'white',
+    color: 'black',
+    borderColor: 'black'
+   },
 
 });
  export {styles}  

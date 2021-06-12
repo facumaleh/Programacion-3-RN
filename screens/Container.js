@@ -57,7 +57,12 @@ class Container extends Component {
       verMas(this.state.vermas)
       getDataIndex('@guardado')
           .then(resultado => {
-            this.setState({person: [...this.state.person, ...resultado.results]})
+            // console.log('Éstos son los resultados');
+            // console.log(resultado.length);
+            console.log(resultado);
+            // this.setState({person: [...this.state.person, ...resultado]})
+            // console.log('Nuevo array');
+            // console.log(this.state.person);
       })
       
     }
