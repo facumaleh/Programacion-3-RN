@@ -47,7 +47,6 @@ class CardPapelera extends Component {
                  <ModalComponente
                   isOpenClose={this.state.isOpen}
                   close= {this.closeModal.bind(this)}
-                  key={key}
                   img={img}
                   firstName={firstName}
                    lastName={lastName}

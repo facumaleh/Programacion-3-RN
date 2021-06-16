@@ -107,7 +107,6 @@ za = () => {
 
             <CardPapelera
                 onDelete= {this.borrarItem.bind(this)}
-                key={item.login.uuid}
                 id= {item.login.uuid}
                 firstName={item.name.first}
                 img={item.picture.large}

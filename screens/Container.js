@@ -38,12 +38,12 @@ class Container extends Component {
     .then(resultado=> {
      this.setState({person : resultado, activity:false })
     })
-    getDataBorrado()
+    getDataBorrado('@Borrado')
     .then(resultadoBorrado=> {
      this.setState({personBorrada : resultadoBorrado })
     })
   
-    getDataFav()
+    getDataFav("@Favoritos")
     .then(resultadoFav=> {
      this.setState({personFAV : resultadoFav })
     })
@@ -197,7 +197,6 @@ class Container extends Component {
           renderItem={ ({item}) =>
               (
                  <Card
-                  key={item.login.uuid}
                   onDelete= {this.borrarItem.bind(this)}
                   onFav= {this.FAV.bind(this)}
                   id= {item.login.uuid}
