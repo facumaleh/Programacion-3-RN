@@ -53,19 +53,32 @@ class Container extends Component {
 
  }
 
-    loadmore(){
-      verMas(this.state.vermas)
-      getDataIndex('@guardado')
-          .then(resultado => {
-            // console.log('Éstos son los resultados');
-            // console.log(resultado.length);
-            console.log(resultado);
-            // this.setState({person: [...this.state.person, ...resultado]})
-            // console.log('Nuevo array');
-            // console.log(this.state.person);
-      })
-      
+//  loadmore(){
+
+//   verMas(this.state.vermas)
+
+//   getDataIndex('@guardado')
+//       .then(resultado => {
+//         this.setState({person: [...this.state.person, ...resultado]})
+     
+//   })
+  
+// }
+  
+loadmore(){
+    // busco el classname de mas para meter en la url
+    if (!this.state.vermas) {
+      return alert ("Ingrese un numero valido")
     }
+    fetch('https://randomuser.me/api/?results='+ this.state.vermas)
+    .then(response => response.json())
+    .then ((data)=>{
+     this.state.person= [...this.state.person, ...data.results]
+     console.log(this.state.person)
+     this.setState({person: this.state.person})
+   })
+    .catch((e)=>console.log(e));}
+
 
     az = () => {
       this.state.person.sort((a, b) => a.name.first.localeCompare(b.name.first))
