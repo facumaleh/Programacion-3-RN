@@ -33,18 +33,11 @@ class About extends Component {
     rotation = new Animated.Value(0);
 
     topDown = () => {
-        Animated.parallel([
-            Animated.timing(this.rotation, {
-                toValue: this.state.toValue,
-                duration: 500,
-                useNativeDriver: true,
-            }),
-            // Animated.timing(this.position, {
-            // toValue: 100,
-            // duration: 1000,
-            // useNativeDriver: true,
-            // }),
-        ]).start();
+        Animated.timing(this.rotation, {
+            toValue: this.state.toValue,
+            duration: 500,
+            useNativeDriver: false,
+        }).start();
         this.setState({toValue: this.state.toValue + 1})
     }
 
@@ -70,13 +63,13 @@ class About extends Component {
             <SafeAreaView style={styles.container}>
             
             
-            <View style={{flex: 1}}>
+            {/* <View style={{flex: 1}}>
                 <TouchableWithoutFeedback onPress={this.topDown}>
                <Animated.View style={{
                     width: 60,
                     height: 100,
                     backgroundColor: 'red',
-                    // backfaceVisibility: 'true',
+                    backfaceVisibility: 'true',
                     transform: [
                         {translateY: this.position},
                         {rotateY: rotA}
@@ -101,10 +94,37 @@ class About extends Component {
                    <Text>Los pibes</Text>
                </Animated.View>
                </TouchableWithoutFeedback>
-            </View>
+            </View> */}
 
             <View style={styles.cardAbout} >
-                <Image  source={{uri: "https://image.flaticon.com/icons/png/512/921/921071.png"}} style={styles.imgCard}  />
+
+                {/* Image */}
+               <TouchableWithoutFeedback onPress={this.topDown}>
+                    <Animated.View  style={{
+                            backfaceVisibility: 'true',
+                            position: 'relative',
+                            transform: [
+                                {rotateY: rotA}
+                            ]                   
+                    }}>
+                        <Image source={{uri: "https://image.flaticon.com/icons/png/512/921/921071.png"}} style={styles.imgCard} />
+                    </Animated.View>
+               </TouchableWithoutFeedback>
+
+               <TouchableWithoutFeedback onPress={this.topDown}>
+                    <Animated.View style={{
+                            marginTop: 20,
+                            backfaceVisibility: 'true',
+                            position: 'absolute',
+                            transform: [
+                                {rotateY: rotB}
+                            ]                   
+                    }}>
+                        <Image source={{uri: "https://image.flaticon.com/icons/png/512/3048/3048122.png"}} style={styles.imgCard} /> 
+                    </Animated.View>
+               </TouchableWithoutFeedback>
+               {/* Image */}
+
                 <Text style={styles.Titulo}>Facundo Maleh</Text>
                 <Text style={styles.TextoCard} >Location: Buenos Aires, Argentina</Text>
                 <Text style={styles.TextoCard}>Birthdate: 21 de febrero del 2001 </Text>
@@ -113,7 +133,34 @@ class About extends Component {
             </View>
 
             <View style={styles.cardAbout} >
-                <Image source={{uri: "https://image.flaticon.com/icons/png/512/3334/3334039.png"}} style={styles.imgCard}  />
+
+                {/* Image */}
+               <TouchableWithoutFeedback onPress={this.topDown}>
+                    <Animated.View  style={{
+                            backfaceVisibility: 'true',
+                            position: 'relative',
+                            transform: [
+                                {rotateY: rotA}
+                            ]                   
+                    }}>
+                        <Image source={{uri: "https://image.flaticon.com/icons/png/512/3334/3334039.png"}} style={styles.imgCard} />
+                    </Animated.View>
+               </TouchableWithoutFeedback>
+
+               <TouchableWithoutFeedback onPress={this.topDown}>
+                    <Animated.View style={{
+                            marginTop: 20,
+                            backfaceVisibility: 'true',
+                            position: 'absolute',
+                            transform: [
+                                {rotateY: rotB}
+                            ]                   
+                    }}>
+                        <Image source={{uri: "https://image.flaticon.com/icons/png/512/3048/3048127.png"}} style={styles.imgCard} /> 
+                    </Animated.View>
+               </TouchableWithoutFeedback>
+               {/* Image */}
+
                 <Text style={styles.Titulo}>Tomás Caimmi</Text>
                 <Text style={styles.TextoCard} >Location: Buenos Aires, Argentina</Text>
                 <Text style={styles.TextoCard}>Birthdate: 22 de enero del 2001 </Text>
@@ -123,7 +170,34 @@ class About extends Component {
        
 
             <View style={styles.cardAbout} >
-                <Image  source={{uri: "https://image.flaticon.com/icons/png/512/3048/3048189.png"}} style={styles.imgCard}  />
+
+                {/* Image */}
+               <TouchableWithoutFeedback onPress={this.topDown}>
+                    <Animated.View  style={{
+                            backfaceVisibility: 'true',
+                            position: 'relative',
+                            transform: [
+                                {rotateY: rotA}
+                            ]                   
+                    }}>
+                        <Image source={{uri: "https://image.flaticon.com/icons/png/512/3048/3048189.png"}} style={styles.imgCard} />
+                    </Animated.View>
+               </TouchableWithoutFeedback>
+
+               <TouchableWithoutFeedback onPress={this.topDown}>
+                    <Animated.View style={{
+                            marginTop: 20,
+                            backfaceVisibility: 'true',
+                            position: 'absolute',
+                            transform: [
+                                {rotateY: rotB}
+                            ]                   
+                    }}>
+                        <Image source={{uri: "https://image.flaticon.com/icons/png/512/921/921110.png"}} style={styles.imgCard} /> 
+                    </Animated.View>
+               </TouchableWithoutFeedback>
+               {/* Image */}
+
                 <Text style={styles.Titulo}>Agustin Ihidoype</Text>
                 <Text style={styles.TextoCard} >Location: Buenos Aires, Argentina</Text>
                 <Text style={styles.TextoCard}>Birthdate: 5 de junio de 2001  </Text>

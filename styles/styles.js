@@ -33,13 +33,16 @@ const styles = StyleSheet.create({
       marginTop: 10,
       marginBottom: 10,
       backgroundColor: '#f8f3d4', 
+      flex: 1,
+      alignItems: 'center',
+      // justifyContent: 'center',
   },
 
     imgCard:{
       width: 150, 
       height: 150, 
       borderRadius: 10,
-      marginLeft: 75,
+      // marginLeft: 75,
       borderColor: '#00b8a9',
       borderWidth: 3,
   },
