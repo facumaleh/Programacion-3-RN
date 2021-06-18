@@ -57,26 +57,12 @@ class Container extends Component {
 
   verMasApi(this.state.vermas) 
       .then(resultado => {
-        console.log(resultado)
         this.setState({person: [...this.state.person, ...resultado]})
      
   })
   
 }
-  
-// loadmore(){
-//     // busco el classname de mas para meter en la url
-//     if (!this.state.vermas) {
-//       return alert ("Ingrese un numero valido")
-//     }
-//     fetch('https://randomuser.me/api/?results='+ this.state.vermas)
-//     .then(response => response.json())
-//     .then ((data)=>{
-//      this.state.person= [...this.state.person, ...data.results]
-//      console.log(this.state.person)
-//      this.setState({person: this.state.person})
-//    })
-//     .catch((e)=>console.log(e));}
+
 
 
     az = () => {
