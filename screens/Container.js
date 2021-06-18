@@ -7,7 +7,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import {getDataIndex, setDataIndex,storeDataBorrado,getDataBorrado,getDataFav,storeDataFav,setDataVerMas, getDataVerMas} from "../asyncStorageFunctions/index"
-import {getDataPerson,verMas} from '../api/api'
+import {getDataPerson, verMasApi} from '../api/api'
 
 
 class Container extends Component {
@@ -53,31 +53,30 @@ class Container extends Component {
 
  }
 
-//  loadmore(){
+ loadmore(){
 
-//   verMas(this.state.vermas)
-
-//   getDataIndex('@guardado')
-//       .then(resultado => {
-//         this.setState({person: [...this.state.person, ...resultado]})
+  verMasApi(this.state.vermas) 
+      .then(resultado => {
+        console.log(resultado)
+        this.setState({person: [...this.state.person, ...resultado]})
      
-//   })
+  })
   
-// }
+}
   
-loadmore(){
-    // busco el classname de mas para meter en la url
-    if (!this.state.vermas) {
-      return alert ("Ingrese un numero valido")
-    }
-    fetch('https://randomuser.me/api/?results='+ this.state.vermas)
-    .then(response => response.json())
-    .then ((data)=>{
-     this.state.person= [...this.state.person, ...data.results]
-     console.log(this.state.person)
-     this.setState({person: this.state.person})
-   })
-    .catch((e)=>console.log(e));}
+// loadmore(){
+//     // busco el classname de mas para meter en la url
+//     if (!this.state.vermas) {
+//       return alert ("Ingrese un numero valido")
+//     }
+//     fetch('https://randomuser.me/api/?results='+ this.state.vermas)
+//     .then(response => response.json())
+//     .then ((data)=>{
+//      this.state.person= [...this.state.person, ...data.results]
+//      console.log(this.state.person)
+//      this.setState({person: this.state.person})
+//    })
+//     .catch((e)=>console.log(e));}
 
 
     az = () => {
