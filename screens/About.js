@@ -61,46 +61,12 @@ class About extends Component {
 
           <ScrollView>
             <SafeAreaView style={styles.container}>
-            
-            
-            {/* <View style={{flex: 1}}>
-                <TouchableWithoutFeedback onPress={this.topDown}>
-               <Animated.View style={{
-                    width: 60,
-                    height: 100,
-                    backgroundColor: 'red',
-                    backfaceVisibility: 'true',
-                    transform: [
-                        {translateY: this.position},
-                        {rotateY: rotA}
-                    ]                   
-               }}>
-                   <Text>Somos nosotros</Text>
-               </Animated.View>
-               </TouchableWithoutFeedback>
-
-               <TouchableWithoutFeedback onPress={this.topDown}>
-               <Animated.View style={{
-                    width: 60,
-                    height: 100,
-                    backgroundColor: 'gray',
-                    backfaceVisibility: 'true',
-                    position: 'absolute',
-                    transform: [
-                        {translateY: this.position},
-                        {rotateY: rotB}
-                    ]                   
-               }}>
-                   <Text>Los pibes</Text>
-               </Animated.View>
-               </TouchableWithoutFeedback>
-            </View> */}
 
             <View style={styles.cardAbout} >
 
                 {/* Image */}
                <TouchableWithoutFeedback onPress={this.topDown}>
-                    <Animated.View  style={{
+                    <Animated.View id={0} style={{
                             backfaceVisibility: 'true',
                             position: 'relative',
                             transform: [
@@ -136,7 +102,7 @@ class About extends Component {
 
                 {/* Image */}
                <TouchableWithoutFeedback onPress={this.topDown}>
-                    <Animated.View  style={{
+                    <Animated.View id={1} style={{
                             backfaceVisibility: 'true',
                             position: 'relative',
                             transform: [
@@ -173,7 +139,7 @@ class About extends Component {
 
                 {/* Image */}
                <TouchableWithoutFeedback onPress={this.topDown}>
-                    <Animated.View  style={{
+                    <Animated.View id={2} style={{
                             backfaceVisibility: 'true',
                             position: 'relative',
                             transform: [
