@@ -14,7 +14,6 @@ class About extends Component {
     constructor(){
         super();
         this.state = {
-          
             text: '',
             person: [],
             search: '',
@@ -23,9 +22,7 @@ class About extends Component {
             personOriginal:[],
             textoBuscar: " ",
             vermas: 0,
-         
-
-
+            toValue: 1,
         }
 
 
@@ -36,25 +33,33 @@ class About extends Component {
     rotation = new Animated.Value(0);
 
     topDown = () => {
-        // Animated.timing(this.position, {
-        //     toValue: 300,
-        //     duration: 1000,
-        //     useNativeDriver: true,
-        // }).start();
-        Animated.timing(this.rotation, {
-            toValue: 1,
-            duration: 1000,
-            useNativeDriver: true,
-        }).start();
+        Animated.parallel([
+            Animated.timing(this.rotation, {
+                toValue: this.state.toValue,
+                duration: 500,
+                useNativeDriver: true,
+            }),
+            // Animated.timing(this.position, {
+            // toValue: 100,
+            // duration: 1000,
+            // useNativeDriver: true,
+            // }),
+        ]).start();
+        this.setState({toValue: this.state.toValue + 1})
     }
 
     render(){
       const { search } = this.state;
       const Stack = createStackNavigator();
 
-      const rot = this.rotation.interpolate({
+      const rotA = this.rotation.interpolate({
           inputRange: [0, 1],
           outputRange: ['0deg', '180deg']
+      })
+
+      const rotB = this.rotation.interpolate({
+          inputRange: [0, 1],
+          outputRange: ['180deg', '0deg']
       })
 
         return(
@@ -71,12 +76,29 @@ class About extends Component {
                     width: 60,
                     height: 100,
                     backgroundColor: 'red',
+                    // backfaceVisibility: 'true',
                     transform: [
                         {translateY: this.position},
-                        {rotateX: rot}
+                        {rotateY: rotA}
                     ]                   
                }}>
                    <Text>Somos nosotros</Text>
+               </Animated.View>
+               </TouchableWithoutFeedback>
+
+               <TouchableWithoutFeedback onPress={this.topDown}>
+               <Animated.View style={{
+                    width: 60,
+                    height: 100,
+                    backgroundColor: 'gray',
+                    backfaceVisibility: 'true',
+                    position: 'absolute',
+                    transform: [
+                        {translateY: this.position},
+                        {rotateY: rotB}
+                    ]                   
+               }}>
+                   <Text>Los pibes</Text>
                </Animated.View>
                </TouchableWithoutFeedback>
             </View>
