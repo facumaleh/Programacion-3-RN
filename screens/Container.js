@@ -12,35 +12,32 @@ import {getDataPerson, verMasApi} from '../api/api'
 
 class Container extends Component {
 
-  
-    constructor(){
-        super();
-        this.state = {
-          
-            text: '',
-            person: [],
-            search: '',
-            person: [],
-            visible: 6,
-            personOriginal:[],
-            textoBuscar: " ",
-            vermas: "",
-            personBorrada:[],
-            personFAV:[],
-            resultado:[],
-            activity:true,
+  constructor(){
+      super();
+      this.state = {
+          text: '',
+          person: [],
+          search: '',
+          person: [],
+          visible: 6,
+          personOriginal:[],
+          textoBuscar: " ",
+          vermas: "",
+          personBorrada:[],
+          personFAV:[],
+          resultado:[],
+          activity:true,
+      }
+  }
 
-        }
-    }
-
-   componentDidMount(){
+  componentDidMount(){
     getDataPerson()
     .then(resultado=> {
-     this.setState({person : resultado, activity:false })
+      this.setState({person : resultado, activity:false })
     })
     getDataBorrado('@Borrado')
     .then(resultadoBorrado=> {
-     this.setState({personBorrada : resultadoBorrado })
+      this.setState({personBorrada : resultadoBorrado })
     })
   
     getDataFav("@Favoritos")
@@ -48,36 +45,30 @@ class Container extends Component {
      this.setState({personFAV : resultadoFav })
     })
     // al poner activity:false, cambia la actividad del ActivityIndicator a false, y lo corta una vez que se reciben resultados
- 
-
-
- }
+  }
 
  loadmore(){
-
-  verMasApi(this.state.vermas) 
-      .then(resultado => {
-        this.setState({person: [...this.state.person, ...resultado]})
-     
-  })
-  
-}
+    verMasApi(this.state.vermas) 
+    .then(resultado => {
+      this.setState({person: [...this.state.person, ...resultado]})
+    })
+  }
 
 
 
-    az = () => {
-      this.state.person.sort((a, b) => a.name.first.localeCompare(b.name.first))
-      this.setState({person: this.state.person.sort(function(a, b) { return a.name.first > b.name.first})})
-    } 
-    za = () => {
-      this.state.person.sort((a, b) => b.name.first.localeCompare(a.name.first))
-      this.setState({person: this.state.person.sort(function(a, b) { return a.name.first < b.name.first})})
-    }
+  az = () => {
+    this.state.person.sort((a, b) => a.name.first.localeCompare(b.name.first))
+    this.setState({person: this.state.person.sort(function(a, b) { return a.name.first > b.name.first})})
+  } 
+  za = () => {
+    this.state.person.sort((a, b) => b.name.first.localeCompare(a.name.first))
+    this.setState({person: this.state.person.sort(function(a, b) { return a.name.first < b.name.first})})
+  }
 
-    //  buscador
-    filter(text){
+  //  buscador
+  filter(text){
     if (text.length > 0) {
-       // var text = target.value
+        // var text = target.value
       const personajes = this.state.person
       const filtrado = personajes.filter((item) =>{
       const itemData = item.name.first.toUpperCase()
@@ -87,23 +78,24 @@ class Container extends Component {
       console.log(age);
       return (
       itemData.includes(textData) || lastName.includes(textData) || age.includes(textData)
-           // comparo name o last name o age con el valor ingresado .
-       )})
+            // comparo name o last name o age con el valor ingresado .
+        )})
       this.setState({
         //sete el estado de person con lo filtrado
           person: filtrado,
           textoBuscar: text,
       })
-      } else {
+    } else {
       this.setState({
-     // si no busco nada queda igual
+      // si no busco nada queda igual
 
-       person:this.state.personOriginal}) 
-      }
-      }
-      updateSearch = (text) => {
-      const personajes = this.state.person
-      const filtrado = personajes.filter((item) =>{
+        person:this.state.personOriginal}) 
+    }
+  }
+
+  updateSearch = (text) => {
+    const personajes = this.state.person
+    const filtrado = personajes.filter((item) =>{
       const itemData = item.name.first.toUpperCase();
       const lastName = item.name.last.toUpperCase();
       const age = item.dob.age.toString();
@@ -111,52 +103,46 @@ class Container extends Component {
     //this.setState({ search });
       return (
       itemData.includes(textData) || lastName.includes(textData) || age.includes(textData)
-     // comparo name o last name o age con el valor ingresado .
+      // comparo name o last name o age con el valor ingresado .
       )
-      })};
+    })
+  };
 
-       borrarItem(characteridx){
-        console.log( characteridx);
-        let resultados =this.state.person.filter((person)=> {
-          //  guardo en var resultados el filtro de person
-        return( characteridx!== person.login.uuid )
-          //comparo idx con el uuid
-        })
-        let Borrado = this.state.person.filter((person)=> {
-            //   guardo en var borraos el filtro de person  
-        return( characteridx== person.login.uuid )
-                     })
-        // seteo el estado 
-        
-        let arrayBorrados = [...this.state.personBorrada, ...Borrado]
-        this.setState({person: resultados, personBorrada: arrayBorrados})
-        
-        storeDataBorrado(arrayBorrados, '@Borrados') 
-        
-      }
-
+  borrarItem(characteridx){
+    console.log( characteridx);
+    let resultados =this.state.person.filter((person)=> {
+      //  guardo en var resultados el filtro de person
+      return( characteridx!== person.login.uuid)
+      //comparo idx con el uuid
+    })
+    let Borrado = this.state.person.filter((person)=> {
+        //   guardo en var borraos el filtro de person  
+      return( characteridx== person.login.uuid )
+    })
+    // seteo el estado 
+    let arrayBorrados = [...this.state.personBorrada, ...Borrado]
+    this.setState({person: resultados, personBorrada: arrayBorrados})
     
+    storeDataBorrado(arrayBorrados, '@Borrados')
+  }
 
+  FAV(characteridx){
+    console.log( characteridx);
+    let resultados =this.state.person.filter((person)=> {
+      //  guardo en var resultados el filtro de person
+      return( characteridx!== person.login.uuid )
+      //comparo idx con el uuid
+    })
+    let Favoritos = this.state.person.filter((person)=> {
+        //   guardo en var borraos el filtro de person  
+      return( characteridx== person.login.uuid )
+    })
+    // seteo el estado 
+    let arrayFavs = [...this.state.personFAV, ...Favoritos]
+    this.setState({person: resultados, personFAV: arrayFavs})
     
-
-      FAV(characteridx){
-        console.log( characteridx);
-        let resultados =this.state.person.filter((person)=> {
-          //  guardo en var resultados el filtro de person
-        return( characteridx!== person.login.uuid )
-          //comparo idx con el uuid
-        })
-        let Favoritos = this.state.person.filter((person)=> {
-            //   guardo en var borraos el filtro de person  
-        return( characteridx== person.login.uuid )
-                     })
-        // seteo el estado 
-        let arrayFavs = [...this.state.personFAV, ...Favoritos]
-        this.setState({person: resultados, personFAV: arrayFavs})
-        
-        storeDataFav(arrayFavs, '@Favoritos') 
-        
-      }
+    storeDataFav(arrayFavs, '@Favoritos')  
+  }
     
 
   

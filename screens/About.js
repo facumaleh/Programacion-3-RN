@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import { View, SafeAreaView ,ScrollView,TextInput, Image,Text,Pressable} from 'react-native'
+import { View, SafeAreaView ,ScrollView,TextInput, Image,Text,Pressable, Animated, TouchableWithoutFeedback, Easing, Value} from 'react-native'
 import { styles } from '../styles/styles'
 import { FontAwesome } from '@expo/vector-icons';
 import { NavigationContainer } from '@react-navigation/native';
@@ -32,13 +32,30 @@ class About extends Component {
 
     }
 
-    
+    position = new Animated.Value(0);
+    rotation = new Animated.Value(0);
 
-  
+    topDown = () => {
+        // Animated.timing(this.position, {
+        //     toValue: 300,
+        //     duration: 1000,
+        //     useNativeDriver: true,
+        // }).start();
+        Animated.timing(this.rotation, {
+            toValue: 1,
+            duration: 1000,
+            useNativeDriver: true,
+        }).start();
+    }
+
     render(){
       const { search } = this.state;
       const Stack = createStackNavigator();
 
+      const rot = this.rotation.interpolate({
+          inputRange: [0, 1],
+          outputRange: ['0deg', '180deg']
+      })
 
         return(
           //<NavigationContainer>
@@ -47,7 +64,23 @@ class About extends Component {
           <ScrollView>
             <SafeAreaView style={styles.container}>
             
-        
+            
+            <View style={{flex: 1}}>
+                <TouchableWithoutFeedback onPress={this.topDown}>
+               <Animated.View style={{
+                    width: 60,
+                    height: 100,
+                    backgroundColor: 'red',
+                    transform: [
+                        {translateY: this.position},
+                        {rotateX: rot}
+                    ]                   
+               }}>
+                   <Text>Somos nosotros</Text>
+               </Animated.View>
+               </TouchableWithoutFeedback>
+            </View>
+
             <View style={styles.cardAbout} >
                 <Image  source={{uri: "https://image.flaticon.com/icons/png/512/921/921071.png"}} style={styles.imgCard}  />
                 <Text style={styles.Titulo}>Facundo Maleh</Text>
@@ -58,7 +91,7 @@ class About extends Component {
             </View>
 
             <View style={styles.cardAbout} >
-                <Image  source={{uri: "https://image.flaticon.com/icons/png/512/3334/3334039.png"}} style={styles.imgCard}  />
+                <Image source={{uri: "https://image.flaticon.com/icons/png/512/3334/3334039.png"}} style={styles.imgCard}  />
                 <Text style={styles.Titulo}>Tomás Caimmi</Text>
                 <Text style={styles.TextoCard} >Location: Buenos Aires, Argentina</Text>
                 <Text style={styles.TextoCard}>Birthdate: 22 de enero del 2001 </Text>
