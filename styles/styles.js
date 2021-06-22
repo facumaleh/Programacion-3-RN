@@ -42,12 +42,27 @@ const styles = StyleSheet.create({
       width: 150, 
       height: 150, 
       borderRadius: 10,
-      // marginLeft: 75,
+       marginLeft: 75,
       borderColor: '#00b8a9',
       borderWidth: 3,
   },
-
+  imgCardAbout:{
+    width: 150, 
+    height: 150, 
+    borderRadius: 10,
+    borderColor: '#00b8a9',
+    borderWidth: 3,
+    backgroundColor:"black"
+},
  
+imgCardAbout2:{
+  width: 150, 
+  height: 150, 
+  borderRadius: 10,
+  borderColor: '#00b8a9',
+  borderWidth: 3,
+  backgroundColor:"red"
+},
 
     input:{
       height: 50,

@@ -73,7 +73,7 @@ class About extends Component {
                                 {rotateY: rotA}
                             ]                   
                     }}>
-                        <Image source={{uri: "https://image.flaticon.com/icons/png/512/921/921071.png"}} style={styles.imgCard} />
+                        <Image source={{uri:  "https://image.flaticon.com/icons/png/512/3048/3048122.png"}} style={styles.imgCardAbout} />
                     </Animated.View>
                </TouchableWithoutFeedback>
 
@@ -86,7 +86,7 @@ class About extends Component {
                                 {rotateY: rotB}
                             ]                   
                     }}>
-                        <Image source={{uri: "https://image.flaticon.com/icons/png/512/3048/3048122.png"}} style={styles.imgCard} /> 
+                        <Image source={{uri: "https://image.flaticon.com/icons/png/512/3048/3048122.png"}} style={styles.imgCardAbout2} /> 
                     </Animated.View>
                </TouchableWithoutFeedback>
                {/* Image */}
@@ -109,7 +109,7 @@ class About extends Component {
                                 {rotateY: rotA}
                             ]                   
                     }}>
-                        <Image source={{uri: "https://image.flaticon.com/icons/png/512/3334/3334039.png"}} style={styles.imgCard} />
+                        <Image source={{uri: "https://image.flaticon.com/icons/png/512/3334/3334039.png"}} style={styles.imgCardAbout} />
                     </Animated.View>
                </TouchableWithoutFeedback>
 
@@ -122,7 +122,7 @@ class About extends Component {
                                 {rotateY: rotB}
                             ]                   
                     }}>
-                        <Image source={{uri: "https://image.flaticon.com/icons/png/512/3048/3048127.png"}} style={styles.imgCard} /> 
+                        <Image source={{uri: "https://image.flaticon.com/icons/png/512/3334/3334039.png"}} style={styles.imgCardAbout2} /> 
                     </Animated.View>
                </TouchableWithoutFeedback>
                {/* Image */}
@@ -146,7 +146,7 @@ class About extends Component {
                                 {rotateY: rotA}
                             ]                   
                     }}>
-                        <Image source={{uri: "https://image.flaticon.com/icons/png/512/3048/3048189.png"}} style={styles.imgCard} />
+                        <Image source={{uri: "https://image.flaticon.com/icons/png/512/3048/3048189.png"}} style={styles.imgCardAbout} />
                     </Animated.View>
                </TouchableWithoutFeedback>
 
@@ -159,7 +159,7 @@ class About extends Component {
                                 {rotateY: rotB}
                             ]                   
                     }}>
-                        <Image source={{uri: "https://image.flaticon.com/icons/png/512/921/921110.png"}} style={styles.imgCard} /> 
+                        <Image source={{uri: "https://image.flaticon.com/icons/png/512/3048/3048189.png"}} style={styles.imgCardAbout2} /> 
                     </Animated.View>
                </TouchableWithoutFeedback>
                {/* Image */}

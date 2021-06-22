@@ -28,13 +28,11 @@ class App extends Component {
 
         return(
             <View style={styles.card} key={id}bottomDivider>
-                <Image  source={{uri: img}} style={styles.imgCard}  />
-                
+               <Image  source={{uri: img}} style={styles.imgCard}  />
                  <Text style={styles.Titulo}>{firstName},{lastName}</Text>
                    <Text style={styles.TextoCard} >Location: {city}, {State}, {Country}</Text>
                    <Text style={styles.TextoCard}>Birthdate:{Date.substring(0,10)} </Text>
                    <Text style={styles.TextoCard}>Current age: {Bithday}</Text>
-                
                  <Pressable style={styles.button}  onPress= {this.openModal}>
                  <FontAwesome name="info-circle" size={24} color="#00b8a9" />
                  </Pressable>
@@ -55,8 +53,7 @@ class App extends Component {
                    Registered={Registered} 
                    Date={Date}
                    id={id}
-                 
-                 />
+                  />
                  
 
                  <Pressable style={styles.buttonBorrar} onPress= {this.props.onDelete.bind(this,id)}>
