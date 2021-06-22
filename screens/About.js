@@ -141,7 +141,7 @@ class About extends Component {
                </TouchableWithoutFeedback>
                {/* Image */}
 
-                <TouchableWithoutFeedback onPress={this.expandir}>
+                <TouchableWithoutFeedback onLongPress={this.expandir}>
                     <View>
                         <Animated.Text style={{...styles.Titulo, ...{
                             transform: [
@@ -159,7 +159,7 @@ class About extends Component {
             <View style={styles.cardAbout} >
 
                 {/* Image */}
-               <TouchableWithoutFeedback onPress={this.topDown}>
+               <TouchableWithoutFeedback onLongPress={this.topDown}>
                     <Animated.View id={1} style={{
                             backfaceVisibility: 'true',
                             position: 'relative',
@@ -171,7 +171,7 @@ class About extends Component {
                     </Animated.View>
                </TouchableWithoutFeedback>
 
-               <TouchableWithoutFeedback onPress={this.topDown}>
+               <TouchableWithoutFeedback onLongPress ={this.topDown}>
                     <Animated.View style={{
                             marginTop: 20,
                             backfaceVisibility: 'true',
