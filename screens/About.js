@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import { View, SafeAreaView ,ScrollView,TextInput, Image,Text,Pressable, Animated, TouchableWithoutFeedback, Easing, Value} from 'react-native'
+import { View, SafeAreaView ,ScrollView,TextInput, Image,Text,Pressable, Animated, TouchableWithoutFeedback, Easing, Value, Button} from 'react-native'
 import { styles } from '../styles/styles'
 import { FontAwesome } from '@expo/vector-icons';
 import { NavigationContainer } from '@react-navigation/native';
@@ -24,14 +24,30 @@ class About extends Component {
             vermas: 0,
             toValue: 1,
             toValueTitle: 1.5,
+            valueVaca: 20,
         }
 
 
 
     }
 
+    positionV = new Animated.Value(20);
     position = new Animated.Value(1);
     rotation = new Animated.Value(0);
+
+    moverVaca = () => {
+        Animated.timing(this.positionV, {
+            toValue: this.state.valueVaca,
+            duration: 2000,
+            useNativeDriver: true,
+            easing: Easing.linear
+        }).start();
+        if (this.state.valueVaca == 20){
+            this.setState({valueVaca: 200})
+        } else {
+            this.setState({valueVaca: 20})
+        }
+    }
 
     topDown = () => {
         Animated.timing(this.rotation, {
@@ -56,6 +72,7 @@ class About extends Component {
         }
     }
 
+
     render(){
       const { search } = this.state;
       const Stack = createStackNavigator();
@@ -76,6 +93,24 @@ class About extends Component {
 
           <ScrollView>
             <SafeAreaView style={styles.container}>
+
+            
+                <View style={{width: 400, flex: 1}}>
+                <Button title="mueve" onPress={this.moverVaca}/>
+                    <Animated.View>
+                        <Image style={{
+                            height: 100,
+                            width: 100,
+                            transform: [
+                                {translateX: this.state.valueVaca}
+                            ]
+                        }}
+                        source={{uri:  "https://static.wixstatic.com/media/2cd43b_1a0dc766603340b5a4c62ea0cbf3c113~mv2.png/v1/fill/w_320,h_278,q_90/2cd43b_1a0dc766603340b5a4c62ea0cbf3c113~mv2.png"}} />
+                    </Animated.View>
+                </View>
+           
+
+
 
             <View style={styles.cardAbout} >
 
