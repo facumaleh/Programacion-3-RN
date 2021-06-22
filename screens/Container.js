@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import { View, SafeAreaView ,ScrollView,TextInput, Image,Text,Pressable, Button,FlatList,ActivityIndicator} from 'react-native'
+import { View, SafeAreaView ,ScrollView,TextInput, Image,Text,Pressable, Button,FlatList,ActivityIndicator, TouchableOpacity} from 'react-native'
 import { styles } from '../styles/styles'
 import Card from "../componentes/Card";
 import { FontAwesome } from '@expo/vector-icons';
@@ -214,9 +214,9 @@ class Container extends Component {
 
              
           < TextInput  style={styles.input}   keyboardType="numeric" className = "mas" placeholder="Ingresar numero de tarjetas" onChangeText= {text => this.setState({vermas: text})}  />
-          <Pressable  style={styles.buttonVerMas}  onPress={this.loadmore.bind(this)}  >
+          <TouchableOpacity  style={styles.buttonVerMas}  onPress={this.loadmore.bind(this)}  >
           <Text style={styles.textPresables}   > Ver más</Text>
-          </Pressable> 
+          </TouchableOpacity> 
 
           
           </SafeAreaView>

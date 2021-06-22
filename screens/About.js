@@ -23,13 +23,14 @@ class About extends Component {
             textoBuscar: " ",
             vermas: 0,
             toValue: 1,
+            toValueTitle: 1.5,
         }
 
 
 
     }
 
-    position = new Animated.Value(0);
+    position = new Animated.Value(1);
     rotation = new Animated.Value(0);
 
     topDown = () => {
@@ -39,6 +40,20 @@ class About extends Component {
             useNativeDriver: false,
         }).start();
         this.setState({toValue: this.state.toValue + 1})
+    }
+
+    expandir = () => {
+        Animated.timing(this.position, {
+            toValueTitle: this.state.toValueTitle,
+            duration: 500,
+            easing: Easing.elastic(4),
+            useNativeDriver: false,
+        }).start();
+        if (this.state.toValueTitle == 1.5){
+            this.setState({toValueTitle: 1})
+        } else {
+            this.setState({toValueTitle: 1.5})
+        }
     }
 
     render(){
@@ -91,7 +106,15 @@ class About extends Component {
                </TouchableWithoutFeedback>
                {/* Image */}
 
-                <Text style={styles.Titulo}>Facundo Maleh</Text>
+                <TouchableWithoutFeedback onPress={this.expandir}>
+                    <View>
+                        <Animated.Text style={{...styles.Titulo, ...{
+                            transform: [
+                                {scale: this.state.toValueTitle}
+                            ]
+                        }}}>Facundo Maleh</Animated.Text>
+                    </View>
+                </TouchableWithoutFeedback>
                 <Text style={styles.TextoCard} >Location: Buenos Aires, Argentina</Text>
                 <Text style={styles.TextoCard}>Birthdate: 21 de febrero del 2001 </Text>
                 <Text style={styles.TextoCard}>Current age: 20</Text>
@@ -127,7 +150,15 @@ class About extends Component {
                </TouchableWithoutFeedback>
                {/* Image */}
 
-                <Text style={styles.Titulo}>Tomás Caimmi</Text>
+               <TouchableWithoutFeedback onPress={this.expandir}>
+                    <View>
+                        <Animated.Text style={{...styles.Titulo, ...{
+                            transform: [
+                                {scale: this.state.toValueTitle}
+                            ]
+                        }}}>Tomás Caimmi</Animated.Text>
+                    </View>
+                </TouchableWithoutFeedback>
                 <Text style={styles.TextoCard} >Location: Buenos Aires, Argentina</Text>
                 <Text style={styles.TextoCard}>Birthdate: 22 de enero del 2001 </Text>
                 <Text style={styles.TextoCard}>Current age: 20</Text>
@@ -164,7 +195,15 @@ class About extends Component {
                </TouchableWithoutFeedback>
                {/* Image */}
 
-                <Text style={styles.Titulo}>Agustin Ihidoype</Text>
+               <TouchableWithoutFeedback onPress={this.expandir}>
+                    <View>
+                        <Animated.Text style={{...styles.Titulo, ...{
+                            transform: [
+                                {scale: this.state.toValueTitle}
+                            ]
+                        }}}>Agustín Ihidoype</Animated.Text>
+                    </View>
+                </TouchableWithoutFeedback>
                 <Text style={styles.TextoCard} >Location: Buenos Aires, Argentina</Text>
                 <Text style={styles.TextoCard}>Birthdate: 5 de junio de 2001  </Text>
                 <Text style={styles.TextoCard}>Current age: 20</Text>
