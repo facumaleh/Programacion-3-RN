@@ -16,7 +16,6 @@ class Papelera extends Component {
         super();
         this.state = {
           
-            
             personBorrada:[],
             person:[],
             resultado:[],
@@ -28,9 +27,9 @@ componentDidMount() {
   this._unsubscribe = this.props.navigation.addListener('focus', () => {            
      getDataBorrado("@Borrados")
      .then(resultado=> {
-      this.setState({personBorrada : resultado })
+       this.setState({personBorrada : resultado })
      });
-    });
+  });
 }
 componentWillUnmount(){
   this._unsubscribe()
@@ -64,24 +63,26 @@ async Reset (key){
   Reset=()=>{
     const asyncFun = async () => {
          await AsyncStorage.removeItem('@Borrados');
-          }
-            asyncFun();
+    }
+    
+    asyncFun();
             
-            return this.setState({
-             personBorrada: []
-          })
+    return this.setState({
+      personBorrada: []
+    })
 
   }
   
   borrarItem(characteridx){
     console.log( characteridx);
     let resultados =this.state.personBorrada.filter((person)=> {
-      //  guardo en var resultados el filtro de personBorrada
-      return( characteridx!== person.login.uuid )
-      //comparo idx con el uuid
+        //  guardo en var resultados el filtro de personBorrada
+        return( characteridx!== person.login.uuid )
+        //comparo idx con el uuid
     })
-    // seteo el estado 
-    this.setState({personBorrada: resultados})
+    
+      // seteo el estado 
+      this.setState({personBorrada: resultados})
     }
 
     render(){
@@ -91,15 +92,19 @@ async Reset (key){
             <SafeAreaView style={styles.container}>
                    
             <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between' }} >
+
               <Pressable   style={styles.buttonAZZA}  onPress={this.az.bind(this)} >
-              <FontAwesome name="sort-alpha-asc" size={15} color="#f6416c" />
+                <FontAwesome name="sort-alpha-asc" size={15} color="#f6416c" />
               </Pressable>
+
               <Pressable   style={styles.buttonAZZA}  onPress={this.za.bind(this)} >
-              <FontAwesome name="sort-alpha-desc" size={15} color="#f6416c" />
+                <FontAwesome name="sort-alpha-desc" size={15} color="#f6416c" />
               </Pressable>
+
               <Pressable   style={styles.buttonAZZA}  onPress={()=> this.Reset("@Borrados")} >
                 <Text> Reset</Text>
               </Pressable>
+
             </View >
 
             <View style={styles.container}></View>
@@ -108,41 +113,42 @@ async Reset (key){
             
             {
               <FlatList
-              style={styles.flat}
-              data={this.state.personBorrada}
-              keyExtractor={ (item, idx) => idx.toString()}
-  
-  
-              renderItem={ ({item}) =>
-                (
+                style={styles.flat}
+                data={this.state.personBorrada}
+                keyExtractor={ (item, idx) => idx.toString()}
+    
+    
+                renderItem={ ({item}) =>
+                  (
 
 
-            <CardPapelera
-                onDelete= {this.borrarItem.bind(this)}
-                id= {item.login.uuid}
-                firstName={item.name.first}
-                img={item.picture.large}
-                lastName={item.name.last}
-                Email={item.email}
-                city={item.location.city}
-                State={item.location.state}
-                Street={item.location.street.name}
-                StreetNumber={item.location.street.number}
-                Telephone= {item.phone}
-                imgMed={item.picture.medium}
-                Country={item.location.country}
-                Postcode={ item.location.postcode}
-                Bithday= {item.dob.age}
-                Date= {item.dob.date}
-                Registered = {item.registered.date} >
+              <CardPapelera
+              
+                  onDelete= {this.borrarItem.bind(this)}
+                  id= {item.login.uuid}
+                  firstName={item.name.first}
+                  img={item.picture.large}
+                  lastName={item.name.last}
+                  Email={item.email}
+                  city={item.location.city}
+                  State={item.location.state}
+                  Street={item.location.street.name}
+                  StreetNumber={item.location.street.number}
+                  Telephone= {item.phone}
+                  imgMed={item.picture.medium}
+                  Country={item.location.country}
+                  Postcode={ item.location.postcode}
+                  Bithday= {item.dob.age}
+                  Date= {item.dob.date}
+                  Registered = {item.registered.date} >
 
-                
-            </CardPapelera>
+                  
+              </CardPapelera>
 
-                 )
+                  )
 
 
-            }
+              }
             
             />
           }
