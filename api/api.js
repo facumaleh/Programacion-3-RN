@@ -4,7 +4,7 @@
     export const getDataPerson= async ()=> {
     let resultadopedido;
     try {
-      const response = await fetch("https://deelay.me/250/randomuser.me/api/?results=1");
+      const response = await fetch("https://deelay.me/250/randomuser.me/api/?results=10");
       resultadopedido = await response.json();
       return resultadopedido.results;
 

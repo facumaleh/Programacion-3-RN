@@ -6,7 +6,7 @@ import { FontAwesome } from '@expo/vector-icons';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import {getDataBorrado} from "../asyncStorageFunctions/index"
+import {getDataBorrado, storeDataBorrado} from "../asyncStorageFunctions/index"
 
 
 class Papelera extends Component {
@@ -48,7 +48,19 @@ za = () => {
 
 
    
+async Reset (key){
+  try{
 
+      await Asyncstorage.removeItem(key)
+      let resultado = [];
+      storeDataBorrado(resultado, "@Borrados")
+
+       this.setState({personBorrada:  [] })
+      } catch(error){
+      console.log(error);
+    }
+  
+}
   Reset=()=>{
     const asyncFun = async () => {
          await AsyncStorage.removeItem('@Borrados');
@@ -85,7 +97,7 @@ za = () => {
               <Pressable   style={styles.buttonAZZA}  onPress={this.za.bind(this)} >
               <FontAwesome name="sort-alpha-desc" size={15} color="#f6416c" />
               </Pressable>
-              <Pressable   style={styles.buttonAZZA}  onPress={this.Reset.bind(this)} >
+              <Pressable   style={styles.buttonAZZA}  onPress={()=> this.Reset("@Borrados")} >
                 <Text> Reset</Text>
               </Pressable>
             </View >
