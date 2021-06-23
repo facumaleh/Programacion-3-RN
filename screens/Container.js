@@ -6,7 +6,7 @@ import { FontAwesome } from '@expo/vector-icons';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import {getDataIndex, setDataIndex,storeDataBorrado,getDataBorrado,getDataFav,storeDataFav,setDataVerMas, getDataVerMas} from "../asyncStorageFunctions/index"
+import {getDataIndex, setDataIndex} from "../asyncStorageFunctions/index"
 import {getDataPerson, verMasApi} from '../api/api'
 
 
@@ -35,12 +35,12 @@ class Container extends Component {
     .then(resultado=> {
       this.setState({person : resultado, activity:false })
     })
-    getDataBorrado('@Borrado')
+    getDataIndex('@Borrado')
     .then(resultadoBorrado=> {
       this.setState({personBorrada : resultadoBorrado })
     })
   
-    getDataFav("@Favoritos")
+    getDataIndex("@Favoritos")
     .then(resultadoFav=> {
      this.setState({personFAV : resultadoFav })
     })
@@ -123,7 +123,7 @@ class Container extends Component {
     let arrayBorrados = [...this.state.personBorrada, ...Borrado]
     this.setState({person: resultados, personBorrada: arrayBorrados})
     
-    storeDataBorrado(arrayBorrados, '@Borrados')
+    setDataIndex(arrayBorrados, '@Borrados')
   }
 
   FAV(characteridx){
@@ -141,7 +141,7 @@ class Container extends Component {
     let arrayFavs = [...this.state.personFAV, ...Favoritos]
     this.setState({person: resultados, personFAV: arrayFavs})
     
-    storeDataFav(arrayFavs, '@Favoritos')  
+    setDataIndex(arrayFavs, '@Favoritos')  
   }
     
 

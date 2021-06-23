@@ -6,7 +6,7 @@ import { FontAwesome } from '@expo/vector-icons';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import {getDataBorrado, storeDataBorrado} from "../asyncStorageFunctions/index"
+import {setDataIndex, getDataIndex} from "../asyncStorageFunctions/index"
 
 
 class Papelera extends Component {
@@ -25,7 +25,7 @@ class Papelera extends Component {
     
 componentDidMount() {
   this._unsubscribe = this.props.navigation.addListener('focus', () => {            
-     getDataBorrado("@Borrados")
+     getDataIndex("@Borrados")
      .then(resultado=> {
        this.setState({personBorrada : resultado })
      });
@@ -52,7 +52,7 @@ async Reset (key){
 
       await Asyncstorage.removeItem(key)
       let resultado = [];
-      storeDataBorrado(resultado, "@Borrados")
+      setDataIndex(resultado, "@Borrados")
 
        this.setState({personBorrada:  [] })
       } catch(error){
@@ -83,6 +83,8 @@ async Reset (key){
     
       // seteo el estado 
       this.setState({personBorrada: resultados})
+      setDataIndex(this.state.personBorrada, "@Borrados")
+
     }
 
     render(){

@@ -6,7 +6,7 @@ import { FontAwesome } from '@expo/vector-icons';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import {getDataFav} from "../asyncStorageFunctions/index"
+import {getDataIndex,setDataIndex} from "../asyncStorageFunctions/index"
 
 
 
@@ -32,7 +32,7 @@ class Favoritos extends Component {
 
    componentDidMount() {
     this._unsubscribe = this.props.navigation.addListener('focus', () => {            
-       getDataFav("@Favoritos")
+       getDataIndex("@Favoritos")
        .then(resultado=> {
         this.setState({personFAV : resultado })
        });
@@ -64,6 +64,8 @@ class Favoritos extends Component {
     })
     // seteo el estado 
     this.setState({personFAV: resultados})
+    setDataIndex(resultado, "@Favoritos")
+
     }
 
 
@@ -78,17 +80,19 @@ class Favoritos extends Component {
       // seteo el estado 
       this.setState({personFAV: resultados})
       }
-      Reset=()=>{
-        const asyncFun = async () => {
-             await AsyncStorage.removeItem('@Favoritos');
-              }
-                asyncFun();
-                
-                return this.setState({
-                 personFAV: []
-              })
+     
+       Reset=()=>{
+    const asyncFun = async () => {
+         await AsyncStorage.removeItem('@Favoritos');
+    }
     
-      }
+    asyncFun();
+            
+    return this.setState({
+      personFAV: []
+    })
+
+  }
   
     render(){
       
@@ -104,7 +108,7 @@ class Favoritos extends Component {
               <Pressable   style={styles.buttonAZZA}  onPress={this.za.bind(this)} >
               <FontAwesome name="sort-alpha-desc" size={15} color="#f6416c" />
               </Pressable>
-              <Pressable  style={styles.buttonAZZA}  onPress={this.Reset.bind(this)} >
+              <Pressable  style={styles.buttonAZZA}  onPress={()=> this.Reset("@Borrados")}>
                 <Text> Reset</Text>
               </Pressable>
             </View >
