@@ -35,7 +35,7 @@ class Container extends Component {
   componentDidMount(){
     getDataPerson()
     .then(resultado=> {
-      this.setState({person : resultado, activity:false })
+      this.setState({person : resultado,personOriginal:resultado, activity:false })
       setDataIndex(resultado, "@contactos")
     })
     

@@ -41,7 +41,7 @@ class CardPapelera extends Component {
                  <FontAwesome name="info-circle" size={24} color="#00b8a9" />
                  </Pressable>
                  <Pressable style={styles.buttonBorrar} onPress= {this.props.onDelete.bind(this,id)}>
-                 <FontAwesome  name="trash" size={24} color="#f6416c"  />
+                 <FontAwesome  name="address-book" size={24} color="#f6416c"  />
                  </Pressable>
                  {/* <Pressable style={styles.buttonBorrar} onPress= {this.props.onFav.bind(this,id)}>
                  <FontAwesome name="heart" size={24} color="#f6416c" />

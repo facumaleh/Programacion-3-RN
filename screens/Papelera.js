@@ -94,9 +94,6 @@ async Reset (key){
       this.setState({personBorrada: resultados})
       setDataIndex(resultados, "@Borrados")
      let paraRecuperar= [...this.state.contactos,...recupero]
-     console.log("para recuperear")
-     console.log(paraRecuperar.length)
-     console.log(paraRecuperar)
      setDataIndex(paraRecuperar, "@contactos")
 
     }
@@ -118,7 +115,7 @@ async Reset (key){
               </Pressable>
 
               <Pressable   style={styles.buttonAZZA}  onPress={()=> this.Reset("@Borrados")} >
-                <Text> Reset</Text>
+                <Text  > Vaciar papelera</Text>
               </Pressable>
 
             </View >
