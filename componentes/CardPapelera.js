@@ -23,7 +23,7 @@ class CardPapelera extends Component {
 
       
     render(){
-      const { img, firstName, lastName,Email,city,State,Street,StreetNumber,Telephone, Country, Bithday,Registered, Date,id,key} = this.props;
+      const { img, firstName, lastName,Email,city,State,Street,StreetNumber,Telephone, Country, Bithday,Registered, Date,id} = this.props;
 
 
         return(
@@ -43,15 +43,17 @@ class CardPapelera extends Component {
                  <Pressable style={styles.buttonBorrar} onPress= {this.props.onDelete.bind(this,id)}>
                  <FontAwesome  name="trash" size={24} color="#f6416c"  />
                  </Pressable>
+                 {/* <Pressable style={styles.buttonBorrar} onPress= {this.props.onFav.bind(this,id)}>
+                 <FontAwesome name="heart" size={24} color="#f6416c" />
+                 </Pressable> */}
                     
                  
                           
                  <ModalComponenteFavDel
                   isOpenClose={this.state.isOpen}
                   close= {this.closeModal.bind(this)}
-                  key={key}
                   img={img}
-                  firstName={firstName}
+                   firstName={firstName}
                    lastName={lastName}
                    Email={Email}
                    city={city}

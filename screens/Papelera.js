@@ -19,6 +19,7 @@ class Papelera extends Component {
             personBorrada:[],
             person:[],
             resultado:[],
+            importados:[],
 
         }
     }
@@ -29,6 +30,12 @@ componentDidMount() {
      .then(resultado=> {
        this.setState({personBorrada : resultado })
      });
+     getDataIndex("@importados")
+     .then(resultado=> {
+      this.setState({importados : resultado })
+      console.log(this.state.importados.length + "----------------------")
+     
+    });
   });
 }
 componentWillUnmount(){
@@ -44,6 +51,15 @@ za = () => {
   this.setState({personBorrada: this.state.personBorrada.sort(function(a, b) { return a.name.first < b.name.first})})
 }
 
+FAV(characteridx){
+  console.log( characteridx);
+  let resultados =this.state.person.filter((person)=> {
+    //  guardo en var resultados el filtro de person
+    return( characteridx!== person.login.uuid )
+    //comparo idx con el uuid
+  })
+  
+}
 
 
    
@@ -60,30 +76,27 @@ async Reset (key){
     }
   
 }
-  Reset=()=>{
-    const asyncFun = async () => {
-         await AsyncStorage.removeItem('@Borrados');
-    }
-    
-    asyncFun();
-            
-    return this.setState({
-      personBorrada: []
-    })
-
-  }
+ 
   
   borrarItem(characteridx){
-    console.log( characteridx);
     let resultados =this.state.personBorrada.filter((person)=> {
         //  guardo en var resultados el filtro de personBorrada
         return( characteridx!== person.login.uuid )
         //comparo idx con el uuid
     })
+    let recupero = this.state.person.filter((person)=> {
+      //   guardo en var borraos el filtro de person  
+    return( characteridx== person.login.uuid )
+  })
     
       // seteo el estado 
+      
+      this.state.importados.push(recupero)
+      console.log("push")
+      console.log(this.state.importados.length + "----------------------")
       this.setState({personBorrada: resultados})
-      setDataIndex(this.state.personBorrada, "@Borrados")
+      setDataIndex(resultados, "@Borrados")
+      setDataIndex(this.state.importados, "@importados")
 
     }
 
@@ -127,6 +140,7 @@ async Reset (key){
               <CardPapelera
               
                   onDelete= {this.borrarItem.bind(this)}
+                  onFav= {this.FAV.bind(this)}
                   id= {item.login.uuid}
                   firstName={item.name.first}
                   img={item.picture.large}

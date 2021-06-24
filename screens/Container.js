@@ -27,6 +27,7 @@ class Container extends Component {
           personFAV:[],
           resultado:[],
           activity:true,
+          contactos:[]
       }
   }
 
@@ -34,19 +35,33 @@ class Container extends Component {
     getDataPerson()
     .then(resultado=> {
       this.setState({person : resultado, activity:false })
+      setDataIndex(resultado, "@importados")
     })
-    getDataIndex('@Borrado')
-    .then(resultadoBorrado=> {
-      this.setState({personBorrada : resultadoBorrado })
-    })
-  
-    getDataIndex("@Favoritos")
-    .then(resultadoFav=> {
-     this.setState({personFAV : resultadoFav })
-    })
+    
+    this._unsubscribe = this.props.navigation.addListener('focus', () => { 
+      
+    
+
+      getDataIndex("@Borrados")
+      .then(resultado=> {
+        this.setState({personBorrada : resultado })
+      });
+    //   getDataIndex("@importados")
+    //   .then(resultado=> {
+    //     this.setState({person: resultado})
+    
+    //  });
+     getDataIndex("@Favoritos")
+     .then(resultadoFav=> {
+      this.setState({personFAV : resultadoFav })
+     })
+   });
     // al poner activity:false, cambia la actividad del ActivityIndicator a false, y lo corta una vez que se reciben resultados
   }
-
+  componentWillUnmount(){
+    this._unsubscribe()
+  }
+  
  loadmore(){
     verMasApi(this.state.vermas) 
     .then(resultado => {
@@ -109,7 +124,6 @@ class Container extends Component {
   };
 
   borrarItem(characteridx){
-    console.log( characteridx);
     let resultados =this.state.person.filter((person)=> {
       //  guardo en var resultados el filtro de person
       return( characteridx!== person.login.uuid)
@@ -122,8 +136,9 @@ class Container extends Component {
     // seteo el estado 
     let arrayBorrados = [...this.state.personBorrada, ...Borrado]
     this.setState({person: resultados, personBorrada: arrayBorrados})
-    
+    setDataIndex(resultados,"@importados")
     setDataIndex(arrayBorrados, '@Borrados')
+    console.log(this.state.person.length + "----------------------")
   }
 
   FAV(characteridx){
@@ -140,7 +155,7 @@ class Container extends Component {
     // seteo el estado 
     let arrayFavs = [...this.state.personFAV, ...Favoritos]
     this.setState({person: resultados, personFAV: arrayFavs})
-    
+    setDataIndex(this.state.person,"@importados")
     setDataIndex(arrayFavs, '@Favoritos')  
   }
     
@@ -183,6 +198,7 @@ class Container extends Component {
                  <Card
                   onDelete= {this.borrarItem.bind(this)}
                   onFav= {this.FAV.bind(this)}
+                  
                   id= {item.login.uuid}
                   firstName={item.name.first}
                   img={item.picture.large}
