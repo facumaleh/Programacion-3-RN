@@ -54,9 +54,8 @@ class Container extends Component {
    
    getDataIndex("@contactos")
    .then (resultado=> {
-     console.log("----------------------------")
-     console.log(resultado)
-    //  this.setState({person:resultado})
+  
+     this.setState({person:resultado})
      
 
 

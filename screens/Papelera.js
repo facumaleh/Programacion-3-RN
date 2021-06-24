@@ -93,8 +93,11 @@ async Reset (key){
       // seteo el estado 
       this.setState({personBorrada: resultados})
       setDataIndex(resultados, "@Borrados")
-      this.state.contactos.push(recupero)
-      setDataIndex(this.state.contactos, "@contacos")
+     let paraRecuperar= [...this.state.contactos,...recupero]
+     console.log("para recuperear")
+     console.log(paraRecuperar.length)
+     console.log(paraRecuperar)
+     setDataIndex(paraRecuperar, "@contactos")
 
     }
 
