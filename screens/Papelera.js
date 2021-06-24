@@ -19,7 +19,7 @@ class Papelera extends Component {
             personBorrada:[],
             person:[],
             resultado:[],
-            importados:[],
+            contactos:[],
 
         }
     }
@@ -30,10 +30,11 @@ componentDidMount() {
      .then(resultado=> {
        this.setState({personBorrada : resultado })
      });
-     getDataIndex("@importados")
+     getDataIndex("@contactos")
      .then(resultado=> {
-      this.setState({importados : resultado })
-      console.log(this.state.importados.length + "----------------------")
+      this.setState({contactos : resultado })
+      
+  
      
     });
   });
@@ -84,19 +85,16 @@ async Reset (key){
         return( characteridx!== person.login.uuid )
         //comparo idx con el uuid
     })
-    let recupero = this.state.person.filter((person)=> {
+    let recupero = this.state.personBorrada.filter((person)=> {
       //   guardo en var borraos el filtro de person  
     return( characteridx== person.login.uuid )
   })
     
       // seteo el estado 
-      
-      this.state.importados.push(recupero)
-      console.log("push")
-      console.log(this.state.importados.length + "----------------------")
       this.setState({personBorrada: resultados})
       setDataIndex(resultados, "@Borrados")
-      setDataIndex(this.state.importados, "@importados")
+      this.state.contactos.push(recupero)
+      setDataIndex(this.state.contactos, "@contacos")
 
     }
 

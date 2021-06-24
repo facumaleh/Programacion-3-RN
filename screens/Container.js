@@ -8,6 +8,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import {getDataIndex, setDataIndex} from "../asyncStorageFunctions/index"
 import {getDataPerson, verMasApi} from '../api/api'
+import { cos } from "react-native-reanimated";
 
 
 class Container extends Component {
@@ -35,7 +36,7 @@ class Container extends Component {
     getDataPerson()
     .then(resultado=> {
       this.setState({person : resultado, activity:false })
-      setDataIndex(resultado, "@importados")
+      setDataIndex(resultado, "@contactos")
     })
     
     this._unsubscribe = this.props.navigation.addListener('focus', () => { 
@@ -46,16 +47,23 @@ class Container extends Component {
       .then(resultado=> {
         this.setState({personBorrada : resultado })
       });
-    //   getDataIndex("@importados")
-    //   .then(resultado=> {
-    //     this.setState({person: resultado})
-    
-    //  });
      getDataIndex("@Favoritos")
      .then(resultadoFav=> {
       this.setState({personFAV : resultadoFav })
      })
-   });
+   
+   getDataIndex("@contactos")
+   .then (resultado=> {
+     console.log("----------------------------")
+     console.log(resultado)
+    //  this.setState({person:resultado})
+     
+
+
+     
+   })
+   
+    });
     // al poner activity:false, cambia la actividad del ActivityIndicator a false, y lo corta una vez que se reciben resultados
   }
   componentWillUnmount(){
@@ -136,9 +144,8 @@ class Container extends Component {
     // seteo el estado 
     let arrayBorrados = [...this.state.personBorrada, ...Borrado]
     this.setState({person: resultados, personBorrada: arrayBorrados})
-    setDataIndex(resultados,"@importados")
+    setDataIndex(resultados,"@contactos")
     setDataIndex(arrayBorrados, '@Borrados')
-    console.log(this.state.person.length + "----------------------")
   }
 
   FAV(characteridx){
@@ -155,7 +162,7 @@ class Container extends Component {
     // seteo el estado 
     let arrayFavs = [...this.state.personFAV, ...Favoritos]
     this.setState({person: resultados, personFAV: arrayFavs})
-    setDataIndex(this.state.person,"@importados")
+    setDataIndex(this.state.person,"@contactos")
     setDataIndex(arrayFavs, '@Favoritos')  
   }
     
