@@ -67,7 +67,7 @@ FAV(characteridx){
 async Reset (key){
   try{
 
-      await Asyncstorage.removeItem(key)
+      await AsyncStorage.removeItem(key)
       let resultado = [];
       setDataIndex(resultado, "@Borrados")
 
