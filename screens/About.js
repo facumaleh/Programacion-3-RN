@@ -24,7 +24,7 @@ class About extends Component {
             vermas: 0,
             toValue: 1,
             toValueTitle: 1.5,
-            valueVaca: 20,
+            valueVaca: 200,
         }
 
 
@@ -38,7 +38,7 @@ class About extends Component {
     moverVaca = () => {
         Animated.timing(this.positionV, {
             toValue: this.state.valueVaca,
-            duration: 2000,
+            duration: 500,
             useNativeDriver: true,
             easing: Easing.linear
         }).start();
@@ -97,16 +97,15 @@ class About extends Component {
             
                 <View style={{width: 400, flex: 1}}>
                 <Button title="mueve" onPress={this.moverVaca}/>
-                    <Animated.View>
-                        <Image style={{
+                    <Animated.Image style={{
                             height: 100,
                             width: 100,
                             transform: [
-                                {translateX: this.state.valueVaca}
+                                {translateX: this.positionV}
                             ]
                         }}
-                        source={{uri:  "https://static.wixstatic.com/media/2cd43b_1a0dc766603340b5a4c62ea0cbf3c113~mv2.png/v1/fill/w_320,h_278,q_90/2cd43b_1a0dc766603340b5a4c62ea0cbf3c113~mv2.png"}} />
-                    </Animated.View>
+                        source={{uri:  "https://static.wixstatic.com/media/2cd43b_1a0dc766603340b5a4c62ea0cbf3c113~mv2.png/v1/fill/w_320,h_278,q_90/2cd43b_1a0dc766603340b5a4c62ea0cbf3c113~mv2.png"}}>
+                    </Animated.Image>
                 </View>
            
 
